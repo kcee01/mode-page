@@ -1,4 +1,4 @@
-const API_URL = 'https://<api-id>.execute-api.<region>.amazonaws.com/prod/authenticate'; // Replace with your API URL
+const API_URL = 'https://201ntuxuk7.execute-api.us-east-1.amazonaws.com/dev_user_pool'; // Replace with your API URL
 
 async function handleButtonClick(userType) {
     const username = prompt('Enter your username:');
