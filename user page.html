@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeBill User Selection</title>
     <link rel="stylesheet" href="style.css">
+    <title>User Login</title>
 </head>
 <body>
-    <h1>Choose User Mode</h1>
-    <div class="button-container">
-        <div>
-            <button id="admin-button">Admin</button>
-        </div>
-        <div>
-            <button id="customer-button">Customer</button>
-        </div>
-    </div>
+    <h2>Login</h2>
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="button" id="admin-button">Login as Admin</button>
+        <button type="button" id="customer-button">Login as Customer</button>
+    </form>
+
+    <p id="message"></p>
 
     <script src="userpage.js"></script>
 </body>
