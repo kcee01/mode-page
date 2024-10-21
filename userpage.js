@@ -1,4 +1,4 @@
-const API_URL = 'https://201ntuxuk7.execute-api.us-east-1.amazonaws.com/dev_user_pool';
+const API_URL = 'https://2g31ajcvxa.execute-api.us-east-1.amazonaws.com/user_dev';
 
 async function handleButtonClick(userType) {
     const username = prompt('Enter your username:');
