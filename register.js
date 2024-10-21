@@ -37,7 +37,7 @@ document.getElementById('register-button').addEventListener('click', async () =>
 
         // Redirect to verification page after a short delay
         setTimeout(() => {
-            window.location.href = 'kcee01/mode-page/verify.html';
+            window.location.href = 'verify.html';
         }, 2000); // Wait 2 seconds before redirecting
     } catch (error) {
         messageElement.textContent = `Error: ${error.message}`;
