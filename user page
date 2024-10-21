@@ -1,0 +1,15 @@
+<!Doctype html>
+<html>
+    <body>
+        <head>choose User mode</head>
+        <div>
+            <div>
+                <button>Admin</button>
+            </div>
+
+            <div>
+                <button>Customer</button>
+            </div>
+        </div>    
+    </body>
+</html>
