@@ -6,6 +6,7 @@
     <title>Logout</title>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script> <!-- Include AWS SDK -->
     <script src="https://cdn.rawgit.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script> <!-- Include Cognito SDK -->
+    <script src="logout.js" defer></script> <!-- Defer to ensure script loads after HTML -->
 </head>
 <body>
     <div class="container">
@@ -30,7 +31,5 @@
             background-color: #d43f3f; /* Darker red on hover */
         }
     </style>
-
-    <script src="logout.js"></script>
 </body>
 </html>
