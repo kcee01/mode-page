@@ -39,8 +39,8 @@
         };
         const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
         
-        // Logout function
-        document.getElementById('logout-button').addEventListener('click', function() {
+        // Logout function using class selector
+        document.querySelector('.logout-button').addEventListener('click', function() {
             const cognitoUser = userPool.getCurrentUser();
 
             if (cognitoUser) {
