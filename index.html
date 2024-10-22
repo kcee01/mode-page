@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+	<!-- AWS Cognito SDK -->
+<script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@6.2.2/index.min.js"></script>
+<!-- AWS SDK Core (if not already loaded) -->
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1255.0.min.js"></script>
+
+
         <title>Admin dashboard</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -150,10 +157,11 @@
 									 Settings
 									 </a></li>
 									 <li>
-										<a href="#" id="logout-link">
+										<a href="#" id="logout-link" onclick="logoutUser();">
 											<span class="material-icons">logout</span>
 											Logout
 										</a>
+										
 									</li>
 									 
 								  </ul>
@@ -164,6 +172,51 @@
 							</nav>
 						 </div>
 					 </div>
+
+
+					 <script>
+
+				// Replace with your Cognito pool's information
+				const poolData = {
+					UserPoolId: 'us-east-1_s0CLhJKA9',  // e.g., 'us-east-1_ABCd1234'
+					ClientId: '7idcfgsp88dmqgnum16bmapjgg'    // e.g., '1h57kf5cpkdu0h6df23hplfm2g'
+				};
+
+				// Initialize Cognito User Pool
+				const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+				// Retrieve the currently authenticated user (if available)
+				const cognitoUser = userPool.getCurrentUser();
+
+
+				function logoutUser() {
+					const user = userPool.getCurrentUser();
+
+					if (user) {
+						// Sign out from local session
+						user.signOut();
+
+						// Optional: Also clear any tokens stored in localStorage or sessionStorage
+						sessionStorage.clear();
+						localStorage.clear();
+
+						// Redirect the user to the login page (or any desired page)
+						window.location.href = 'login.html';
+					} else {
+						console.log("No user is currently logged in.");
+					}
+				}
+
+
+
+					 </script>
+
+
+
+
+
+
+
 					 
 				 </div>
 				 
