@@ -46,7 +46,7 @@ document.getElementById('register-button').addEventListener('click', async () =>
             UserAttributes: [
                 { Name: 'email', Value: email },
                 { Name: 'name', Value: name },
-                { Name: 'custom:role', Value: selectedRole }, // Add role as a custom attribute
+                { Name: 'Updated at (attribute)', Value: selectedRole }, // Add role as a custom attribute
             ],
         };
 
