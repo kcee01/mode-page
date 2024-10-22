@@ -1,23 +1,22 @@
-// Configure AWS Cognito
 const poolData = {
-    UserPoolId: 'us-east-1_s0CLhJKA9', // Your user pool id here
-    ClientId: '7idcfgsp88dmqgnum16bmapjgg' // Your client id here
+    UserPoolId: 'us-east-1_s0CLhJKA9', // Replace with your User Pool ID
+    ClientId: '7idcfgsp88dmqgnum16bmapjgg' // Replace with your Client ID
 };
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-// Check if the script is loaded
+// Logout logic
+document.getElementById('logout-link').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default link behavior
 
-
-// Logout function using class selector
-document.querySelector('.logout-button').addEventListener('click', function() {
     const cognitoUser = userPool.getCurrentUser();
 
-
     if (cognitoUser) {
-        cognitoUser.signOut();
-        alert("You have been logged out successfully.");
-        window.location.href = 'login.html'; // Redirect to login page or home page
+        cognitoUser.signOut(); // Perform logout
+        alert('You have been logged out successfully.');
+
+        // Redirect to login page after logout
+        window.location.href = 'login.html';
     } else {
-        alert("No user is currently logged in.");
+        alert('No user is currently logged in.');
     }
 });
