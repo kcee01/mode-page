@@ -1,7 +1,8 @@
+
 // Cognito configuration - replace with your actual UserPoolId and ClientId
 const poolData = {
-    UserPoolId: 'us-east-1_s0CLhJKA9', // e.g., 'us-east-1_abc123'
-    ClientId: '7idcfgsp88dmqgnum16bmapjgg'   // e.g., '1h57kf5cpkdu0h6df23hplfm2g'
+    UserPoolId: 'us-east-1_s0CLhJKA9', // Replace with your UserPoolId
+    ClientId: '7idcfgsp88dmqgnum16bmapjgg' // Replace with your ClientId
 };
 
 // Initialize Cognito User Pool
@@ -9,17 +10,24 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 // Function to log out the user
 function logoutUser() {
+    console.log("Logout button clicked.");
+
     const user = userPool.getCurrentUser(); // Get the currently authenticated user
 
     if (user) {
+        console.log("User found. Logging out...");
+
         // Sign out from the local session
         user.signOut();
 
-        // Optional: Clear localStorage and sessionStorage (if used)
+        // Optional: Clear storage
         localStorage.clear();
         sessionStorage.clear();
 
-        // Redirect to login page or any desired page after logout
+        // Confirm redirection
+        console.log("User signed out. Redirecting to Login.html...");
+
+        // Redirect to login page
         window.location.href = 'Login.html';
     } else {
         console.log("No user is currently logged in.");
@@ -28,4 +36,3 @@ function logoutUser() {
 
 // Attach logout functionality to the button
 document.getElementById('logout-button').addEventListener('click', logoutUser);
-
