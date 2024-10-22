@@ -1,22 +1,30 @@
+// Cognito configuration - replace with your actual UserPoolId and ClientId
 const poolData = {
-    UserPoolId: 'us-east-1_s0CLhJKA9', // Replace with your User Pool ID
-    ClientId: '7idcfgsp88dmqgnum16bmapjgg' // Replace with your Client ID
+    UserPoolId: 'your_user_pool_id', // e.g., 'us-east-1_abc123'
+    ClientId: 'your_app_client_id'   // e.g., '1h57kf5cpkdu0h6df23hplfm2g'
 };
+
+// Initialize Cognito User Pool
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-// Logout logic
-document.getElementById('logout-button').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
+// Function to log out the user
+function logoutUser() {
+    const user = userPool.getCurrentUser(); // Get the currently authenticated user
 
-    const cognitoUser = userPool.getCurrentUser();
+    if (user) {
+        // Sign out from the local session
+        user.signOut();
 
-    if (cognitoUser) {
-        cognitoUser.signOut(); // Perform logout
-        alert('You have been logged out successfully.');
+        // Optional: Clear localStorage and sessionStorage (if used)
+        localStorage.clear();
+        sessionStorage.clear();
 
-        // Redirect to login page after logout
+        // Redirect to login page or any desired page after logout
         window.location.href = 'login.html';
     } else {
-        alert('No user is currently logged in.');
+        console.log("No user is currently logged in.");
     }
-});
+}
+
+// Attach logout functionality to the button
+document.getElementById('logout-button').addEventListener('click', logoutUser);
