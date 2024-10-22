@@ -45,15 +45,32 @@ authButton.addEventListener('click', async () => {
         if (role) {
             // Store the user's role in localStorage
             localStorage.setItem('userRole', role);
+
+            // Redirect to different dashboards based on user role
+            if (role === 'admin') {
+                messageElement.textContent = 'Login successful! Redirecting to Admin Dashboard...';
+                messageElement.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = 'Admin-dashboard.html'; // Redirect to admin dashboard
+                }, 2000); // 2 seconds delay before redirecting
+            } else if (role === 'customer') {
+                messageElement.textContent = 'Login successful! Redirecting to Customer Dashboard...';
+                messageElement.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = 'Customer-dashboard.html'; // Redirect to customer dashboard
+                }, 2000); // 2 seconds delay before redirecting
+            } else {
+                messageElement.textContent = 'Login successful! No specific dashboard found.';
+                messageElement.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = 'registration.html'; // Redirect to a default page
+                }, 2000);
+            }
+        } else {
+            messageElement.textContent = 'Role not found. Please contact support.';
+            messageElement.style.color = 'red';
         }
 
-        messageElement.textContent = 'Login successful! Redirecting...';
-        messageElement.style.color = 'green';
-
-        // Redirect to index.html after a short delay
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 2000); // 2 seconds delay before redirecting
     } catch (error) {
         messageElement.textContent = `Error: ${error.message}`;
         messageElement.style.color = 'red';
