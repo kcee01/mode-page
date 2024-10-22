@@ -3,48 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout Example</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/amazon-cognito-identity-js/5.2.5/amazon-cognito-identity.min.js"></script>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script>
-
-
+    <title>Logout</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script> <!-- Include AWS SDK -->
+   
+    <script src="logout.js" defer></script> <!-- Defer to ensure script loads after HTML -->
 </head>
 <body>
-    <h1>Are you sure you want to logout</h1>
+    <div class="container">
+        <h1>Are you sure you want to Logout</h1>
+        <button id="logout-button">Logout</button>
+    </div>
 
-    <button id="logout-button">Logout</button>
-
-    <script>
-        // Cognito configuration - replace with your actual UserPoolId and ClientId
-        const poolData = {
-            UserPoolId: 'us-east-1_s0CLhJKA9', // Replace with your UserPoolId
-            ClientId: '7idcfgsp88dmqgnum16bmapjgg' // Replace with your ClientId
-        };
-
-        // Initialize Cognito User Pool
-        const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
-        // Function to log out the user
-        function logoutUser() {
-            const user = userPool.getCurrentUser(); // Get the currently authenticated user
-
-            if (user) {
-                // Sign out from the local session
-                user.signOut();
-
-                // Optional: Clear localStorage and sessionStorage (if used)
-                localStorage.clear();
-                sessionStorage.clear();
-
-                // Redirect to login page after logout
-                window.location.href = 'Login.html';
-            } else {
-                console.log("No user is currently logged in.");
-            }
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
         }
-
-        // Attach logout functionality to the button
-        document.getElementById('logout-button').addEventListener('click', logoutUser);
-    </script>
+        #logout-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4c4c; /* Red color for logout */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #logout-button:hover {
+            background-color: #d43f3f; /* Darker red on hover */
+        }
+    </style>
 </body>
 </html>
