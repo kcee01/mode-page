@@ -6,15 +6,34 @@ const CLIENT_ID = '7idcfgsp88dmqgnum16bmapjgg'; // Replace with your App Client 
 AWS.config.region = 'us-east-1'; // Set your AWS region
 const cognito = new AWS.CognitoIdentityServiceProvider();
 
+// Variables to track selected role
+let selectedRole = null;
+
+// Get role buttons and message element
+const adminButton = document.getElementById('admin-button');
+const customerButton = document.getElementById('customer-button');
+const messageElement = document.getElementById('message');
+
+// Role button click event handlers
+adminButton.addEventListener('click', () => selectRole('Admin', adminButton));
+customerButton.addEventListener('click', () => selectRole('Customer', customerButton));
+
+// Function to handle role selection
+function selectRole(role, button) {
+    selectedRole = role;
+    adminButton.classList.remove('active');
+    customerButton.classList.remove('active');
+    button.classList.add('active');
+}
+
 // Register button click event
 document.getElementById('register-button').addEventListener('click', async () => {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const messageElement = document.getElementById('message');
 
-    if (!name || !email || !password) {
-        messageElement.textContent = 'All fields are required.';
+    if (!name || !email || !password || !selectedRole) {
+        messageElement.textContent = 'All fields and role selection are required.';
         messageElement.style.color = 'red';
         return;
     }
@@ -27,6 +46,7 @@ document.getElementById('register-button').addEventListener('click', async () =>
             UserAttributes: [
                 { Name: 'email', Value: email },
                 { Name: 'name', Value: name },
+                { Name: 'custom:role', Value: selectedRole }, // Add role as a custom attribute
             ],
         };
 
