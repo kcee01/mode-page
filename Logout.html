@@ -3,17 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognito Example</title>
-    
-    <!-- Load AWS SDK and Cognito SDK -->
+    <title>Logout</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script> <!-- Include AWS SDK -->
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1182.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/amazon-cognito-identity-js/5.2.5/amazon-cognito-identity.min.js"></script>
-
-    <!-- Your custom JavaScript file -->
-    <script src="logout.js" defer></script>
+   
+    <script src="logout.js" defer></script> <!-- Defer to ensure script loads after HTML -->
 </head>
 <body>
-    <h1>Cognito Initialization</h1>
-    <button id="logout-button">Logout</button>
+    <div class="container">
+        <h1>Are you sure you want to Logout</h1>
+        <button id="logout-button">Logout</button>
+    </div>
+
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #logout-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4c4c; /* Red color for logout */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #logout-button:hover {
+            background-color: #d43f3f; /* Darker red on hover */
+        }
+    </style>
 </body>
 </html>
