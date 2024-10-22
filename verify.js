@@ -31,7 +31,7 @@ document.getElementById('verify-button').addEventListener('click', async () => {
 
         // Redirect to login page after 2 seconds
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = 'login.html';
         }, 2000);
     } catch (error) {
         messageElement.textContent = `Error: ${error.message}`;
