@@ -7,6 +7,7 @@ const poolData = {
 // Initialize Cognito User Pool
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+
 // Function to log out the user
 function logoutUser() {
     const user = userPool.getCurrentUser(); // Get the currently authenticated user
