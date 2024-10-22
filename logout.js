@@ -28,3 +28,4 @@ function logoutUser() {
 
 // Attach logout functionality to the button
 document.getElementById('logout-button').addEventListener('click', logoutUser);
+
