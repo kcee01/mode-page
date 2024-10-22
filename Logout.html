@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1120.0.min.js"></script> <!-- Include AWS SDK -->
+    <script src="https://cdn.rawgit.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script> <!-- Include Cognito SDK -->
+</head>
+<body>
+    <div class="container">
+        <button id="logout-button" class="logout-button">Logout</button>
+    </div>
+
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .logout-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4c4c; /* Red color for logout */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout-button:hover {
+            background-color: #d43f3f; /* Darker red on hover */
+        }
+    </style>
+
+    <script>
+        // Configure AWS Cognito
+        const poolData = {
+            UserPoolId: 'us-east-1_s0CLhJKA9', // Your user pool id here
+            ClientId: '7idcfgsp88dmqgnum16bmapjgg' // Your client id here
+        };
+        const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+        
+        // Logout function
+        document.getElementById('logout-button').addEventListener('click', function() {
+            const cognitoUser = userPool.getCurrentUser();
+
+            if (cognitoUser) {
+                cognitoUser.signOut();
+                alert("You have been logged out successfully.");
+                window.location.href = 'login.html'; // Redirect to login page or home page
+            } else {
+                alert("No user is currently logged in.");
+            }
+        });
+    </script>
+</body>
+</html>
