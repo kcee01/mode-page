@@ -22,7 +22,7 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input, button, select {
+        input, button {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
@@ -42,15 +42,6 @@
             text-align: center;
             margin-top: 10px;
         }
-        .user-type {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 8px;
-        }
-        .user-type input {
-            width: auto;
-            margin: 0 5px;
-        }
     </style>
 </head>
 <body>
@@ -59,65 +50,10 @@
         <input type="text" id="name" placeholder="Name" required>
         <input type="email" id="email" placeholder="Email" required>
         <input type="password" id="password" placeholder="Password" required>
-        
-        <!-- User Type Selection -->
-        <div class="user-type">
-            <label>
-                <input type="radio" name="userType" value="Admin" required> Admin
-            </label>
-            <label>
-                <input type="radio" name="userType" value="Customer" required> Customer
-            </label>
-        </div>
-        
         <button id="register-button">Register</button>
         <p class="message" id="message"></p>
     </div>
 
-    <script>
-        // Handling the registration logic
-        document.getElementById('register-button').addEventListener('click', () => {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Get the selected user type
-            const userType = document.querySelector('input[name="userType"]:checked').value;
-
-            // Validate inputs (optional)
-            if (!name || !email || !password || !userType) {
-                document.getElementById('message').innerText = 'All fields are required!';
-                return;
-            }
-
-            // Example: Send the data to an API (register.js logic)
-            const userData = {
-                name: name,
-                email: email,
-                password: password,
-                userType: userType
-            };
-
-            console.log('User Data:', userData); // For debugging
-
-            // Simulate API call or integration with AWS
-            fetch('/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData)
-            })
-            .then(response => {
-                if (response.ok) {
-                    document.getElementById('message').innerText = 'Registration successful!';
-                } else {
-                    document.getElementById('message').innerText = 'Registration failed!';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('message').innerText = 'An error occurred!';
-            });
-        });
-    </script>
+    <script src="register.js"></script>
 </body>
 </html>
