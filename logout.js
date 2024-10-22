@@ -6,12 +6,12 @@ const poolData = {
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 // Check if the script is loaded
-console.log('Logout script loaded');
+
 
 // Logout function using class selector
 document.querySelector('.logout-button').addEventListener('click', function() {
     const cognitoUser = userPool.getCurrentUser();
-    console.log(cognitoUser); // Check the user object
+
 
     if (cognitoUser) {
         cognitoUser.signOut();
