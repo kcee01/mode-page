@@ -52,13 +52,13 @@ authButton.addEventListener('click', async () => {
             localStorage.setItem('userRole', role);
 
             // Redirect to different dashboards based on user role
-            if (role === 'admin') {
+            if (role === 'Admin') {
                 messageElement.textContent = 'Login successful! Redirecting to Admin Dashboard...';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
                     window.location.href = 'admin-dashboard.html'; // Redirect to admin dashboard
                 }, 2000); // 2 seconds delay before redirecting
-            } else if (role === 'customer') {
+            } else if (role === 'Customer') {
                 messageElement.textContent = 'Login successful! Redirecting to Customer Dashboard...';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
