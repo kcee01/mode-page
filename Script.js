@@ -1,9 +1,14 @@
 // Configuration: Replace with your Cognito User Pool ID and App Client ID
 const USER_POOL_ID = 'us-east-1_s0CLhJKA9';  // Replace with your User Pool ID
 const CLIENT_ID = '7idcfgsp88dmqgnum16bmapjgg'; // Replace with your App Client ID
+const IDENTITY_POOL_ID = 'us-east-1:be90cc19-13c5-4762-9622-17a6c7968bf4'; // Replace with your Identity Pool ID
 
 // Initialize AWS Cognito service
 AWS.config.region = 'us-east-1'; // Set your AWS region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: IDENTITY_POOL_ID // Replace with your Identity Pool ID
+});
+
 const cognito = new AWS.CognitoIdentityServiceProvider();
 
 // Get elements
@@ -47,23 +52,23 @@ authButton.addEventListener('click', async () => {
             localStorage.setItem('userRole', role);
 
             // Redirect to different dashboards based on user role
-            if (role === 'Admin') {
+            if (role === 'admin') {
                 messageElement.textContent = 'Login successful! Redirecting to Admin Dashboard...';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
-                    window.location.href = 'Admin-dashboard.html'; // Redirect to admin dashboard
+                    window.location.href = 'admin-dashboard.html'; // Redirect to admin dashboard
                 }, 2000); // 2 seconds delay before redirecting
-            } else if (role === 'Customer') {
+            } else if (role === 'customer') {
                 messageElement.textContent = 'Login successful! Redirecting to Customer Dashboard...';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
-                    window.location.href = 'Customer-dashboard.html'; // Redirect to customer dashboard
+                    window.location.href = 'customer-dashboard.html'; // Redirect to customer dashboard
                 }, 2000); // 2 seconds delay before redirecting
             } else {
                 messageElement.textContent = 'Login successful! No specific dashboard found.';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
-                    window.location.href = 'registration.html'; // Redirect to a default page
+                    window.location.href = 'index.html'; // Redirect to a default page
                 }, 2000);
             }
         } else {
