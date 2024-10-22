@@ -11,7 +11,7 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 // Function to log out the user
 function logoutUser() {
     const user = userPool.getCurrentUser(); // Get the currently authenticated user
-
+console.log(user)
     if (user) {
         user.signOut(); // Sign out the user
         console.log("User signed out successfully.");
