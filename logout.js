@@ -1,7 +1,7 @@
 // Cognito configuration - replace with your actual UserPoolId and ClientId
 const poolData = {
-    UserPoolId: 'your_user_pool_id', // e.g., 'us-east-1_abc123'
-    ClientId: 'your_app_client_id'   // e.g., '1h57kf5cpkdu0h6df23hplfm2g'
+    UserPoolId: 'us-east-1_s0CLhJKA9', // e.g., 'us-east-1_abc123'
+    ClientId: '7idcfgsp88dmqgnum16bmapjgg'   // e.g., '1h57kf5cpkdu0h6df23hplfm2g'
 };
 
 // Initialize Cognito User Pool
