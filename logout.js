@@ -20,7 +20,7 @@ function logoutUser() {
         sessionStorage.clear();
 
         // Redirect to login page or any desired page after logout
-        window.location.href = 'login.html';
+        window.location.href = 'Login.html';
     } else {
         console.log("No user is currently logged in.");
     }
