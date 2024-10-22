@@ -5,7 +5,7 @@ const poolData = {
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 // Logout logic
-document.getElementById('logout-link').addEventListener('click', function(event) {
+document.getElementById('logout-button').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent default link behavior
 
     const cognitoUser = userPool.getCurrentUser();
