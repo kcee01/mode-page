@@ -72,13 +72,13 @@ authButton.addEventListener('click', async () => {
                 messageElement.textContent = 'Login successful! Redirecting to Admin Dashboard...';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
-                    window.location.href = 'admin-dashboard.html'; // Redirect to admin dashboard
+                    window.location.href = 'Admin-dashboard.html'; // Redirect to admin dashboard
                 }, 2000); // 2 seconds delay before redirecting
             } else if (role === 'Customer') {
                 messageElement.textContent = 'Login successful! Redirecting to Customer Dashboard...';
                 messageElement.style.color = 'green';
                 setTimeout(() => {
-                    window.location.href = 'customer-dashboard.html'; // Redirect to customer dashboard
+                    window.location.href = 'Customer-dashboard.html'; // Redirect to customer dashboard
                 }, 2000); // 2 seconds delay before redirecting
             } else {
                 messageElement.textContent = 'Login successful! No specific dashboard found.';
