@@ -1,628 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	
-	  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1182.0.min.js"></script>
-	  <script src="https://raw.githubusercontent.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script>
-  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeBill Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
 
-        <title>Admin dashboard</title>
-	    <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-	    <!----css3---->
-        <link rel="stylesheet" href="css/custom.css">
-		
-		
-		<!--google fonts -->
-	    <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-	
-	
-	   <!--google material icon-->
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
+        nav {
+            background: #333;
+            padding: 10px 0;
+        }
 
-  </head>
-  <body>
-  
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
 
+        nav ul li {
+            margin: 0 15px;
+        }
 
-<div class="wrapper">
-     
-	  <div class="body-overlay"></div>
-	 
-	 <!-------sidebar--design------------>
-	 
-	 <div id="sidebar">
-	    <div class="sidebar-header">
-		   <h3><img src="" class="img-fluid"/><span>WeBill</span></h3>
-		</div>
-		<ul class="list-unstyled component m-0">
-		  <li class="active">
-		  <a href="#" class="dashboard"><i class="material-icons">dashboard</i>Dashboard </a>
-		  </li>
-		 
-		  <li class="dropdown">
-		  <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false" 
-		  class="dropdown-toggle">
-		  <i class="material-icons">grid_on</i>tables
-		  </a>
-		  <ul class="collapse list-unstyled menu" id="homeSubmenu6">
-		     <li><a href="#">Meter Numbers</a></li>
-			 <li><a href="#">Customers Bill</a></li>
-			 <li><a href="#">table 3</a></li>
-		  </ul>
-		  </li>
-		  
-		  
-		  <li class="dropdown">
-		  <a href="#homeSubmenu7" data-toggle="collapse" aria-expanded="false" 
-		  class="dropdown-toggle">
-		  <i class="material-icons">content_copy</i>Pages
-		  </a>
-		  <ul class="collapse list-unstyled menu" id="homeSubmenu7">
-		     <li><a href="#">Pages 1</a></li>
-			 <li><a href="#">Pages 2</a></li>
-			 <li><a href="#">Pages 3</a></li>
-		  </ul>
-		  </li>
-		  
-		   
-		  <li class="">
-		  <a href="#" class=""><i class="material-icons">date_range</i>copy </a>
-		  </li>
-		  <li class="">
-		  <a href="#" class=""><i class="material-icons">library_books</i>calender </a>
-		  </li>
-		
-		</ul>
-	 </div>
-	 
-   <!-------sidebar--design- close----------->
-   
-   
-   
-      <!-------page-content start----------->
-   
-      <div id="content">
-	     
-		  <!------top-navbar-start-----------> 
-		     
-		  <div class="top-navbar">
-		     <div class="xd-topbar">
-			     <div class="row">
-				     <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
-					    <div class="xp-menubar">
-						    <span class="material-icons text-white">signal_cellular_alt</span>
-						</div>
-					 </div>
-					 
-					 <div class="col-md-5 col-lg-3 order-3 order-md-2">
-					     <div class="xp-searchbar">
-						     <form>
-							    <div class="input-group">
-								  <input type="search" class="form-control"
-								  placeholder="Search">
-								  <div class="input-group-append">
-								     <button class="btn" type="submit" id="button-addon2">Go
-									 </button>
-								  </div>
-								</div>
-							 </form>
-						 </div>
-					 </div>
-					 
-					 
-					 <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
-					     <div class="xp-profilebar text-right">
-						    <nav class="navbar p-0">
-							   <ul class="nav navbar-nav flex-row ml-auto">
-							   <li class="dropdown nav-item active">
-							     <a class="nav-link" href="#" data-toggle="dropdown">
-								  <span class="material-icons">notifications</span>
-								  <span class="notification">4</span>
-								 </a>
-								  <ul class="dropdown-menu">
-								     <li><a href="#">You Have 4 New Messages</a></li>
-									 <li><a href="#">You Have 4 New Messages</a></li>
-									 <li><a href="#">You Have 4 New Messages</a></li>
-									 <li><a href="#">You Have 4 New Messages</a></li>
-								  </ul>
-							   </li>
-							   
-							   <li class="nav-item">
-							     <a class="nav-link" href="#">
-								   <span class="material-icons">question_answer</span>
-								 </a>
-							   </li>
-							   
-							   <li class="dropdown nav-item">
-							     <a class="nav-link" href="#" data-toggle="dropdown">
-								  <img src=""/>   <!-----profile icon----->
-								  <span class="xp-user-live"></span>
-								 </a>
-								  <ul class="dropdown-menu small-menu">
-								     <li><a href="#">
-									 <span class="material-icons">person_outline</span>
-									 Profile
-									 </a></li>
-									 <li><a href="#">
-									 <span class="material-icons">settings</span>
-									 Settings
-									 </a></li>
-									 <li>
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-										<a href="Logout.html" id="logout-link">
-											<span class="material-icons">logout</span>Logout</a>
-										
-									</li>
-									 
-								  </ul>
-							   </li>
-							   
-							   
-							   </ul>
-							</nav>
-						 </div>
-					 </div>
-					 
-				 </div>
-				 
-				 <div class="xp-breadcrumbbar text-center">
-				    <h4 class="page-title">Administration Dashboard</h4>
-					<ol class="breadcrumb">
-					  <li class="breadcrumb-item"><a href="#">WeBill</a></li>
-					  <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
-					</ol>
-				 </div>
-				 
-				 
-			 </div>
-		  </div>
-		  <!------top-navbar-end-----------> 
-		  
-		  
-		   <!------main-content-start-----------> 
-		     
-		      <div class="main-content">
-			     <div class="row">
-				    <div class="col-md-12">
-					   <div class="table-wrapper">
-					     
-					   <div class="table-title">
-					     <div class="row">
-						     <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-							    <h2 class="ml-lg-2">Manage  Customers</h2>
-							 </div>
-							 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-							   <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-							   <i class="material-icons">&#xE147;</i>
-							   <span>Add New Employees</span>
-							   </a>
-							   <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-							   <i class="material-icons">&#xE15C;</i>
-							   <span>Delete</span>
-							   </a>
-							 </div>
-					     </div>
-					   </div>
-					   
-					   <table class="table table-striped table-hover">
-					      <thead>
-						     <tr>
-							 <th><span class="custom-checkbox">
-							 <input type="checkbox" id="selectAll">
-							 <label for="selectAll"></label></th>
-							 <th>Name</th>
-							 <th>Surname</th>
-							 <th>Email</th>
-							 <th>Address</th>
-							 <th>E_meter_No</th>
-							 <th>Table name</th>
-							 <th>Phone</th>
-							 <th>Secret word</th>
-							 <th>Enabled</th>
-							 <th>Date of creation</th>
-							 <th>Year</th>
-							 <th>Month</th>
-							 <th>Meter Reading</th>
-							 <th>image file name</th>
-							 <th>Bill file name</th>
-							 <th>Validated by Customer</th>
-							 <th>Validated by Admin</th>
-							 <th>Actions</th>
-							 </tr>
-						  </thead>
-						  
-						<tbody>
-							<tr>
-							 <th>
-							    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-							   <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-							   </a>
-							   <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-							   <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-							   </a>
-							 </th>
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-							 </tr>
-							 
-							
-							 
-						  </tbody>
-						  
-					      
-					   </table>
-					   
-					   <div class="clearfix">
-					     <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-					     <ul class="pagination">
-						    <li class="page-item disabled"><a href="#">Previous</a></li>
-							<li class="page-item "><a href="#"class="page-link">1</a></li>
-							<li class="page-item "><a href="#"class="page-link">2</a></li>
-							<li class="page-item active"><a href="#"class="page-link">3</a></li>
-							<li class="page-item "><a href="#"class="page-link">4</a></li>
-							<li class="page-item "><a href="#"class="page-link">5</a></li>
-							<li class="page-item "><a href="#" class="page-link">Next</a></li>
-						 </ul>
-					   </div>
-					   
-					   
-					   
-					   
-	
-					   
-					   
-					   
-					   
-					   </div>
-					</div>
+        main {
+            padding: 20px;
+        }
 
+        section {
+            display: none; /* Hide all sections initially */
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 5px;
+        }
 
+        section.active {
+            display: block; /* Show active section */
+        }
 
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-  					<!----Admin Table--------->
+        form {
+            display: flex;
+            flex-direction: column;
+        }
 
-					  <div class="col-md-12">
-						<div class="table-wrapper">
-						  
-						<div class="table-title">
-						  <div class="row">
-							  <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-								 <h2 class="ml-lg-2">Manage  Admins</h2>
-							  </div>
-							  <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-								<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-								<i class="material-icons">&#xE147;</i>
-								<span>Add New Admin</span>
-								</a>
-								<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-								<i class="material-icons">&#xE15C;</i>
-								<span>Delete</span>
-								</a>
-							  </div>
-						  </div>
-						</div>
-						
-						<table class="table table-striped table-hover">
-						   <thead>
-							  <tr>
-							  <th><span class="custom-checkbox">
-							  <input type="checkbox" id="selectAll">
-							  <label for="selectAll"></label></th>
-							  <th>Name</th>
-							  <th>Surname</th>
-							  <th>Email</th>
-							  <th>Address</th>
-							  <th>Secret word</th>
-							  <th>Actions</th>
-							  </tr>
-						   </thead>
-						   
-						 <tbody>
-							 <tr>
-							  <th>
-								 <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-								<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-								</a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-								<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-								</a>
-							  </th>
- 
-							  </tr>
-							  
-							 
-							  
-						   </tbody>
-						   
-						   
-						</table>
-						
-						<div class="clearfix">
-						  <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-						  <ul class="pagination">
-							 <li class="page-item disabled"><a href="#">Previous</a></li>
-							 <li class="page-item "><a href="#"class="page-link">1</a></li>
-							 <li class="page-item "><a href="#"class="page-link">2</a></li>
-							 <li class="page-item active"><a href="#"class="page-link">3</a></li>
-							 <li class="page-item "><a href="#"class="page-link">4</a></li>
-							 <li class="page-item "><a href="#"class="page-link">5</a></li>
-							 <li class="page-item "><a href="#" class="page-link">Next</a></li>
-						  </ul>
-						</div>
-						
-						
-						
-						
-	 
-						
-						
-						
-						
-						</div>
-					 </div>
- 
+        label {
+            margin-bottom: 5px;
+        }
 
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
+        button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WeBill Admin Panel</h1>
+        <a href="#logout" class="logout-button">Logout</a>
+    </header>
 
+    <nav>
+        <ul>
+            <li><a href="#add-consumer" onclick="showForm('add-consumer')">Add Consumer</a></li>
+            <li><a href="#edit-profile" onclick="showForm('edit-profile')">Edit Profile</a></li>
+            <li><a href="#disable-account" onclick="showForm('disable-account')">Disable/Delete Account</a></li>
+            <li><a href="#add-meter" onclick="showForm('add-meter')">Add Meter</a></li>
+            <li><a href="#edit-meter" onclick="showForm('edit-meter')">Edit Meter</a></li>
+            <li><a href="#delete-meter" onclick="showForm('delete-meter')">Delete Meter</a></li>
+            <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
+        </ul>
+    </nav>
 
+    <main>
+        <section id="add-consumer" class="form-section">
+            <h2>Add Consumer</h2>
+            <form>
+                <label for="consumer-given-name">Given Name:</label>
+                <input type="text" id="consumer-given-name" required>
 
+                <label for="consumer-surname">Surname:</label>
+                <input type="text" id="consumer-surname" required>
 
+                <label for="consumer-address">Address:</label>
+                <input type="text" id="consumer-address" required>
 
+                <label for="electric-meter-id">Electric Meter ID:</label>
+                <input type="text" id="electric-meter-id" required>
 
+                <label for="consumer-email">E-mail Address:</label>
+                <input type="email" id="consumer-email" required>
 
+                <label for="consumer-secret">Secret Word:</label>
+                <input type="password" id="consumer-secret" required>
 
+                <button type="submit">Add Consumer</button>
+            </form>
+        </section>
 
+        <section id="edit-profile" class="form-section">
+            <h2>Edit Profile</h2>
+            <form>
+                <label for="admin-given-name">Given Name:</label>
+                <input type="text" id="admin-given-name" required>
 
+                <label for="admin-surname">Surname:</label>
+                <input type="text" id="admin-surname" required>
 
-					
-					
-									   <!----add-modal start--------->
-		<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-		    <label>Name</label>
-			<input type="text" class="form-control" required>
-		</div>
+                <label for="admin-address">Address:</label>
+                <input type="text" id="admin-address" required>
 
-		<div class="form-group">
-		    <label>Surname</label>
-			<input type="text" class="form-control" required>
-		</div>
-		
-		<div class="form-group">
-		    <label>Email</label>
-			<input type="emil" class="form-control" required>
-		</div>
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
 
-		<div class="form-group">
-		    <label>Address</label>
-			<textarea class="form-control" required></textarea>
-		</div>
+        <section id="disable-account" class="form-section">
+            <h2>Disable/Delete Account</h2>
+            <form>
+                <label for="consumer-id">Consumer ID:</label>
+                <input type="text" id="consumer-id" required>
 
-		<div class="form-group">
-		    <label>E_meter_No</label>
-			<input type="number" class="form-control" required>
-		</div>
+                <button type="button" onclick="disableAccount()">Disable Account</button>
+                <button type="button" onclick="deleteAccount()">Delete Account</button>
+            </form>
+        </section>
 
-		<div class="form-group">
-		    <label>Table name</label>
-			<input type="text" class="form-control" required>
-		</div>
+        <section id="add-meter" class="form-section">
+            <h2>Add Meter</h2>
+            <form>
+                <label for="meter-id">Meter ID:</label>
+                <input type="text" id="meter-id" required>
 
-		<div class="form-group">
-		    <label>Phone</label>
-			<input type="text" class="form-control" required>
-		</div>
+                <label for="longitude">Longitude:</label>
+                <input type="number" step="0.000001" id="longitude" required>
 
-		<div class="form-group">
-		    <label>Secret word</label>
-			<input type="password" class="form-control" required>
-		</div>
+                <label for="latitude">Latitude:</label>
+                <input type="number" step="0.000001" id="latitude" required>
 
-		<div class="form-group">
-		    <label>Enabled</label>
-			<input type="radio" class="form-control" required>
-		</div>
+                <button type="submit">Add Meter</button>
+            </form>
+        </section>
 
-		<div class="form-group">
-		    <label>Date of creation</label>
-			<input type="datetime-local" class="form-control" required>
-		</div>
-		
-		<div class="form-group">
-		    <label>Year</label>
-			<input type="number" class="form-control" required>
-		</div>
+        <section id="edit-meter" class="form-section">
+            <h2>Edit Meter</h2>
+            <form>
+                <label for="edit-meter-id">Meter ID:</label>
+                <input type="text" id="edit-meter-id" required>
 
-		<div class="form-group">
-		    <label>Month</label>
-			<input type="number" class="form-control" required>
-		</div>
+                <label for="edit-meter-longitude">Longitude:</label>
+                <input type="number" step="0.000001" id="edit-meter-longitude" required>
 
-		<div class="form-group">
-		    <label>Meter Reading</label>
-			<input type="number" class="form-control" required>
-		</div>
+                <label for="edit-meter-latitude">Latitude:</label>
+                <input type="number" step="0.000001" id="edit-meter-latitude" required>
 
-		<div class="form-group">
-		    <label>Image file name</label>
-			<input type="text" class="form-control" required>
-		</div>
+                <button type="submit">Update Meter</button>
+            </form>
+        </section>
 
-		<div class="form-group">
-		    <label>Bill file name</label>
-			<input type="text" class="form-control" required>
-		</div>
+        <section id="delete-meter" class="form-section">
+            <h2>Delete Meter</h2>
+            <form>
+                <label for="delete-meter-id">Meter ID:</label>
+                <input type="text" id="delete-meter-id" required>
 
-		<div class="form-group">
-		    <label>Validated by Customer</label>
-			<input type="radio" class="form-control" required>
-		</div>
+                <button type="button" onclick="deleteMeter()">Delete Meter</button>
+            </form>
+        </section>
 
+        <section id="generate-bill" class="form-section">
+            <h2>Generate Bill</h2>
+            <form>
+                <label for="bill-consumer-id">Consumer ID:</label>
+                <input type="text" id="bill-consumer-id" required>
 
-		<div class="form-group">
-		    <label>Validated by Admin</label>
-			<input type="radio" class="form-control" required>
-		</div>
+                <label for="meter-reading">Meter Reading:</label>
+                <input type="number" id="meter-reading" required>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
+                <button type="submit">Generate Bill</button>
+            </form>
+        </section>
+    </main>
 
-					   <!----edit-modal end--------->
-					   
-					   
-					   
-					   
-					   
-				   <!----edit-modal start--------->
-		<div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Customer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-		    <label>Name</label>
-			<input type="text" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Email</label>
-			<input type="emil" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Address</label>
-			<textarea class="form-control" required></textarea>
-		</div>
-		<div class="form-group">
-		    <label>Phone</label>
-			<input type="text" class="form-control" required>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <footer>
+        <p>&copy; 2024 WeBill. All rights reserved.</p>
+    </footer>
 
-					   <!----edit-modal end--------->	   
-					   
-					   
-					 <!----delete-modal start--------->
-		<div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Customer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this Records</p>
-		<p class="text-warning"><small>this action Cannot be Undone,</small></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <script>
+        function showForm(formId) {
+            // Hide all form sections
+            const sections = document.querySelectorAll('.form-section');
+            sections.forEach(section => section.classList.remove('active'));
 
-					   <!----edit-modal end--------->   
-					   
-					
-					
-				 
-			     </div>
-			  </div>
-		  
-		    <!------main-content-end-----------> 
-		  
-		 
-		 
-		 <!----footer-design------------->
-		 
-		 <footer class="footer">
-		    <div class="container-fluid">
-			   <div class="footer-in">
-			      <p class="mb-0">All Rights Reserved.</p>
-			   </div>
-			</div>
-		 </footer>
-		 
-		 
-		 
-		 
-	  </div>
-   
-</div>
-
-
-
-<!-------complete html----------->
-
-
-
-
-
-  
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="js/jquery-3.3.1.slim.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/jquery-3.3.1.min.js"></script>
-  
-  
-  <script type="text/javascript">
-       $(document).ready(function(){
-	      $(".xp-menubar").on('click',function(){
-		    $("#sidebar").toggleClass('active');
-			$("#content").toggleClass('active');
-		  });
-		  
-		  $('.xp-menubar,.body-overlay').on('click',function(){
-		     $("#sidebar,.body-overlay").toggleClass('show-nav');
-		  });
-		  
-	   });
-  </script>
-  
-  
-
-
-
-  </body>
-  
-  </html>
-
-
+            // Show the selected form section
+            const activeSection = document.getElementById(formId);
+            activeSection.classList.add('active');
+        }
+    </script>
+</body>
+</html>
