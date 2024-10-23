@@ -9,7 +9,23 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: IDENTITY_POOL_ID // Replace with your Identity Pool ID
 });
 
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: IDENTITY_POOL_ID,
+});
+
+AWS.config.credentials.refresh(); // Refresh credentials
+
+
 const cognito = new AWS.CognitoIdentityServiceProvider();
+
+AWS.config.credentials.refresh((error) => {
+    if (error) {
+        console.error('Error refreshing credentials:', error);
+    } else {
+        console.log('Credentials refreshed successfully');
+    }
+});
+
 
 // Get elements
 const authButton = document.getElementById('auth-button');
