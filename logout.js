@@ -5,20 +5,14 @@ const IDENTITY_POOL_ID = 'us-east-1:be90cc19-13c5-4762-9622-17a6c7968bf4'; // Re
 
 // Initialize AWS Cognito service
 AWS.config.region = 'us-east-1'; // Set your AWS region
+
+// Initialize Cognito Identity Credentials
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: IDENTITY_POOL_ID // Replace with your Identity Pool ID
+    IdentityPoolId: IDENTITY_POOL_ID, // Replace with your Identity Pool ID
 });
 
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: IDENTITY_POOL_ID,
-});
-
-AWS.config.credentials.refresh(); // Refresh credentials
-
-
-const cognito = new AWS.CognitoIdentityServiceProvider();
-
-AWS.config.credentials.refresh((error) => {
+// Refresh credentials to ensure they are valid
+AWS.config.credentials.get((error) => {
     if (error) {
         console.error('Error refreshing credentials:', error);
     } else {
@@ -26,10 +20,12 @@ AWS.config.credentials.refresh((error) => {
     }
 });
 
-
 // Initialize Cognito User Pool
+const poolData = {
+    UserPoolId: USER_POOL_ID, // Your user pool id here
+    ClientId: CLIENT_ID // Your client id here
+};
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
 
 // Function to log out the user
 function logoutUser() {
