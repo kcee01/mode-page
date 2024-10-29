@@ -204,8 +204,13 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" required>
 
-                <label for="username">Enabled:</label>
-                <input type="radio" id="email address" required>
+                <label for="enabled">Enabled:</label>
+                <select id="enabled" required>
+                    <option value="" disabled selected>Select status</option>
+                    <option value="yes">True</option>
+                    <option value="no">False</option>
+                </select>
+                
 
                 <button type="submit">Verify</button>
                 <div id="verification-notification" class="notification"></div>
