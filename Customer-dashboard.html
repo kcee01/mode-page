@@ -160,6 +160,46 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
         }
+
+        label {
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    /* Container for label + select */
+    .select-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    /* Style the select element */
+    select {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 8px 12px;
+      border: 2px solid #4CAF50;
+      border-radius: 5px;
+      background-color: white;
+      color: #333;
+      cursor: pointer;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    /* Focus and hover effects */
+    select:focus, select:hover {
+      border-color: #45a049;
+      box-shadow: 0 0 5px rgba(72, 239, 72, 0.6);
+      outline: none;
+    }
+
+    /* Optional: Make the select smaller for better layout */
+    select option {
+      padding: 10px;
+    }
     </style>
 </head>
 
@@ -206,7 +246,6 @@
 
                 <label for="enabled">Enabled:</label>
                 <select id="enabled" required>
-                    <option value="" disabled selected>Select status</option>
                     <option value="yes">True</option>
                     <option value="no">False</option>
                 </select>
