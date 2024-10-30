@@ -154,6 +154,28 @@
     </nav>
 
     <main>
+
+        <section id="verify-Admin" class="section active">
+            <h2>Verify Admin</h2>
+            <form onsubmit="return handleVerification(event)">
+
+                <label for="username">Given name:</label>
+                <input type="text" id="given-name" required>
+
+                <label for="username">Surname:</label>
+                <input type="text" id="surname" required>
+
+                <label for="username">Address:</label>
+                <input type="text" id="address" required>
+
+                <label for="username">Email address:</label>
+                <input type="text" id="email address" required>
+
+                <button type="submit">Verify</button>
+                <div id="verification-notification" class="notification"></div>
+            </form>
+        </section>
+
         <section id="add-consumer" class="form-section">
             <h2>Add Consumer</h2>
             <form>
@@ -205,7 +227,7 @@
                     <option value="yes">True</option>
                     <option value="no">False</option>
                 </select>
-                
+<br>                
                 <button type="submit">Add Consumer</button>
             </form>
         </section>
