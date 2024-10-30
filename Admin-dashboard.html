@@ -100,6 +100,39 @@
         button:hover {
             background: #0056b3;
         }
+
+        /* Container for label + select */
+    .select-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    /* Style the select element */
+    select {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 8px 12px;
+      border: 2px solid #224ace;
+      border-radius: 5px;
+      background-color: white;
+      color: #333;
+      cursor: pointer;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    /* Focus and hover effects */
+    select:focus, select:hover {
+      border-color: #2849da;
+      box-shadow: 0 0 5px rgba(87, 121, 233, 0.6);
+      outline: none;
+    }
+
+    /* Optional: Make the select smaller for better layout */
+    select option {
+      padding: 10px;
+    }
     </style>
 </head>
 <body>
@@ -142,6 +175,37 @@
                 <label for="consumer-secret">Secret Word:</label>
                 <input type="password" id="consumer-secret" required>
 
+                <label for="enabled">Enabled:</label>
+                <select id="enabled" required>
+                    <option value="yes">True</option>
+                    <option value="no">False</option>
+                </select>
+
+                <label for="month">Date of creation:</label>
+                <input type="date" id="consumer-DOC" required>
+
+                <label for="year">Year:</label>
+                <input type="number" id="year" required>
+
+
+                <label for="month">Month:</label>
+                <input type="month" id="month" required>
+
+                <label for="meter reading">Meter Reading:</label>
+                <input type="number" id="meter-reading" required>
+
+                <label for="image-file">Image file name:</label>
+                <input type="text" id="image-file" required>
+
+                <label for="bill-file">Bill file name:</label>
+                <input type="text" id="bill-file" required>
+
+                <label for="enabled">Enabled by Admin:</label>
+                <select id="enabled" required>
+                    <option value="yes">True</option>
+                    <option value="no">False</option>
+                </select>
+                
                 <button type="submit">Add Consumer</button>
             </form>
         </section>
