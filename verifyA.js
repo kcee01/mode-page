@@ -1,45 +1,48 @@
+// Function to populate form fields from URL parameters
+function populateFormFields() {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    document.getElementById('given-name').value = urlParams.get('givenName') || '';
+    document.getElementById('surname').value = urlParams.get('surname') || '';
+    document.getElementById('address').value = urlParams.get('address') || '';
+    document.getElementById('email-address').value = urlParams.get('email') || '';
+}
 
-        async function handleVerification(event) {
-            event.preventDefault();
+// Function to handle form submission
+async function handleVerification(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-            // Capture form data
-            const givenName = document.getElementById("given-name").value;
-            const surname = document.getElementById("surname").value;
-            const address = document.getElementById("address").value;
-            const email = document.getElementById("email-address").value;
+    const givenName = document.getElementById('given-name').value;
+    const surname = document.getElementById('surname').value;
+    const address = document.getElementById('address').value;
+    const email = document.getElementById('email-address').value;
 
-            // Define API Gateway endpoint
-            const apiEndpoint = "https://yel6hzf61c.execute-api.us-east-1.amazonaws.com/prod/verifyAdmin"; // Replace with your API Gateway endpoint URL
+    const data = {
+        givenName,
+        surname,
+        address,
+        email
+    };
 
-            // Data to send to Lambda
-            const data = { 
-                givenName, 
-                surname, 
-                address, 
-                email 
-            };
+    try {
+        const response = await fetch('https://yel6hzf61c.execute-api.us-east-1.amazonaws.com/prod/verifyAdmin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
-            // Send data to API Gateway
-            try {
-                const response = await fetch(apiEndpoint, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    document.getElementById("verification-notification").innerText = "Admin verified and data saved successfully!";
-                    document.getElementById("verification-notification").style.color = "green";
-                } else {
-                    document.getElementById("verification-notification").innerText = "Failed to verify admin.";
-                    document.getElementById("verification-notification").style.color = "red";
-                }
-            } catch (error) {
-                console.error("Error submitting form:", error);
-                document.getElementById("verification-notification").innerText = "An error occurred while submitting the form.";
-                document.getElementById("verification-notification").style.color = "red";
-            }
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
 
+        const result = await response.json();
+        document.getElementById('verification-notification').innerText = 'Verification successful: ' + JSON.stringify(result);
+    } catch (error) {
+        document.getElementById('verification-notification').innerText = 'Error: ' + error.message;
+    }
+}
+
+// Populate the form fields when the page loads
+document.addEventListener('DOMContentLoaded', populateFormFields);
