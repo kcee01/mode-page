@@ -159,7 +159,7 @@
 
         <section id="verify-Admin" class="form-section">
             <h2>Verify Admin</h2>
-            <form onsubmit="return handleVerification(event)">
+            <form id="adminForm" onsubmit="return handleVerification(event)">
               <label for="given-name">Given name:</label>
               <input type="text" id="given-name" name="givenName" required>
           
@@ -177,50 +177,7 @@
             </form>
           </section>
 
-          <!-----javascript function that communicate with the lambda function via gateway start-->
-          <script>
-                async function handleVerification(event) {
-                event.preventDefault(); // Prevent page reload on form submission
-
-                const givenName = document.getElementById('given-name').value;
-                const surname = document.getElementById('surname').value;
-                const address = document.getElementById('address').value;
-                const email = document.getElementById('email-address').value;
-                const notification = document.getElementById('verification-notification');
-
-                try {
-                    const response = await fetch('https://rq6jsxe8l6.execute-api.us-east-1.amazonaws.com/prod/submitAdmin', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email,
-                        givenName,
-                        surname,
-                        address,
-                    }),
-                    });
-
-                    if (response.ok) {
-                    notification.textContent = 'Admin verified and saved successfully!';
-                    notification.style.color = 'green';
-                    } else {
-                    const errorData = await response.json();
-                    notification.textContent = `Error: ${errorData.message}`;
-                    notification.style.color = 'red';
-                    }
-                } catch (error) {
-                    console.error('Request failed:', error);
-                    notification.textContent = 'Failed to save admin. Please try again.';
-                    notification.style.color = 'red';
-                }
-                }
-                
-          </script>
-          
-          <!-----javascript function that communicate with the lambda function via gateway end-->
-
+        
         <section id="add-consumer" class="form-section">
             <h2>Add Consumer</h2>
             <form>
@@ -376,5 +333,6 @@
             activeSection.classList.add('active');
         }
     </script>
+    <script src="verify.js"></script>
 </body>
 </html>
