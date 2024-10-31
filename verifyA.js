@@ -32,17 +32,19 @@ async function handleVerification(event) {
             },
             body: JSON.stringify(data)
         });
-
+    
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const errorData = await response.json(); // Capture error response from the server
+            throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorData.message}`);
         }
-
+    
         const result = await response.json();
         document.getElementById('verification-notification').innerText = 'Verification successful: ' + JSON.stringify(result);
     } catch (error) {
         document.getElementById('verification-notification').innerText = 'Error: ' + error.message;
+        console.error('Error during fetch:', error); // Log the error to the console for debugging
     }
-}
+}    
 
 // Populate the form fields when the page loads
 document.addEventListener('DOMContentLoaded', () => {
