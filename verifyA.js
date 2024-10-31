@@ -45,4 +45,9 @@ async function handleVerification(event) {
 }
 
 // Populate the form fields when the page loads
-document.addEventListener('DOMContentLoaded', populateFormFields);
+document.addEventListener('DOMContentLoaded', () => {
+    populateFormFields();
+
+    // Attach the form submit event listener
+    document.getElementById('verification-form').onsubmit = handleVerification;
+});
