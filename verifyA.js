@@ -51,5 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     populateFormFields();
 
     // Attach the form submit event listener
-    document.getElementById('verification-form').onsubmit = handleVerification;
+    document.getElementById('adminForm').onsubmit = handleVerification;
+
 });
