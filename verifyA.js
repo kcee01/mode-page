@@ -1,31 +1,40 @@
+async function handleVerification(event) {
+    // Prevent the default form submission
+    event.preventDefault();
 
-        function handleVerification(event) {
-            // Prevent the default form submission
-            event.preventDefault();
+    // Get form data
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
 
-            // Get form data
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData.entries());
+    console.log('Form Data:', data);
 
-            // You can perform any processing or validation here
-            console.log('Form Data:', data);
+    // Display verification notification
+    const notification = document.getElementById('verification-notification');
+    notification.innerHTML = ''; // Clear previous notifications
 
-            // Display verification notification
-            const notification = document.getElementById('verification-notification');
-            notification.innerHTML = ''; // Clear previous notifications
+    // Send data to API Gateway
+    try {
+        const response = await fetch('https://kblwz1osye.execute-api.us-east-1.amazonaws.com/prod/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
-            // Simulate verification process
-            setTimeout(() => {
-                // Here you can handle successful verification logic
-                if (data.email.includes('@')) { // Example check
-                    notification.className = 'notification success';
-                    notification.innerHTML = 'Verification successful!';
-                } else {
-                    notification.className = 'notification';
-                    notification.innerHTML = 'Verification failed. Please check your input.';
-                }
-            }, 1000); // Simulated delay for verification
-
-            return false; // Prevent form from submitting to server
+        const result = await response.json();
+        if (response.ok) {
+            notification.className = 'notification success';
+            notification.innerHTML = result.message;
+        } else {
+            notification.className = 'notification';
+            notification.innerHTML = 'Submission failed: ' + result.message;
         }
-    
+    } catch (error) {
+        console.error('Error:', error);
+        notification.className = 'notification';
+        notification.innerHTML = 'An error occurred while submitting the data.';
+    }
+
+    return false; // Prevent form from submitting to server
+}
