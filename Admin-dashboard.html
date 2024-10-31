@@ -179,6 +179,143 @@
           </section>
 
         
+        <section id="add-consumer" class="form-section">
+            <h2>Add Consumer</h2>
+            <form>
+                <label for="consumer-given-name">Given Name:</label>
+                <input type="text" id="consumer-given-name" required>
+
+                <label for="consumer-surname">Surname:</label>
+                <input type="text" id="consumer-surname" required>
+
+                <label for="consumer-address">Address:</label>
+                <input type="text" id="consumer-address" required>
+
+                <label for="electric-meter-id">Electric Meter ID:</label>
+                <input type="text" id="electric-meter-id" required>
+
+                <label for="consumer-email">E-mail Address:</label>
+                <input type="email" id="consumer-email" required>
+
+                <label for="consumer-secret">Secret Word:</label>
+                <input type="password" id="consumer-secret" required>
+
+                <label for="enabled">Enabled:</label>
+                <select id="enabled" required>
+                    <option value="yes">True</option>
+                    <option value="no">False</option>
+                </select>
+
+                <label for="month">Date of creation:</label>
+                <input type="date" id="consumer-DOC" required>
+
+                <label for="year">Year:</label>
+                <input type="number" id="year" required>
+
+
+                <label for="month">Month:</label>
+                <input type="month" id="month" required>
+
+                <label for="meter reading">Meter Reading:</label>
+                <input type="number" id="meter-reading" required>
+
+                <label for="image-file">Image file name:</label>
+                <input type="text" id="image-file" required>
+
+                <label for="bill-file">Bill file name:</label>
+                <input type="text" id="bill-file" required>
+
+                <label for="enabled">Enabled by Admin:</label>
+                <select id="enabled" required>
+                    <option value="yes">True</option>
+                    <option value="no">False</option>
+                </select>
+<br>                
+                <button type="submit">Add Consumer</button>
+            </form>
+        </section>
+
+        <section id="edit-profile" class="form-section">
+            <h2>Edit Profile</h2>
+            <form>
+                <label for="admin-given-name">Given Name:</label>
+                <input type="text" id="admin-given-name" required>
+
+                <label for="admin-surname">Surname:</label>
+                <input type="text" id="admin-surname" required>
+
+                <label for="admin-address">Address:</label>
+                <input type="text" id="admin-address" required>
+
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
+
+        <section id="disable-account" class="form-section">
+            <h2>Disable/Delete Account</h2>
+            <form>
+                <label for="consumer-id">Consumer ID:</label>
+                <input type="text" id="consumer-id" required>
+
+                <button type="button" onclick="disableAccount()">Disable Account</button>
+                <button type="button" onclick="deleteAccount()">Delete Account</button>
+            </form>
+        </section>
+
+        <section id="add-meter" class="form-section">
+            <h2>Add Meter</h2>
+            <form>
+                <label for="meter-id">Meter ID:</label>
+                <input type="text" id="meter-id" required>
+
+                <label for="longitude">Longitude:</label>
+                <input type="number" step="0.000001" id="longitude" required>
+
+                <label for="latitude">Latitude:</label>
+                <input type="number" step="0.000001" id="latitude" required>
+
+                <button type="submit">Add Meter</button>
+            </form>
+        </section>
+
+        <section id="edit-meter" class="form-section">
+            <h2>Edit Meter</h2>
+            <form>
+                <label for="edit-meter-id">Meter ID:</label>
+                <input type="text" id="edit-meter-id" required>
+
+                <label for="edit-meter-longitude">Longitude:</label>
+                <input type="number" step="0.000001" id="edit-meter-longitude" required>
+
+                <label for="edit-meter-latitude">Latitude:</label>
+                <input type="number" step="0.000001" id="edit-meter-latitude" required>
+
+                <button type="submit">Update Meter</button>
+            </form>
+        </section>
+
+        <section id="delete-meter" class="form-section">
+            <h2>Delete Meter</h2>
+            <form>
+                <label for="delete-meter-id">Meter ID:</label>
+                <input type="text" id="delete-meter-id" required>
+
+                <button type="button" onclick="deleteMeter()">Delete Meter</button>
+            </form>
+        </section>
+
+        <section id="generate-bill" class="form-section">
+            <h2>Generate Bill</h2>
+            <form>
+                <label for="bill-consumer-id">Consumer ID:</label>
+                <input type="text" id="bill-consumer-id" required>
+
+                <label for="meter-reading">Meter Reading:</label>
+                <input type="number" id="meter-reading" required>
+
+                <button type="submit">Generate Bill</button>
+            </form>
+        </section>
     </main>
 
     <footer>
