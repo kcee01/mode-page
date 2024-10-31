@@ -417,25 +417,7 @@
             activeSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function handleVerification(event) {
-            event.preventDefault();
-            const notification = document.getElementById('verification-notification');
-            // Simulate verification
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username && password) {
-                notification.textContent = 'Verification successful!';
-                notification.className = 'notification success';
-            } else {
-                notification.textContent = 'Verification failed. Please try again.';
-                notification.className = 'notification error';
-            }
-            notification.style.display = 'block';
-            setTimeout(() => notification.style.display = 'none', 3000);
-            return false;
-        }
-
+       
         function handleProfileSubmit(event) {
             event.preventDefault();
             const notification = document.getElementById('profile-notification');
