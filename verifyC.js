@@ -14,6 +14,7 @@
                 body: JSON.stringify(jsonData)
             });
 
+            
             const result = await response.json();
             document.getElementById('verification-notification').innerText = result.message;
         } catch (error) {
