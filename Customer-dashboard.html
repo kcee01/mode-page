@@ -259,6 +259,10 @@
             </form>
         </section>
 
+
+
+
+        
         <section id="edit-profile" class="section">
             <h2>Edit Profile</h2>
             <form onsubmit="return handleProfileSubmit(event)">
@@ -418,35 +422,6 @@
         }
 
        
-        function handleProfileSubmit(event) {
-            event.preventDefault();
-            const notification = document.getElementById('profile-notification');
-            notification.textContent = 'Profile updated successfully!';
-            notification.className = 'notification success';
-            notification.style.display = 'block';
-            setTimeout(() => notification.style.display = 'none', 3000);
-            return false;
-        }
-
-        function handleImageUpload(event) {
-            event.preventDefault();
-            const notification = document.getElementById('upload-notification');
-            notification.textContent = 'Image uploaded successfully!';
-            notification.className = 'notification success';
-            notification.style.display = 'block';
-            setTimeout(() => notification.style.display = 'none', 3000);
-            return false;
-        }
-
-        function handleMeterReadingSubmit(event) {
-            event.preventDefault();
-            const notification = document.getElementById('reading-notification');
-            notification.textContent = 'Meter reading submitted successfully!';
-            notification.className = 'notification success';
-            notification.style.display = 'block';
-            setTimeout(() => notification.style.display = 'none', 3000);
-            return false;
-        }
     </script>
     <Script src="verifyC.js"></Script>
 </body>
