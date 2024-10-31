@@ -6,7 +6,7 @@
         const jsonData = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('https://uthuxd97i2.execute-api.us-east-1.amazonaws.com/verify-Admins', { // Replace with your actual API Gateway URL
+            const response = await fetch('https://uthuxd97i2.execute-api.us-east-1.amazonaws.com/dev/verify-Admins', { // Replace with your actual API Gateway URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
