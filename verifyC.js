@@ -6,7 +6,7 @@ async function handleVerification(event) {
     const jsonData = Object.fromEntries(formData.entries());
 
     try {
-        const response = await fetch('', { // Replace with your actual API Gateway URL
+        const response = await fetch('https://1f6atxwy1d.execute-api.us-east-1.amazonaws.com/dev/Verify_Consumers_Function', { // Replace with your actual API Gateway URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
