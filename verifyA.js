@@ -16,7 +16,7 @@ async function handleVerification(event) {
 
     try {
         console.log("Sending data:", data); // Log the data being sent
-        const response = await fetch('https://yel6hzf61c.execute-api.us-east-1.amazonaws.com/prod/verifyAdmin', {
+        const response = await fetch('https://yel6hzf61c.execute-api.us-east-1.amazonaws.com/prod', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
