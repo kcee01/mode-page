@@ -1,40 +1,23 @@
-async function handleVerification(event) {
-    // Prevent the default form submission
-    event.preventDefault();
 
-    // Get form data
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
+    async function handleVerification(event) {
+        event.preventDefault(); // Prevent the default form submission
 
-    console.log('Form Data:', data);
+        const formData = new FormData(document.getElementById('adminForm'));
+        const jsonData = Object.fromEntries(formData.entries());
 
-    // Display verification notification
-    const notification = document.getElementById('verification-notification');
-    notification.innerHTML = ''; // Clear previous notifications
+        try {
+            const response = await fetch('https://uthuxd97i2.execute-api.us-east-1.amazonaws.com/verify-Admins', { // Replace with your actual API Gateway URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            });
 
-    // Send data to API Gateway
-    try {
-        const response = await fetch('https://kblwz1osye.execute-api.us-east-1.amazonaws.com/prod/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-            notification.className = 'notification success';
-            notification.innerHTML = result.message;
-        } else {
-            notification.className = 'notification';
-            notification.innerHTML = 'Submission failed: ' + result.message;
+            const result = await response.json();
+            document.getElementById('verification-notification').innerText = result.message;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('verification-notification').innerText = 'Submission failed.';
         }
-    } catch (error) {
-        console.error('Error:', error);
-        notification.className = 'notification';
-        notification.innerHTML = 'An error occurred while submitting the data.';
     }
-
-    return false; // Prevent form from submitting to server
-}
