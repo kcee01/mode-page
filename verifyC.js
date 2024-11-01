@@ -6,7 +6,7 @@
         const jsonData = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('https://5lu91weg12.execute-api.us-east-1.amazonaws.com/dev/Verify_Consumers_Function', { // Replace with your actual API Gateway URL
+            const response = await fetch(' https://wvnls203o6.execute-api.us-east-1.amazonaws.com/dev/Verify_Consumer_Function', { // Replace with your actual API Gateway URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
