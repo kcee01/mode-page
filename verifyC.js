@@ -13,21 +13,21 @@ async function handleVerification(event) {
             body: JSON.stringify(jsonData)
         });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
         const result = await response.json();
         
-        // Display the main message and entire result on the frontend
-        document.getElementById('verification-notification').innerText = result.message || 'Verification successful';
-        document.getElementById('result-display').innerText = JSON.stringify(result, null, 2);
-        
-        // Show success message
-        document.getElementById('success-message').innerText = 'Submission successful!';
+        if (response.ok) {
+            // Display success message and result
+            document.getElementById('verification-notification').innerText = result.message;
+            document.getElementById('result-display').innerText = JSON.stringify(result, null, 2);
+            document.getElementById('success-message').innerText = 'Submission successful!';
+        } else {
+            // Display error message from Lambda response
+            document.getElementById('verification-notification').innerText = result.message || 'Submission failed.';
+            document.getElementById('success-message').innerText = '';
+        }
     } catch (error) {
         console.error('Error:', error);
-        document.getElementById('verification-notification').innerText = 'Submission failed.';
+        document.getElementById('verification-notification').innerText = 'Submission failed due to a network error.';
         document.getElementById('result-display').innerText = ''; // Clear result display on error
         document.getElementById('success-message').innerText = ''; // Clear success message on error
     }
