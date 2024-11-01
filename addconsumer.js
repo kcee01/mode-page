@@ -15,22 +15,20 @@ document.querySelector('#consumer-form').addEventListener('submit', async (event
         meterReading: document.getElementById('meter-reading').value,
         imageFileName: document.getElementById('image-file').value,
         billFileName: document.getElementById('bill-file').value,
-        enabledByAdmin: document.getElementById('enabled').value === 'yes',
-        password: 'generatedPassword123!' // Generate a secure password here
+        enabledByAdmin: document.getElementById('enabled-by-admin').value === 'yes'
     };
 
     try {
-        const response = await fetch('https://sxgzj2lddj.execute-api.us-east-1.amazonaws.com/dev/Add_Consumers_funtion', {
+        const response = await fetch(' https://sxgzj2lddj.execute-api.us-east-1.amazonaws.com/dev/Add_Consumers_funtion', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(consumerData), 
+            body: JSON.stringify(consumerData)
         });
 
         const result = await response.json();
-        console.log(result);
         if (response.ok) {
-            alert('Consumer added successfully');
-            // Redirect to the new password page, passing the email as a query parameter
+            alert('Consumer added successfully. Verification code sent to email.');
+            // Redirect to the verification page with the email as a query parameter
             window.location.href = `Verify.html?email=${encodeURIComponent(consumerData.email)}`;
         } else {
             alert(`Error: ${result.message}`);
