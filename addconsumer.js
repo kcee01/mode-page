@@ -31,7 +31,7 @@ document.querySelector('#consumer-form').addEventListener('submit', async (event
         if (response.ok) {
             alert('Consumer added successfully');
             // Redirect to the new password page, passing the email as a query parameter
-            window.location.href = `new_password.html?email=${encodeURIComponent(consumerData.email)}`;
+            window.location.href = `Verify.html?email=${encodeURIComponent(consumerData.email)}`;
         } else {
             alert(`Error: ${result.message}`);
         }
