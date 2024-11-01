@@ -16,7 +16,7 @@ document.getElementById('consumer-form').addEventListener('submit', async (event
         meterReading: document.getElementById('meter-reading').value,
         imageFileName: document.getElementById('image-file').value,
         billFileName: document.getElementById('bill-file').value,
-        enabledByAdmin: document.getElementById('enabled').value === 'yes',
+        enabledByAdmin: document.getElementById('enabledByAdmin').value === 'yes',
     };
 
     try {
