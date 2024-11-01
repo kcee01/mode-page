@@ -20,7 +20,7 @@ document.getElementById('consumer-form').addEventListener('submit', async (event
     };
 
     try {
-        const response = await fetch('https://sxgzj2lddj.execute-api.us-east-1.amazonaws.com/dev/Add_Consumers_funtion', {  // Replace with your API Gateway endpoint
+        const response = await fetch('https://sxgzj2lddj.execute-api.us-east-1.amazonaws.com/dev/Add_Consumers_funtion', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(consumerData),
