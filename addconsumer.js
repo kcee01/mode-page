@@ -1,4 +1,4 @@
-document.querySelector('form').addEventListener('submit', async (event) => {
+document.querySelector('#consumer-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const consumerData = {
