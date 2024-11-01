@@ -19,13 +19,16 @@ async function handleVerification(event) {
 
         const result = await response.json();
         
-        // Display the main message and full result in JSON format on the frontend
+        // Display the main message and entire result on the frontend
         document.getElementById('verification-notification').innerText = result.message || 'Verification successful';
-        document.getElementById('result-display').innerText = JSON.stringify(result, null, 2); // Display the entire result object
+        document.getElementById('result-display').innerText = JSON.stringify(result, null, 2);
         
+        // Show success message
+        document.getElementById('success-message').innerText = 'Submission successful!';
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('verification-notification').innerText = 'Submission failed.';
         document.getElementById('result-display').innerText = ''; // Clear result display on error
+        document.getElementById('success-message').innerText = ''; // Clear success message on error
     }
 }
