@@ -18,11 +18,14 @@ async function handleVerification(event) {
         }
 
         const result = await response.json();
-        console.log('Result:', result); // Debugging line to log the response object
         
+        // Display the main message and full result in JSON format on the frontend
         document.getElementById('verification-notification').innerText = result.message || 'Verification successful';
+        document.getElementById('result-display').innerText = JSON.stringify(result, null, 2); // Display the entire result object
+        
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('verification-notification').innerText = 'Submission failed.';
+        document.getElementById('result-display').innerText = ''; // Clear result display on error
     }
 }
