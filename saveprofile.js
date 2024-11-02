@@ -1,9 +1,10 @@
+// Function to save edited admin profile data
 async function saveAdminProfile() {
     const updatedProfile = {
         givenName: document.getElementById('admingivenname').value,
         surname: document.getElementById('adminsurname').value,
         address: document.getElementById('adminaddress').value,
-        email: document.getElementById('adminemail').value
+        email: document.getElementById('adminemail').value // Email remains read-only
     };
 
     try {
@@ -28,3 +29,6 @@ async function saveAdminProfile() {
         alert("There was an error updating your profile. Please try again.");
     }
 }
+
+// Attach event listener to the Save button
+document.getElementById('save-profile-button').addEventListener('click', saveAdminProfile);
