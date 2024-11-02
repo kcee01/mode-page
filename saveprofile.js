@@ -8,7 +8,7 @@ async function saveAdminProfile() {
     };
 
     try {
-        const response = await fetch('https://yiykq4m8n3.execute-api.us-east-1.amazonaws.com/prod/save_profile_function', {
+        const response = await fetch('https://o91ne68is5.execute-api.us-east-1.amazonaws.com/prod/save_items_function', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
