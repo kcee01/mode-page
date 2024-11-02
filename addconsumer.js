@@ -2,22 +2,24 @@ document.getElementById("consumer-form").addEventListener("submit", async functi
     event.preventDefault(); // Prevent form from submitting the traditional way
     
     // Collect form data
-    const consumerData = {
-        consumerGivenName: document.getElementById("consumer-given-name").value,
-        consumerSurname: document.getElementById("consumer-surname").value,
-        consumerAddress: document.getElementById("consumer-address").value,
-        electricMeterId: document.getElementById("electric-meter-id").value,
-        consumerEmail: document.getElementById("consumer-email").value,
-        consumerSecret: document.getElementById("consumer-secret").value,
-        enabled: document.getElementById("enabled").value,
-        consumerDOC: document.getElementById("consumer-DOC").value,
-        year: document.getElementById("year").value,
-        month: document.getElementById("month").value,
-        meterReading: document.getElementById("meter-reading").value,
-        imageFile: document.getElementById("image-file").value,
-        billFile: document.getElementById("bill-file").value,
-        enabledByAdmin: document.getElementById("enabledByAdmin").value
-    };
+  // Collect form data
+const consumerData = {
+    givenName: document.getElementById("consumer-given-name").value,
+    Surname: document.getElementById("consumer-surname").value,
+    Address: document.getElementById("consumer-address").value,
+    electricMeterId: document.getElementById("electric-meter-id").value,
+    email: document.getElementById("consumer-email").value,
+    consumerSecret: document.getElementById("consumer-secret").value,
+    enabled: document.getElementById("enabled").value,
+    consumerDOC: document.getElementById("consumer-DOC").value,
+    year: document.getElementById("year").value,
+    month: document.getElementById("month").value,
+    meterReading: document.getElementById("meter-reading").value,
+    imageFile: document.getElementById("image-file").value,
+    billFile: document.getElementById("bill-file").value,
+    enabledByAdmin: document.getElementById("enabledByAdmin").value
+};
+
     
     try {
         // Send POST request to the API Gateway
