@@ -8,7 +8,7 @@ const consumerData = {
     Surname: document.getElementById("consumer-surname").value,
     Address: document.getElementById("consumer-address").value,
     electricMeterId: document.getElementById("electric-meter-id").value,
-    email: document.getElementById("email").value,
+    email: document.getElementById("consumer-email").value,
     consumerSecret: document.getElementById("consumer-secret").value,
     enabled: document.getElementById("enabled").value,
     consumerDOC: document.getElementById("consumer-DOC").value,
