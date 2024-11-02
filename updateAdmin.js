@@ -1,6 +1,6 @@
 async function fetchAdminProfile() {
     try {
-        const response = await fetch('https://your-api-gateway-url/admin-profile'); // Replace with your API Gateway URL
+        const response = await fetch('https://oypjcbf6pk.execute-api.us-east-1.amazonaws.com/dev/get_admin_function'); // Replace with your API Gateway URL
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
