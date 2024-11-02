@@ -161,16 +161,27 @@
 
     <section id="admin-profile" class="form-section">
         <h2>Admin Profile</h2>
-        <div>
-            <p><strong>Given Name:</strong> <span id="admin-display-given-name"></span></p>
-            <p><strong>Surname:</strong> <span id="admin-display-surname"></span></p>
-            <p><strong>Email:</strong> <span id="admin-display-email"></span></p>
-            <p><strong>Address:</strong> <span id="admin-display-address"></span></p>
-            <button onclick="fetchAdminProfile()">Edit Profile</button>
-        </div>
+        <form id="admin-profile-form">
+            <div>
+                <label for="admin-given-name"><strong>Given Name:</strong></label>
+                <input type="text" id="admin-given-name" name="givenName" readonly>
+            </div>
+            <div>
+                <label for="admin-surname"><strong>Surname:</strong></label>
+                <input type="text" id="admin-surname" name="surname" readonly>
+            </div>
+            <div>
+                <label for="admin-email"><strong>Email:</strong></label>
+                <input type="email" id="admin-email" name="email" readonly>
+            </div>
+            <div>
+                <label for="admin-address"><strong>Address:</strong></label>
+                <input type="text" id="admin-address" name="address" readonly>
+            </div>
+            <button type="button" onclick="fetchAdminProfile()">Edit Profile</button>
+        </form>
     </section>
     
-
 
 
     <main>
