@@ -9,10 +9,10 @@ async function fetchAdminProfile() {
         const adminData = data[0];  // Access the first item in the returned array
         
         // Update the form fields with fetched data
-        document.getElementById('admin-given-name').value = adminData.givenName;
-        document.getElementById('admin-surname').value = adminData.surname;
-        document.getElementById('admin-email').value = adminData.email;
-        document.getElementById('admin-address').value = adminData.address;
+        document.getElementById('admingivenname').value = adminData.givenName;
+        document.getElementById('adminsurname').value = adminData.surname;
+        document.getElementById('adminemail').value = adminData.email;
+        document.getElementById('adminaddress').value = adminData.address;
 
     } catch (error) {
         console.error('Error fetching admin profile:', error);
