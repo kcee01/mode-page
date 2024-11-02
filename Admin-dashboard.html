@@ -149,6 +149,9 @@
             <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
             <li><a href="#add-consumer" onclick="showForm('add-consumer')">Add Consumer</a></li>
             <li><a href="#edit-profile" onclick="showForm('edit-profile')">Edit Profile</a></li>
+            <li><a href="#admin-profile" onclick="showForm('admin-profile')">
+                <img src="path/to/profile-icon.png" alt="Admin Profile Icon" class="nav-icon"> Admin Profile</a>
+            </li>
             <li><a href="#disable-account" onclick="showForm('disable-account')">Disable/Delete Account</a></li>
             <li><a href="#add-meter" onclick="showForm('add-meter')">Add Meter</a></li>
             <li><a href="#edit-meter" onclick="showForm('edit-meter')">Edit Meter</a></li>
@@ -156,6 +159,17 @@
             <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
         </ul>
     </nav>
+
+
+    <section id="admin-profile" class="form-section">
+        <h2>Admin Profile</h2>
+        <div>
+            <p><strong>Given Name:</strong> <span id="admin-display-given-name">John</span></p>
+            <p><strong>Surname:</strong> <span id="admin-display-surname">Doe</span></p>
+            <p><strong>Email:</strong> <span id="admin-display-email">admin@example.com</span></p>
+            <button onclick="editAdminProfile()">Edit Profile</button>
+        </div>
+    </section>
 
     <main>
             <!--------------------ADMIN-VERIFICATION------------------->
@@ -240,7 +254,7 @@
    <!------------ADD CONSUMER TO TABLE-END------------------------->     
 
 
-   
+
         <section id="edit-profile" class="form-section">
             <h2>Edit Profile</h2>
             <form>
