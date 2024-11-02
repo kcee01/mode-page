@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeBill Admin Panel</title>
-    </script><script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script>
     
     <link rel="stylesheet" href="styles.css">
     
@@ -104,38 +104,34 @@
             background: #0056b3;
         }
 
-        /* Container for label + select */
-    .select-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 10px 0;
-    }
+        .select-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
 
-    /* Style the select element */
-    select {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      padding: 8px 12px;
-      border: 2px solid #224ace;
-      border-radius: 5px;
-      background-color: white;
-      color: #333;
-      cursor: pointer;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
+        select {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            padding: 8px 12px;
+            border: 2px solid #224ace;
+            border-radius: 5px;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
 
-    /* Focus and hover effects */
-    select:focus, select:hover {
-      border-color: #2849da;
-      box-shadow: 0 0 5px rgba(87, 121, 233, 0.6);
-      outline: none;
-    }
+        select:focus, select:hover {
+            border-color: #2849da;
+            box-shadow: 0 0 5px rgba(87, 121, 233, 0.6);
+            outline: none;
+        }
 
-    /* Optional: Make the select smaller for better layout */
-    select option {
-      padding: 10px;
-    }
+        select option {
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +145,7 @@
             <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
             <li><a href="#add-consumer" onclick="showForm('add-consumer')">Add Consumer</a></li>
             <li><a href="#edit-profile" onclick="showForm('edit-profile')">Edit Consumer details</a></li>
-            <li><a href="#admin-profile" onclick="showForm()">Admin Profile</a></li>
+            <li><a href="#admin-profile" onclick="showForm('admin-profile')">Admin Profile</a></li>
             <li><a href="#disable-account" onclick="showForm('disable-account')">Disable/Delete Account</a></li>
             <li><a href="#add-meter" onclick="showForm('add-meter')">Add Meter</a></li>
             <li><a href="#edit-meter" onclick="showForm('edit-meter')">Edit Meter</a></li>
@@ -158,7 +154,8 @@
         </ul>
     </nav>
 
-
+    <main>
+        
     <section id="admin-profile" class="form-section">
         <h2>Admin Profile</h2>
         <form id="admin-profile-form">
@@ -356,7 +353,6 @@
     </footer>
 
     <script>
-
         function showForm(formId) {
             // Hide all form sections
             const sections = document.querySelectorAll('.form-section');
@@ -364,11 +360,15 @@
 
             // Show the selected form section
             const activeSection = document.getElementById(formId);
-            activeSection.classList.add('active');
+            if (activeSection) {
+                activeSection.classList.add('active');
+            } else {
+                console.error(`No section found with ID: ${formId}`);
+            }
         }
     </script>
     <script src="verifyA.js"></script>
-    <script src= "addconsumer.js"></script>
-    <Script src="updateAdmin.js"></Script>
+    <script src="addconsumer.js"></script>
+    <script src="updateAdmin.js"></script>
 </body>
 </html>
