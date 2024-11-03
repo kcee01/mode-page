@@ -10,7 +10,7 @@ async function saveAdminProfile(event) {
     };
 
     try {
-        const response = await fetch('https://na312zort3.execute-api.us-east-1.amazonaws.com/dev/save_items_function', {
+        const response = await fetch('https://lpdzbmq11b.execute-api.us-east-1.amazonaws.com/prod/save_items_function', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
