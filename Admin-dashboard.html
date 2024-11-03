@@ -156,6 +156,8 @@
 
     <main>
 
+
+
     <!-----------------------ADMIN-PROFILE-EDIT------------------------->
         <section id="admin-profile" class="form-section">
             <h2>Admin Profile</h2>
@@ -184,6 +186,8 @@
     <!-----------------------ADMIN-PROFILE-EDIT--END----------------------->
 
 
+
+
     <main>
             <!--------------------ADMIN-VERIFICATION------------------->
         <section id="verify-Admin" class="form-section">
@@ -207,7 +211,9 @@
           </section>
         <!--------------------ADMIN-VERIFICATION-END------------------>
         
-      
+    
+        
+
         
         <!------------ADD CONSUMER TO TABLE-------------------------->
         <section id="add-consumer" class="form-section">
@@ -264,82 +270,111 @@
                 <button type="submit">Add Consumer</button>
             </form>
         </section>
-   <!------------ADD CONSUMER TO TABLE-END------------------------->     
+   <!------------ADD CONSUMER TO TABLE-END------------------------->    
+   
+   
 
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            padding: 4px 8px;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
 
 
         <section id="list-consumer-profile" class="form-section">
-            <h2>Edit Profile</h2>
-            <form>
-                <section id="add-consumer" class="form-section">
-                    <h2>Add Consumer</h2>
-                    <form id="add-consumer-form">
-                        <label for="consumer-given-name-unique">Given Name:</label>
-                        <input type="text" id="consumer-given-name-unique" name="givenName" required>
-                
-                        <label for="consumer-surname-unique">Surname:</label>
-                        <input type="text" id="consumer-surname-unique" name="surname" required>
-                
-                        <label for="consumer-address-unique">Address:</label>
-                        <input type="text" id="consumer-address-unique" name="address" required>
-                
-                        <label for="electric-meter-id-unique">Electric Meter ID:</label>
-                        <input type="text" id="electric-meter-id-unique" name="electricMeterId" required>
-                
-                        <label for="consumer-email-unique">E-mail Address:</label>
-                        <input type="email" id="consumer-email-unique" name="email" required>
-                
-                        <label for="consumer-secret-unique">Secret Word:</label>
-                        <input type="password" id="consumer-secret-unique" name="consumerSecret" required>
-                
-                        <label for="enabled-unique">Enabled:</label>
-                        <select id="enabled-unique" name="enabled" required>
-                            <option value="yes">True</option>
-                            <option value="no">False</option>
-                        </select>
-                
-                        <label for="consumer-DOC-unique">Date of Creation:</label>
-                        <input type="date" id="consumer-DOC-unique" name="consumerDOC" required>
-                
-                        <label for="year-unique">Year:</label>
-                        <input type="number" id="year-unique" name="year" required>
-                
-                        <label for="month-unique">Month:</label>
-                        <input type="month" id="month-unique" name="month" required>
-                
-                        <label for="meter-reading-unique">Meter Reading:</label>
-                        <input type="number" id="meter-reading-unique" name="meterReading" required>
-                
-                        <label for="image-file-unique">Image File Name:</label>
-                        <input type="text" id="image-file-unique" name="imageFile" required>
-                
-                        <label for="bill-file-unique">Bill File Name:</label>
-                        <input type="text" id="bill-file-unique" name="billFile" required>
-                
-                        <label for="enabledByAdmin-unique">Enabled by Admin:</label>
-                        <select id="enabledByAdmin-unique" name="enabledByAdmin" required>
-                            <option value="yes">True</option>
-                            <option value="no">False</option>
-                        </select>
-                    </form>
-                </section>
-                
-                <button type="submit">Update Profile</button>
-            </form>
+            <h2>Consumer Profiles</h2>
+
+            <table id="consumer-table">
+                <thead>
+                    <tr>
+                        <th>Given Name</th>
+                        <th>Surname</th>
+                        <th>Address</th>
+                        <th>Electric Meter ID</th>
+                        <th>Email</th>
+                        <th>Enabled</th>
+                        <th>Date of Creation</th>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>Meter Reading</th>
+                        <th>Image File Name</th>
+                        <th>Bill File Name</th>
+                        <th>Enabled by Admin</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example consumer data row -->
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>123 Elm St</td>
+                        <td>123456</td>
+                        <td>john.doe@example.com</td>
+                        <td>True</td>
+                        <td>2023-10-25</td>
+                        <td>2023</td>
+                        <td>October</td>
+                        <td>456</td>
+                        <td>john_image.jpg</td>
+                        <td>john_bill.pdf</td>
+                        <td>True</td>
+                        <td>
+                            <button>View</button>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Additional static consumer data rows can be added here as needed -->
+                    <tr>
+                        <td>Jane</td>
+                        <td>Smith</td>
+                        <td>456 Maple Ave</td>
+                        <td>789012</td>
+                        <td>jane.smith@example.com</td>
+                        <td>False</td>
+                        <td>2024-01-15</td>
+                        <td>2024</td>
+                        <td>January</td>
+                        <td>123</td>
+                        <td>jane_image.jpg</td>
+                        <td>jane_bill.pdf</td>
+                        <td>False</td>
+                        <td>
+                            <button>View</button>
+                            <button>Edit</button>
+                            <button type="button" onclick="disableAccount()">Disable Account</button>
+                            <button type="button" onclick="deleteAccount()">Delete Account</button>
+
+                        </td>
+                    </tr>
+                    <!-- Repeat the above row structure for additional consumers -->
+                </tbody>
+            </table>
+
+            <!-- Add new consumer button -->
+            <button>Add New Consumer</button>
         </section>
 
 
 
-        <section id="disable-account" class="form-section">
-            <h2>Disable/Delete Account</h2>
-            <form>
-                <label for="consumer-id">Consumer ID:</label>
-                <input type="text" id="consumer-id" required>
 
-                <button type="button" onclick="disableAccount()">Disable Account</button>
-                <button type="button" onclick="deleteAccount()">Delete Account</button>
-            </form>
-        </section>
+
+
 
    <section id="add-meter" class="form-section">
         <h2>Add Meter</h2>
