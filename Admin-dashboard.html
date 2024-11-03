@@ -155,6 +155,8 @@
     </nav>
 
     <main>
+
+
         <section id="admin-profile" class="form-section">
             <h2>Admin Profile</h2>
             <form id="admin-profile-form">
@@ -293,21 +295,24 @@
             </form>
         </section>
 
-        <section id="add-meter" class="form-section">
-            <h2>Add Meter</h2>
-            <form>
-                <label for="meter-id">Meter ID:</label>
-                <input type="text" id="meter-id" required>
+   <section id="add-meter" class="form-section">
+        <h2>Add Meter</h2>
+        <form id="add-meter-form">
+            <label for="meter-id">Meter ID:</label>
+            <input type="text" id="meter-id" name="meterId" required>
 
-                <label for="longitude">Longitude:</label>
-                <input type="number" step="0.000001" id="longitude" required>
+            <label for="longitude">Longitude:</label>
+            <input type="number" step="0.000001" id="longitude" name="longitude" required>
 
-                <label for="latitude">Latitude:</label>
-                <input type="number" step="0.000001" id="latitude" required>
+            <label for="latitude">Latitude:</label>
+            <input type="number" step="0.000001" id="latitude" name="latitude" required>
 
-                <button type="submit">Add Meter</button>
-            </form>
-        </section>
+            <button type="submit">Add Meter</button>
+        </form>
+
+        <!-- QR Code display container -->
+        <div id="qr-code"></div>
+    </section>
 
         <section id="edit-meter" class="form-section">
             <h2>Edit Meter</h2>
@@ -372,5 +377,8 @@
     <script src="addconsumer.js"></script>
     <script src="updateAdmin.js"></script>
     <script src="saveprofile.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="meter.js"></script>
+
 </body>
 </html>
