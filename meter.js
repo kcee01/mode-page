@@ -18,7 +18,7 @@ document.getElementById('add-meter-form').addEventListener('submit', async (even
 
     try {
         // Make a POST request to the API Gateway endpoint
-        const response = await fetch('https://your-api-id.execute-api.us-east-1.amazonaws.com/prod/meter', {
+        const response = await fetch('https://jiok8n9dti.execute-api.us-east-1.amazonaws.com/dev/meters_register_functions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
