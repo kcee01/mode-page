@@ -16,25 +16,26 @@ async function loadConsumerData() {
             const row = document.createElement('tr');
             
             row.innerHTML = `
-                <td>${consumer.given_name || ''}</td>
-                <td>${consumer.surname || ''}</td>
-                <td>${consumer.address || ''}</td>
-                <td>${consumer.electric_meter_id || ''}</td>
-                <td>${consumer.email || ''}</td>
-                <td>${consumer.enabled || ''}</td>
-                <td>${consumer.date_of_creation || ''}</td>
-                <td>${consumer.year || ''}</td>
-                <td>${consumer.month || ''}</td>
-                <td>${consumer.meter_reading || ''}</td>
-                <td>${consumer.image_file_name || ''}</td>
-                <td>${consumer.bill_file_name || ''}</td>
-                <td>${consumer.enabled_by_admin || ''}</td>
-                <td class="action-buttons">
-                    <button>View</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            `;
+            <td>${consumer.GivenName || ''}</td>
+            <td>${consumer.Surname || ''}</td>
+            <td>${consumer.Address || ''}</td>
+            <td>${consumer.ElectricMeterID || ''}</td>
+            <td>${consumer.Email || ''}</td>
+            <td>${consumer.Enabled || ''}</td>
+            <td>${consumer.DateOfCreation || ''}</td>
+            <td>${consumer.Year || ''}</td>
+            <td>${consumer.Month || ''}</td>
+            <td>${consumer.MeterReading || ''}</td>
+            <td>${consumer.ImageFileName || ''}</td>
+            <td>${consumer.BillFileName || ''}</td>
+            <td>${consumer.EnabledByAdmin || ''}</td>
+            <td class="action-buttons">
+                <button>View</button>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        `;
+        
             
             // Append the row to the table body
             tbody.appendChild(row);
