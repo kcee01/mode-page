@@ -1,17 +1,16 @@
-// Function to save edited admin profile data
+async function saveAdminProfile(event) {
+    event.preventDefault(); // Prevent form submission reload
 
-
-
-async function saveAdminProfile() {
+    // Collect data from form fields
     const updatedProfile = {
         givenName: document.getElementById('admingivenname').value,
         surname: document.getElementById('adminsurname').value,
         address: document.getElementById('adminaddress').value,
-        email: document.getElementById('adminemail').value // Email remains read-only
+        email: document.getElementById('adminemail').value // Email is read-only
     };
 
     try {
-        const response = await fetch('https://o91ne68is5.execute-api.us-east-1.amazonaws.com/prod/save_items_function', {
+        const response = await fetch('https://na312zort3.execute-api.us-east-1.amazonaws.com/dev/save_items_function', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +23,6 @@ async function saveAdminProfile() {
             alert(result.message || "Profile updated successfully!");
         } else {
             const errorResponse = await response.json();
-            console.error("Error response:", errorResponse);
             throw new Error(errorResponse.error || "Failed to update profile");
         }
     } catch (error) {
@@ -33,5 +31,5 @@ async function saveAdminProfile() {
     }
 }
 
-// Attach event listener to the Save button
-document.getElementById('save-profile-button').addEventListener('click', saveAdminProfile);
+// Attach event listener to the form submit button
+document.getElementById('admin-profile-form').addEventListener('submit', saveAdminProfile);
