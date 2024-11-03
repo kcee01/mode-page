@@ -192,6 +192,27 @@ tbody tr:hover {
     background-color: #0056b3;
 }
 
+/* Centering Table Container */
+.table-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Optional: Set a max-width for the table to control its size on larger screens */
+table {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     table {
