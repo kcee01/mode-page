@@ -112,77 +112,69 @@
         button:hover {
             background: #0056b3;
         }
-/* Center the table container on the page */
-.table-container {
-    display: flex;
-    justify-content: center; /* Centers the table within the container */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
+/* Consumer Profiles Table Styling */
 table {
     width: 100%;
-    max-width: 900px; /* Optional: controls the table width */
-    margin: auto; /* Center the table on the page */
-    border-collapse: collapse;
-    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
     background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Styling */
-table thead {
-    background-color:blue; /* Header background color */
-}
-
-thead th {
-    color: white; /* Header text color */
-    padding: 12px; /* Spacing within header cells */
+thead {
+    background-color: #007bff;
+    color: white;
     text-align: left;
 }
 
-/* Row Styling */
 th, td {
+    padding: 12px 16px;
     border-bottom: 1px solid #ddd;
-    padding: 10px; /* Cell padding */
 }
 
-/* Alternate Row Colors */
+th {
+    font-weight: bold;
+    font-size: 14px;
+}
+
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
 tbody tr:hover {
-    background-color: #e9f2ff;
+    background-color: #f1f1f1;
     cursor: pointer;
 }
 
-/* Action Button Styling */
 .action-buttons button {
     margin-right: 6px;
-    padding: 8px 12px;
+    padding: 6px 12px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .action-buttons button:hover {
     background-color: #0056b3;
 }
 
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    th, td {
-        padding: 10px;
+    table {
         font-size: 14px;
     }
 
+    th, td {
+        padding: 10px;
+    }
+
     .action-buttons button {
-        padding: 6px 10px;
+        padding: 5px 10px;
         font-size: 12px;
     }
 }
