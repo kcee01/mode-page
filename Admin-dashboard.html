@@ -114,17 +114,18 @@
         }
 /* Center the table container on the page */
 
+/* Centering or adding space on the right within the container */
 .table-container {
     display: flex;
+    justify-content: center; /* Centers the table within the container */
     padding: 20px;
-    margin-right:200px;
     box-sizing: border-box;
 }
 
-/* Table Styling */
 table {
     width: 100%;
-    max-width: 1100px;
+    max-width: 900px; /* Optional: controls the table width */
+    margin-right: auto; /* Leaves space on the right when centered */
     border-collapse: collapse;
     border-radius: 8px;
     background-color: white;
