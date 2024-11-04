@@ -14,7 +14,7 @@ async function loadConsumerData() {
                 <td>${consumer.Surname || ''}</td>
                 <td>${consumer.Address || ''}</td>
                 <td>${consumer.ElectricMeterID || ''}</td>
-                <td>${consumer.Email || ''}</td>
+                <td>${consumer.email || ''}</td>
                 <td>${consumer.Enabled || ''}</td>
                 <td>${consumer.DateOfCreation || ''}</td>
                 <td>${consumer.Year || ''}</td>
