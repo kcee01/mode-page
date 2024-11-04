@@ -9,6 +9,7 @@ async function loadConsumerData() {
 
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
+            row.dataset.email = consumer.Email; // Store primary key for updates
             row.innerHTML = `
                 <td>${consumer.GivenName || ''}</td>
                 <td>${consumer.Surname || ''}</td>
@@ -41,13 +42,12 @@ function editRow(button) {
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
     row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data
 
-    // Create input fields for editing
     row.innerHTML = `
         <td><input type="text" value="${currentData[0]}"></td>
         <td><input type="text" value="${currentData[1]}"></td>
         <td><input type="text" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
-        <td><input type="email" value="${currentData[4]}"></td>
+        <td><input type="email" value="${currentData[4]}" readonly></td>
         <td><input type="text" value="${currentData[5]}"></td>
         <td><input type="text" value="${currentData[6]}"></td>
         <td><input type="text" value="${currentData[7]}"></td>
@@ -55,6 +55,7 @@ function editRow(button) {
         <td><input type="text" value="${currentData[9]}"></td>
         <td><input type="text" value="${currentData[10]}"></td>
         <td><input type="text" value="${currentData[11]}"></td>
+        <td><input type="text" value="${currentData[12]}"></td>
         <td class="action-buttons">
             <button onclick="saveRow(this)">Save</button>
             <button onclick="cancelEdit(this)">Cancel</button>
@@ -64,8 +65,25 @@ function editRow(button) {
 
 async function saveRow(button) {
     const row = button.closest('tr');
+    const email = row.dataset.email;
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
+
+    const consumerData = {
+        Email: email,
+        GivenName: updatedData[0],
+        Surname: updatedData[1],
+        Address: updatedData[2],
+        ElectricMeterID: updatedData[3],
+        Enabled: updatedData[5],
+        DateOfCreation: updatedData[6],
+        Year: updatedData[7],
+        Month: updatedData[8],
+        MeterReading: updatedData[9],
+        ImageFileName: updatedData[10],
+        BillFileName: updatedData[11],
+        EnabledByAdmin: updatedData[12]
+    };
 
     // Update data in the DOM
     row.innerHTML = `
@@ -81,25 +99,25 @@ async function saveRow(button) {
         <td>${updatedData[9]}</td>
         <td>${updatedData[10]}</td>
         <td>${updatedData[11]}</td>
+        <td>${updatedData[12]}</td>
         <td class="action-buttons">
             <button onclick="editRow(this)">Edit</button>
             <button onclick="deleteRow(this)">Delete</button>
         </td>
     `;
 
-    // Optionally send updated data to the backend
-    // await fetch('https://your-api-endpoint', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ updatedData }),
-    //     headers: { 'Content-Type': 'application/json' }
-    // });
+    // Send updated data to the backend
+    await fetch('https://3w0zy0krfk.execute-api.us-east-1.amazonaws.com/dev/CRUD_consumers_function', {
+        method: 'POST', 
+        body: JSON.stringify(consumerData),
+        headers: { 'Content-Type': 'application/json' }
+    });
 }
 
 function cancelEdit(button) {
     const row = button.closest('tr');
     const originalData = JSON.parse(row.getAttribute('data-original'));
 
-    // Revert to original data without reloading all data
     row.innerHTML = `
         <td>${originalData[0]}</td>
         <td>${originalData[1]}</td>
@@ -113,6 +131,7 @@ function cancelEdit(button) {
         <td>${originalData[9]}</td>
         <td>${originalData[10]}</td>
         <td>${originalData[11]}</td>
+        <td>${originalData[12]}</td>
         <td class="action-buttons">
             <button onclick="editRow(this)">Edit</button>
             <button onclick="deleteRow(this)">Delete</button>
@@ -120,18 +139,19 @@ function cancelEdit(button) {
     `;
 }
 
-function deleteRow(button) {
+async function deleteRow(button) {
     const row = button.closest('tr');
+    const email = row.dataset.email;
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
         row.remove(); // Remove the row from the DOM
 
-        // Optionally send a delete request to the backend
-        // await fetch('https://your-api-endpoint', {
-        //     method: 'DELETE',
-        //     body: JSON.stringify({ id: rowId }),
-        //     headers: { 'Content-Type': 'application/json' }
-        // });
+        // Send a delete request to the backend
+        await fetch(' https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
+            method: 'DELETE',
+            body: JSON.stringify({ Email: email }),
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 }
 
