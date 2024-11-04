@@ -1,47 +1,109 @@
 async function loadConsumerData() {
     try {
-        // Make a request to the API Gateway endpoint
         const response = await fetch('https://cgolep0nhl.execute-api.us-east-1.amazonaws.com/dev/Display_Consumers_function');
         if (!response.ok) throw new Error('Error fetching consumer data');
         
         const consumers = await response.json();
-        console.log('Fetched consumer data:', consumers); // Log data for debugging
+        console.log('Fetched consumer data:', consumers);
 
-        // Get the table body element
         const tbody = document.querySelector('#list-consumer-profile tbody');
-        tbody.innerHTML = ''; // Clear existing rows
+        tbody.innerHTML = '';
 
-        // Populate table rows with data
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
-            
             row.innerHTML = `
-            <td>${consumer.GivenName || ''}</td>
-            <td>${consumer.Surname || ''}</td>
-            <td>${consumer.Address || ''}</td>
-            <td>${consumer.ElectricMeterID || ''}</td>
-            <td>${consumer.email || ''}</td>
-            <td>${consumer.Enabled || ''}</td>
-            <td>${consumer.DateOfCreation || ''}</td>
-            <td>${consumer.Year || ''}</td>
-            <td>${consumer.Month || ''}</td>
-            <td>${consumer.MeterReading || ''}</td>
-            <td>${consumer.ImageFileName || ''}</td>
-            <td>${consumer.BillFileName || ''}</td>
-            <td>${consumer.EnabledByAdmin || ''}</td>
-            <td class="action-buttons">
-                <button>View</button>
-                <button>Edit</button>
-                <button>Delete</button>
-            </td>
-        `;
-        
-            
-            // Append the row to the table body
+                <td>${consumer.GivenName || ''}</td>
+                <td>${consumer.Surname || ''}</td>
+                <td>${consumer.Address || ''}</td>
+                <td>${consumer.ElectricMeterID || ''}</td>
+                <td>${consumer.email || ''}</td>
+                <td>${consumer.Enabled || ''}</td>
+                <td>${consumer.DateOfCreation || ''}</td>
+                <td>${consumer.Year || ''}</td>
+                <td>${consumer.Month || ''}</td>
+                <td>${consumer.MeterReading || ''}</td>
+                <td>${consumer.ImageFileName || ''}</td>
+                <td>${consumer.BillFileName || ''}</td>
+                <td>${consumer.EnabledByAdmin || ''}</td>
+                <td class="action-buttons">
+                    <button onclick="editRow(this)">Edit</button>
+                    <button onclick="deleteRow(this)">Delete</button>
+                </td>
+            `;
             tbody.appendChild(row);
         });
     } catch (error) {
-        console.error('Error loading consumer data:', error); // Enhanced error handling
+        console.error('Error loading consumer data:', error);
+    }
+}
+
+function editRow(button) {
+    const row = button.closest('tr');
+    const cells = row.querySelectorAll('td');
+    
+    // Assuming only the first 12 cells need to be editable (not the action buttons)
+    const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
+
+    // Create input fields for editing
+    row.innerHTML = `
+        <td><input type="text" value="${currentData[0]}"></td>
+        <td><input type="text" value="${currentData[1]}"></td>
+        <td><input type="text" value="${currentData[2]}"></td>
+        <td><input type="text" value="${currentData[3]}"></td>
+        <td><input type="email" value="${currentData[4]}" readonly></td>
+        <td><input type="text" value="${currentData[5]}"></td>
+        <td><input type="text" value="${currentData[6]}"></td>
+        <td><input type="text" value="${currentData[7]}"></td>
+        <td><input type="text" value="${currentData[8]}"></td>
+        <td><input type="text" value="${currentData[9]}"></td>
+        <td><input type="text" value="${currentData[10]}"></td>
+        <td><input type="text" value="${currentData[11]}"></td>
+        <td class="action-buttons">
+            <button onclick="saveRow(this)">Save</button>
+            <button onclick="cancelEdit(this)">Cancel</button>
+        </td>
+    `;
+}
+
+function saveRow(button) {
+    const row = button.closest('tr');
+    const inputs = row.querySelectorAll('input');
+
+    // Gather updated values
+    const updatedData = Array.from(inputs).map(input => input.value);
+
+    // Update the row with new data
+    row.innerHTML = `
+        <td>${updatedData[0]}</td>
+        <td>${updatedData[1]}</td>
+        <td>${updatedData[2]}</td>
+        <td>${updatedData[3]}</td>
+        <td>${updatedData[4]}</td>
+        <td>${updatedData[5]}</td>
+        <td>${updatedData[6]}</td>
+        <td>${updatedData[7]}</td>
+        <td>${updatedData[8]}</td>
+        <td>${updatedData[9]}</td>
+        <td>${updatedData[10]}</td>
+        <td>${updatedData[11]}</td>
+        <td class="action-buttons">
+            <button onclick="editRow(this)">Edit</button>
+            <button onclick="deleteRow(this)">Delete</button>
+        </td>
+    `;
+    // Optional: Call a function to persist the changes
+}
+
+function cancelEdit(button) {
+    loadConsumerData(); // Reload the data to revert changes (or implement a way to restore original data)
+}
+
+function deleteRow(button) {
+    const row = button.closest('tr');
+    const confirmation = confirm("Are you sure you want to delete this record?");
+    if (confirmation) {
+        row.remove(); // Remove the row from the DOM
+        // Optionally, implement a function to delete the record from the backend
     }
 }
 
