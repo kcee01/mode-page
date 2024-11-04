@@ -1,3 +1,4 @@
+
 let currentRow = null;
 
 // Function to edit a row
@@ -72,15 +73,12 @@ function saveRow(button) {
             <button onclick="deleteRow(this)">Delete</button>
         </td>
     `;
-
-    // Optional: Call a function to persist the changes (e.g., saveAdminProfile)
 }
 
 // Function to cancel editing
 function cancelEdit(button) {
     // Reset the row to its original state
     if (currentRow) {
-        // Ideally, you'd want to restore original data or refetch it
         const originalData = Array.from(currentRow.children).slice(0, -1).map(cell => cell.innerText);
         currentRow.innerHTML = `
             <td>${originalData[0]}</td>
@@ -110,11 +108,11 @@ function deleteRow(button) {
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
         row.remove();
-        // Optionally, call a function to delete the record from the server
     }
 }
 
 // Example function to show a form for adding a new consumer
 function showForm(formId) {
     // Your logic to display the form for adding a new consumer
+    alert('Show form functionality not implemented yet.');
 }
