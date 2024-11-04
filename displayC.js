@@ -47,7 +47,7 @@ function editRow(button) {
         <td><input type="text" value="${currentData[1]}"></td>
         <td><input type="text" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
-        <td><input type="email" value="${currentData[4]} readonly"></td>
+        <td><input type="email" value="${currentData[4]}"></td>
         <td><input type="text" value="${currentData[5]}"></td>
         <td><input type="text" value="${currentData[6]}"></td>
         <td><input type="text" value="${currentData[7]}"></td>
@@ -86,13 +86,6 @@ async function saveRow(button) {
             <button onclick="deleteRow(this)">Delete</button>
         </td>
     `;
-
-    // Optionally send updated data to the backend
-    // await fetch('https://your-api-endpoint', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ updatedData }),
-    //     headers: { 'Content-Type': 'application/json' }
-    // });
 }
 
 function cancelEdit(button) {
@@ -119,21 +112,3 @@ function cancelEdit(button) {
         </td>
     `;
 }
-
-function deleteRow(button) {
-    const row = button.closest('tr');
-    const confirmation = confirm("Are you sure you want to delete this record?");
-    if (confirmation) {
-        row.remove(); // Remove the row from the DOM
-
-        // Optionally send a delete request to the backend
-        // await fetch('https://your-api-endpoint', {
-        //     method: 'DELETE',
-        //     body: JSON.stringify({ id: rowId }),
-        //     headers: { 'Content-Type': 'application/json' }
-        // });
-    }
-}
-
-// Load consumer data when the page loads
-document.addEventListener('DOMContentLoaded', loadConsumerData);
