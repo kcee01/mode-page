@@ -47,7 +47,7 @@ function editRow(button) {
         <td><input type="text" value="${currentData[1]}"></td>
         <td><input type="text" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
-        <td><input type="email" value="${currentData[4]}"></td>
+        <td><input type="email" value="${currentData[4]} readonly"></td>
         <td><input type="text" value="${currentData[5]}"></td>
         <td><input type="text" value="${currentData[6]}"></td>
         <td><input type="text" value="${currentData[7]}"></td>
