@@ -14,7 +14,7 @@ async function loadConsumerData() {
                 <td>${consumer.Surname || ''}</td>
                 <td>${consumer.Address || ''}</td>
                 <td>${consumer.ElectricMeterID || ''}</td>
-                <td>${consumer.email || ''}</td>
+                <td>${consumer.Email || ''}</td>
                 <td>${consumer.Enabled || ''}</td>
                 <td>${consumer.DateOfCreation || ''}</td>
                 <td>${consumer.Year || ''}</td>
@@ -39,6 +39,7 @@ function editRow(button) {
     const row = button.closest('tr');
     const cells = row.querySelectorAll('td');
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
+    row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data
 
     // Create input fields for editing
     row.innerHTML = `
@@ -61,11 +62,12 @@ function editRow(button) {
     `;
 }
 
-function saveRow(button) {
+async function saveRow(button) {
     const row = button.closest('tr');
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
 
+    // Update data in the DOM
     row.innerHTML = `
         <td>${updatedData[0]}</td>
         <td>${updatedData[1]}</td>
@@ -84,10 +86,38 @@ function saveRow(button) {
             <button onclick="deleteRow(this)">Delete</button>
         </td>
     `;
+
+    // Optionally send updated data to the backend
+    // await fetch('https://your-api-endpoint', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ updatedData }),
+    //     headers: { 'Content-Type': 'application/json' }
+    // });
 }
 
 function cancelEdit(button) {
-    loadConsumerData(); // Reloads the data to revert changes
+    const row = button.closest('tr');
+    const originalData = JSON.parse(row.getAttribute('data-original'));
+
+    // Revert to original data without reloading all data
+    row.innerHTML = `
+        <td>${originalData[0]}</td>
+        <td>${originalData[1]}</td>
+        <td>${originalData[2]}</td>
+        <td>${originalData[3]}</td>
+        <td>${originalData[4]}</td>
+        <td>${originalData[5]}</td>
+        <td>${originalData[6]}</td>
+        <td>${originalData[7]}</td>
+        <td>${originalData[8]}</td>
+        <td>${originalData[9]}</td>
+        <td>${originalData[10]}</td>
+        <td>${originalData[11]}</td>
+        <td class="action-buttons">
+            <button onclick="editRow(this)">Edit</button>
+            <button onclick="deleteRow(this)">Delete</button>
+        </td>
+    `;
 }
 
 function deleteRow(button) {
@@ -95,7 +125,13 @@ function deleteRow(button) {
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
         row.remove(); // Remove the row from the DOM
-        // Optionally implement a backend call to delete the record
+
+        // Optionally send a delete request to the backend
+        // await fetch('https://your-api-endpoint', {
+        //     method: 'DELETE',
+        //     body: JSON.stringify({ id: rowId }),
+        //     headers: { 'Content-Type': 'application/json' }
+        // });
     }
 }
 
