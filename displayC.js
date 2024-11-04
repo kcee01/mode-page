@@ -4,10 +4,8 @@ async function loadConsumerData() {
         if (!response.ok) throw new Error('Error fetching consumer data');
         
         const consumers = await response.json();
-        console.log('Fetched consumer data:', consumers);
-
         const tbody = document.querySelector('#list-consumer-profile tbody');
-        tbody.innerHTML = '';
+        tbody.innerHTML = ''; // Clear existing rows
 
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
@@ -40,8 +38,6 @@ async function loadConsumerData() {
 function editRow(button) {
     const row = button.closest('tr');
     const cells = row.querySelectorAll('td');
-    
-    // Assuming only the first 12 cells need to be editable (not the action buttons)
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
 
     // Create input fields for editing
@@ -68,11 +64,8 @@ function editRow(button) {
 function saveRow(button) {
     const row = button.closest('tr');
     const inputs = row.querySelectorAll('input');
-
-    // Gather updated values
     const updatedData = Array.from(inputs).map(input => input.value);
 
-    // Update the row with new data
     row.innerHTML = `
         <td>${updatedData[0]}</td>
         <td>${updatedData[1]}</td>
@@ -91,11 +84,10 @@ function saveRow(button) {
             <button onclick="deleteRow(this)">Delete</button>
         </td>
     `;
-    // Optional: Call a function to persist the changes
 }
 
 function cancelEdit(button) {
-    loadConsumerData(); // Reload the data to revert changes (or implement a way to restore original data)
+    loadConsumerData(); // Reloads the data to revert changes
 }
 
 function deleteRow(button) {
@@ -103,7 +95,7 @@ function deleteRow(button) {
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
         row.remove(); // Remove the row from the DOM
-        // Optionally, implement a function to delete the record from the backend
+        // Optionally implement a backend call to delete the record
     }
 }
 
