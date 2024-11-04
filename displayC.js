@@ -85,33 +85,39 @@ async function saveRow(button) {
         EnabledByAdmin: updatedData[12]
     };
 
-    // Update data in the DOM
-    row.innerHTML = `
-        <td>${updatedData[0]}</td>
-        <td>${updatedData[1]}</td>
-        <td>${updatedData[2]}</td>
-        <td>${updatedData[3]}</td>
-        <td>${updatedData[4]}</td>
-        <td>${updatedData[5]}</td>
-        <td>${updatedData[6]}</td>
-        <td>${updatedData[7]}</td>
-        <td>${updatedData[8]}</td>
-        <td>${updatedData[9]}</td>
-        <td>${updatedData[10]}</td>
-        <td>${updatedData[11]}</td>
-        <td>${updatedData[12]}</td>
-        <td class="action-buttons">
-            <button onclick="editRow(this)">Edit</button>
-            <button onclick="deleteRow(this)">Delete</button>
-        </td>
-    `;
-
     // Send updated data to the backend
-    await fetch('https://3w0zy0krfk.execute-api.us-east-1.amazonaws.com/dev/CRUD_consumers_function', {
-        method: 'POST', 
-        body: JSON.stringify(consumerData),
-        headers: { 'Content-Type': 'application/json' }
-    });
+    try {
+        const response = await fetch('https://3w0zy0krfk.execute-api.us-east-1.amazonaws.com/dev/CRUD_consumers_function', {
+            method: 'POST',
+            body: JSON.stringify(consumerData),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) throw new Error('Error updating consumer data');
+
+        // Update data in the DOM if successful
+        row.innerHTML = `
+            <td>${updatedData[0]}</td>
+            <td>${updatedData[1]}</td>
+            <td>${updatedData[2]}</td>
+            <td>${updatedData[3]}</td>
+            <td>${updatedData[4]}</td>
+            <td>${updatedData[5]}</td>
+            <td>${updatedData[6]}</td>
+            <td>${updatedData[7]}</td>
+            <td>${updatedData[8]}</td>
+            <td>${updatedData[9]}</td>
+            <td>${updatedData[10]}</td>
+            <td>${updatedData[11]}</td>
+            <td>${updatedData[12]}</td>
+            <td class="action-buttons">
+                <button onclick="editRow(this)">Edit</button>
+                <button onclick="deleteRow(this)">Delete</button>
+            </td>
+        `;
+    } catch (error) {
+        console.error('Error saving consumer data:', error);
+    }
 }
 
 function cancelEdit(button) {
@@ -144,14 +150,20 @@ async function deleteRow(button) {
     const email = row.dataset.email;
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
-        row.remove(); // Remove the row from the DOM
-
         // Send a delete request to the backend
-        await fetch(' https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
-            method: 'DELETE',
-            body: JSON.stringify({ Email: email }),
-            headers: { 'Content-Type': 'application/json' }
-        });
+        try {
+            const response = await fetch('https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
+                method: 'DELETE',
+                body: JSON.stringify({ Email: email }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('Error deleting consumer data');
+
+            row.remove(); // Remove the row from the DOM if delete is successful
+        } catch (error) {
+            console.error('Error deleting consumer data:', error);
+        }
     }
 }
 
