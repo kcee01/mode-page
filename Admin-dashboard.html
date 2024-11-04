@@ -321,7 +321,7 @@ tbody tr:hover {
 
 
 
-        <!-- Consumer Profile Table Section -->
+        <!-- -------------Consumer Profile Table Section------------ -->
         <section id="list-consumer-profile" class="form-section active">
             <h2>Consumer Profiles</h2>
             <div class="table-container">
@@ -360,18 +360,93 @@ tbody tr:hover {
                         <td></td>
                         <td></td>
                         <td class="action-buttons">
-                            <button>View</button>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <button onclick="editRow(this)">Edit</button>
+                            <button onclick="deleteRow(this)">Delete</button>
                         </td>
                     </tr>
-                    <!-- Additional consumer rows can be added here -->
+                 
                 </tbody>
             </table>
         </div>
             <button onclick="showForm('add-consumer')">Add New Consumer</button>
         </section>
 
+
+
+       <!----------------------Edit-Delete-Button-Script-----------------> 
+
+        <script>
+            function editRow(button) {
+                const row = button.closest("tr");
+                const cells = row.querySelectorAll("td:not(.action-buttons)");
+            
+                // Enable editing by converting cells into input fields
+                cells.forEach(cell => {
+                    const currentValue = cell.textContent.trim();
+                    cell.innerHTML = `<input type="text" value="${currentValue}">`;
+                });
+            
+                // Replace Edit button with Save and Cancel buttons
+                button.textContent = "Save";
+                button.onclick = function() { saveRow(this); };
+            
+                const cancelButton = document.createElement("button");
+                cancelButton.textContent = "Cancel";
+                cancelButton.onclick = function() { cancelEdit(row, button); };
+                row.querySelector(".action-buttons").appendChild(cancelButton);
+            }
+            
+            function saveRow(button) {
+                const row = button.closest("tr");
+                const cells = row.querySelectorAll("td:not(.action-buttons)");
+            
+                // Save values from input fields back to cells
+                cells.forEach(cell => {
+                    const input = cell.querySelector("input");
+                    if (input) {
+                        cell.textContent = input.value;
+                    }
+                });
+            
+                // Replace Save button with Edit button and remove Cancel button
+                button.textContent = "Edit";
+                button.onclick = function() { editRow(this); };
+            
+                const cancelButton = row.querySelector(".action-buttons button:nth-child(2)");
+                if (cancelButton) cancelButton.remove();
+            }
+            
+            function cancelEdit(row, editButton) {
+                const cells = row.querySelectorAll("td:not(.action-buttons)");
+            
+                // Discard changes and restore original values in cells
+                cells.forEach(cell => {
+                    const input = cell.querySelector("input");
+                    if (input) {
+                        cell.textContent = input.defaultValue;
+                    }
+                });
+            
+                // Restore Edit button and remove Cancel button
+                editButton.textContent = "Edit";
+                editButton.onclick = function() { editRow(editButton); };
+            
+                const cancelButton = row.querySelector(".action-buttons button:nth-child(2)");
+                if (cancelButton) cancelButton.remove();
+            }
+            
+            function deleteRow(button) {
+                const row = button.closest("tr");
+                row.remove();
+            }
+            </script>
+     <!----------------------Edit-Delete-Button-Script-End----------------> 
+
+
+     
+
+
+   <!-- -------------Consumer Profile Table Section------------ -->
 
         
         <section id="add-meter" class="form-section">
