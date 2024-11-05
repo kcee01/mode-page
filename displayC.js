@@ -1,3 +1,4 @@
+
 async function loadConsumerData() {
     try {
         const response = await fetch('https://cgolep0nhl.execute-api.us-east-1.amazonaws.com/dev/Display_Consumers_function');
@@ -9,7 +10,7 @@ async function loadConsumerData() {
 
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
-            row.dataset.email = consumer.email; // Store primary key for updates
+            row.dataset.email = consumer.Email; // Store primary key for updates
             row.innerHTML = `
                 <td>${consumer.GivenName || ''}</td>
                 <td>${consumer.Surname || ''}</td>
@@ -70,21 +71,22 @@ async function saveRow(button) {
     const updatedData = Array.from(inputs).map(input => input.value);
 
     const consumerData = {
-        email: email,
+        Email: email,
         GivenName: updatedData[0],
         Surname: updatedData[1],
         Address: updatedData[2],
         ElectricMeterID: updatedData[3],
-        Enabled: updatedData[5] === 'true', // Convert to boolean
+        Enabled: updatedData[5],
         DateOfCreation: updatedData[6],
-        Year: parseInt(updatedData[7]),
+        Year: updatedData[7],
         Month: updatedData[8],
-        MeterReading: parseFloat(updatedData[9]),
+        MeterReading: updatedData[9],
         ImageFileName: updatedData[10],
         BillFileName: updatedData[11],
-        EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean
+        EnabledByAdmin: updatedData[12]
     };
 
+    // Send updated data to the backend
     try {
         const response = await fetch('https://3w0zy0krfk.execute-api.us-east-1.amazonaws.com/dev/CRUD_consumers_function', {
             method: 'POST',
@@ -100,7 +102,7 @@ async function saveRow(button) {
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
-            <td>${email}</td>
+            <td>${updatedData[4]}</td>
             <td>${updatedData[5]}</td>
             <td>${updatedData[6]}</td>
             <td>${updatedData[7]}</td>
@@ -149,10 +151,11 @@ async function deleteRow(button) {
     const email = row.dataset.email;
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
+        // Send a delete request to the backend
         try {
             const response = await fetch('https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
                 method: 'DELETE',
-                body: JSON.stringify({ email: email }),  // Use the correct key 'email'
+                body: JSON.stringify({ Email: email }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -167,3 +170,16 @@ async function deleteRow(button) {
 
 // Load consumer data when the page loads
 document.addEventListener('DOMContentLoaded', loadConsumerData);
+
+
+
+
+
+
+
+
+
+
+
+
+
