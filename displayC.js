@@ -10,13 +10,13 @@ async function loadConsumerData() {
 
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
-            row.dataset.email = consumer.email; // Store primary key for updates
+            row.dataset.email = consumer.email; // Use lowercase 'email'
             row.innerHTML = `
                 <td>${consumer.GivenName || ''}</td>
                 <td>${consumer.Surname || ''}</td>
                 <td>${consumer.Address || ''}</td>
                 <td>${consumer.ElectricMeterID || ''}</td>
-                <td>${consumer.email || ''}</td>
+                <td>${consumer.email || ''}</td> // Use lowercase 'email'
                 <td>${consumer.Enabled || ''}</td>
                 <td>${consumer.DateOfCreation || ''}</td>
                 <td>${consumer.Year || ''}</td>
