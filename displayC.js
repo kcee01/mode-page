@@ -1,4 +1,3 @@
-
 async function loadConsumerData() {
     try {
         const response = await fetch('https://cgolep0nhl.execute-api.us-east-1.amazonaws.com/dev/Display_Consumers_function');
@@ -127,31 +126,6 @@ async function saveRow(button) {
     }
 }
 
-
-function cancelEdit(button) {
-    const row = button.closest('tr');
-    const originalData = JSON.parse(row.getAttribute('data-original'));
-
-    row.innerHTML = `
-        <td>${originalData[0]}</td>
-        <td>${originalData[1]}</td>
-        <td>${originalData[2]}</td>
-        <td>${originalData[3]}</td>
-        <td>${originalData[4]}</td>
-        <td>${originalData[5]}</td>
-        <td>${originalData[6]}</td>
-        <td>${originalData[7]}</td>
-        <td>${originalData[8]}</td>
-        <td>${originalData[9]}</td>
-        <td>${originalData[10]}</td>
-        <td>${originalData[11]}</td>
-        <td>${originalData[12]}</td>
-        <td class="action-buttons">
-            <button onclick="editRow(this)">Edit</button>
-            <button onclick="deleteRow(this)">Delete</button>
-        </td>
-    `;
-}
 
 async function deleteRow(button) {
     const row = button.closest('tr');
