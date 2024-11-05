@@ -70,22 +70,23 @@ async function saveRow(button) {
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
 
+    // Constructing the consumer data object
     const consumerData = {
-        email: email,  // Primary key
+        Email: email,  // Corrected to match expected field name
         GivenName: updatedData[0],
         Surname: updatedData[1],
         Address: updatedData[2],
         ElectricMeterID: updatedData[3],
-        Enabled: updatedData[5] === 'true',  // Ensure boolean conversion if necessary
+        Enabled: updatedData[5] === 'true',  // Ensure boolean conversion
         DateOfCreation: updatedData[6],
-        Year: parseInt(updatedData[7], 10), // Convert to integer if required
-        Month: parseInt(updatedData[8], 10), // Convert to integer if required
-        MeterReading: parseInt(updatedData[9], 10), // Convert to integer if required
+        Year: parseInt(updatedData[7], 10), // Convert to integer
+        Month: parseInt(updatedData[8], 10), // Convert to integer
+        MeterReading: parseInt(updatedData[9], 10), // Convert to integer
         ImageFileName: updatedData[10],
         BillFileName: updatedData[11],
-        EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean if necessary
+        EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean
     };
-    
+
     console.log('Sending updated consumer data:', consumerData);
 
     try {
@@ -98,7 +99,10 @@ async function saveRow(button) {
             }
         });
 
-        if (!response.ok) throw new Error('Error updating consumer data');
+        if (!response.ok) {
+            const errorText = await response.text(); // Log response text for more details
+            throw new Error(`Error updating consumer data: ${errorText}`);
+        }
 
         const updatedAttributes = await response.json();
 
@@ -108,7 +112,7 @@ async function saveRow(button) {
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
-            <td>${updatedData[4]}</td>
+            <td>${email}</td>  // Make sure to show the email
             <td>${updatedData[5]}</td>
             <td>${updatedData[6]}</td>
             <td>${updatedData[7]}</td>
@@ -124,6 +128,7 @@ async function saveRow(button) {
         `;
     } catch (error) {
         console.error('Error saving consumer data:', error);
+        alert('Failed to save consumer data. Please check the console for more details.');
     }
 }
 
