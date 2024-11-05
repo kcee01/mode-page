@@ -65,9 +65,20 @@ function editRow(button) {
 
 async function saveRow(button) {
     const row = button.closest('tr');
-    const email = row.dataset.email;
+    const email = row.dataset.email; // This should correctly fetch the email stored in the row's dataset
+
+    // Validate the email before proceeding
+    if (!email) {
+        console.error('Email is missing for the consumer');
+        alert('Error: Email is missing. Please ensure the consumer data is correct.');
+        return; // Exit the function if email is not defined
+    }
+
     const inputs = row.querySelectorAll('input');
-    const updatedData = Array.from(inputs).map(input => input.value);
+    const updatedData = Array.from(inputs).map((input, index) => {
+        if (index === 5) return input.checked; // Handle boolean for 'Enabled'
+        return input.value;
+    });
 
     const consumerData = {
         Email: email,  // Primary key
@@ -75,11 +86,11 @@ async function saveRow(button) {
         Surname: updatedData[1],
         Address: updatedData[2],
         ElectricMeterID: updatedData[3],
-        Enabled: updatedData[5] === 'true',  // Ensure boolean conversion if necessary
+        Enabled: updatedData[5],  // Already a boolean
         DateOfCreation: updatedData[6],
-        Year: parseInt(updatedData[7], 10), // Convert to integer if required
-        Month: parseInt(updatedData[8], 10), // Convert to integer if required
-        MeterReading: parseInt(updatedData[9], 10), // Convert to integer if required
+        Year: parseInt(updatedData[7], 10) || null, // Convert to integer if required
+        Month: parseInt(updatedData[8], 10) || null, // Convert to integer if required
+        MeterReading: parseInt(updatedData[9], 10) || null, // Convert to integer if required
         ImageFileName: updatedData[10],
         BillFileName: updatedData[11],
         EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean if necessary
@@ -97,25 +108,28 @@ async function saveRow(button) {
             }
         });
 
-        if (!response.ok) throw new Error('Error updating consumer data');
+        if (!response.ok) {
+            const errorText = await response.text(); // Get more details about the error
+            throw new Error(`Error updating consumer data: ${errorText}`);
+        }
 
         const updatedAttributes = await response.json();
 
         // Update data in the DOM if successful
         row.innerHTML = `
-            <td>${updatedData[0]}</td>
-            <td>${updatedData[1]}</td>
-            <td>${updatedData[2]}</td>
-            <td>${updatedData[3]}</td>
-            <td>${updatedData[4]}</td>
-            <td>${updatedData[5]}</td>
-            <td>${updatedData[6]}</td>
-            <td>${updatedData[7]}</td>
-            <td>${updatedData[8]}</td>
-            <td>${updatedData[9]}</td>
-            <td>${updatedData[10]}</td>
-            <td>${updatedData[11]}</td>
-            <td>${updatedData[12]}</td>
+            <td>${consumerData.GivenName}</td>
+            <td>${consumerData.Surname}</td>
+            <td>${consumerData.Address}</td>
+            <td>${consumerData.ElectricMeterID}</td>
+            <td>${consumerData.Email}</td> <!-- Ensure the email field is displayed -->
+            <td>${consumerData.Enabled}</td>
+            <td>${consumerData.DateOfCreation}</td>
+            <td>${consumerData.Year}</td>
+            <td>${consumerData.Month}</td>
+            <td>${consumerData.MeterReading}</td>
+            <td>${consumerData.ImageFileName}</td>
+            <td>${consumerData.BillFileName}</td>
+            <td>${consumerData.EnabledByAdmin}</td>
             <td class="action-buttons">
                 <button onclick="editRow(this)">Edit</button>
                 <button onclick="deleteRow(this)">Delete</button>
@@ -123,6 +137,7 @@ async function saveRow(button) {
         `;
     } catch (error) {
         console.error('Error saving consumer data:', error);
+        alert('Failed to save consumer data. Please try again.');
     }
 }
 
