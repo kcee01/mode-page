@@ -5,6 +5,7 @@ async function loadConsumerData() {
         if (!response.ok) throw new Error('Error fetching consumer data');
         
         const consumers = await response.json();
+        console.log(consumers);
         const tbody = document.querySelector('#list-consumer-profile tbody');
         tbody.innerHTML = ''; // Clear existing rows
 
@@ -72,7 +73,7 @@ async function saveRow(button) {
 
     // Constructing the consumer data object
     const consumerData = {
-        Email: email,  // Corrected to match expected field name
+        email: email,  // Corrected to match expected field name
         GivenName: updatedData[0],
         Surname: updatedData[1],
         Address: updatedData[2],
