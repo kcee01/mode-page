@@ -15,7 +15,7 @@ async function loadConsumerData() {
                 <td>${consumer.Surname || ''}</td>
                 <td>${consumer.Address || ''}</td>
                 <td>${consumer.ElectricMeterID || ''}</td>
-                <td>${consumer.Email || ''}</td> <!-- Corrected to use 'Email' -->
+                <td>${consumer.email || ''}</td>
                 <td>${consumer.Enabled || ''}</td>
                 <td>${consumer.DateOfCreation || ''}</td>
                 <td>${consumer.Year || ''}</td>
@@ -33,7 +33,6 @@ async function loadConsumerData() {
         });
     } catch (error) {
         console.error('Error loading consumer data:', error);
-        alert('Failed to load consumer data. Please try again.');
     }
 }
 
@@ -43,14 +42,13 @@ function editRow(button) {
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
     row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data
 
-    // Make sure the Email field is readonly and correctly displayed
     row.innerHTML = `
         <td><input type="text" value="${currentData[0]}"></td>
         <td><input type="text" value="${currentData[1]}"></td>
         <td><input type="text" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
         <td><input type="email" value="${currentData[4]}" readonly></td>
-        <td><input type="checkbox" ${currentData[5] === 'true' ? 'checked' : ''}></td>
+        <td><input type="text" value="${currentData[5]}"></td>
         <td><input type="text" value="${currentData[6]}"></td>
         <td><input type="text" value="${currentData[7]}"></td>
         <td><input type="text" value="${currentData[8]}"></td>
@@ -97,7 +95,7 @@ async function saveRow(button) {
         BillFileName: updatedData[11],
         EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean if necessary
     };
-
+    
     console.log('Sending updated consumer data:', consumerData);
 
     try {
@@ -142,3 +140,15 @@ async function saveRow(button) {
         alert('Failed to save consumer data. Please try again.');
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
