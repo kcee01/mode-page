@@ -112,7 +112,7 @@ async function saveRow(button) {
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
-            <td>${email}</td>  // Make sure to show the email
+            <td>${email}</td>  
             <td>${updatedData[5]}</td>
             <td>${updatedData[6]}</td>
             <td>${updatedData[7]}</td>
@@ -128,7 +128,7 @@ async function saveRow(button) {
         `;
     } catch (error) {
         console.error('Error saving consumer data:', error);
-        alert('Failed to save consumer data. Please check the console for more details.');
+        alert('Failed to save consumer data.');
     }
 }
 
