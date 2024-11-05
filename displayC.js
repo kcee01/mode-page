@@ -72,20 +72,21 @@ async function saveRow(button) {
 
     // Constructing the consumer data object
     const consumerData = {
-        Email: email,  // Corrected to match expected field name
+        email: email,  // Ensure this matches the key expected in your backend
         GivenName: updatedData[0],
         Surname: updatedData[1],
         Address: updatedData[2],
         ElectricMeterID: updatedData[3],
-        Enabled: updatedData[5] === 'true',  // Ensure boolean conversion
+        Enabled: updatedData[5] === 'true', 
         DateOfCreation: updatedData[6],
-        Year: parseInt(updatedData[7], 10), // Convert to integer
-        Month: parseInt(updatedData[8], 10), // Convert to integer
-        MeterReading: parseInt(updatedData[9], 10), // Convert to integer
+        Year: parseInt(updatedData[7], 10), 
+        Month: parseInt(updatedData[8], 10), 
+        MeterReading: parseInt(updatedData[9], 10), 
         ImageFileName: updatedData[10],
         BillFileName: updatedData[11],
-        EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean
+        EnabledByAdmin: updatedData[12] === 'true' 
     };
+    
 
     console.log('Sending updated consumer data:', consumerData);
 
