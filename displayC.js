@@ -90,7 +90,7 @@ async function saveRow(button) {
 
     // Send updated data to the backend
     try {
-        const response = await fetch('https://3w0zy0krfk.execute-api.us-east-1.amazonaws.com/dev/CRUD_consumers_function', {
+        const response = await fetch('https://23kv2h4p6k.execute-api.us-east-1.amazonaws.com/dev/update_consumers_function', {
             method: 'POST',
             body: JSON.stringify(consumerData),
             headers: { 'Content-Type': 'application/json' }
