@@ -1,4 +1,3 @@
-
 async function loadConsumerData() {
     try {
         const response = await fetch('https://cgolep0nhl.execute-api.us-east-1.amazonaws.com/dev/Display_Consumers_function');
@@ -10,7 +9,7 @@ async function loadConsumerData() {
 
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
-            row.dataset.email = consumer.Email; // Store primary key for updates
+            row.dataset.email = consumer.email; // Store primary key for updates
             row.innerHTML = `
                 <td>${consumer.GivenName || ''}</td>
                 <td>${consumer.Surname || ''}</td>
@@ -25,6 +24,7 @@ async function loadConsumerData() {
                 <td>${consumer.ImageFileName || ''}</td>
                 <td>${consumer.BillFileName || ''}</td>
                 <td>${consumer.EnabledByAdmin || ''}</td>
+                <td>${consumer.SecretWord || ''}</td>
                 <td class="action-buttons">
                     <button onclick="editRow(this)">Edit</button>
                     <button onclick="deleteRow(this)">Delete</button>
@@ -41,7 +41,7 @@ function editRow(button) {
     const row = button.closest('tr');
     const cells = row.querySelectorAll('td');
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
-    row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data
+    row.setAttribute('data-original', JSON.stringify(currentData));
 
     row.innerHTML = `
         <td><input type="text" value="${currentData[0]}"></td>
@@ -57,6 +57,7 @@ function editRow(button) {
         <td><input type="text" value="${currentData[10]}"></td>
         <td><input type="text" value="${currentData[11]}"></td>
         <td><input type="text" value="${currentData[12]}"></td>
+        <td><input type="text" value="${currentData[13]}"></td>
         <td class="action-buttons">
             <button onclick="saveRow(this)">Save</button>
             <button onclick="cancelEdit(this)">Cancel</button>
@@ -71,7 +72,7 @@ async function saveRow(button) {
     const updatedData = Array.from(inputs).map(input => input.value);
 
     const consumerData = {
-        Email: email,
+        email: email,
         GivenName: updatedData[0],
         Surname: updatedData[1],
         Address: updatedData[2],
@@ -83,10 +84,10 @@ async function saveRow(button) {
         MeterReading: updatedData[9],
         ImageFileName: updatedData[10],
         BillFileName: updatedData[11],
-        EnabledByAdmin: updatedData[12]
+        EnabledByAdmin: updatedData[12],
+        SecretWord: updatedData[13]
     };
 
-    // Send updated data to the backend
     try {
         const response = await fetch('https://3w0zy0krfk.execute-api.us-east-1.amazonaws.com/dev/CRUD_consumers_function', {
             method: 'POST',
@@ -96,13 +97,12 @@ async function saveRow(button) {
 
         if (!response.ok) throw new Error('Error updating consumer data');
 
-        // Update data in the DOM if successful
         row.innerHTML = `
             <td>${updatedData[0]}</td>
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
-            <td>${updatedData[4]}</td>
+            <td>${email}</td>
             <td>${updatedData[5]}</td>
             <td>${updatedData[6]}</td>
             <td>${updatedData[7]}</td>
@@ -111,6 +111,7 @@ async function saveRow(button) {
             <td>${updatedData[10]}</td>
             <td>${updatedData[11]}</td>
             <td>${updatedData[12]}</td>
+            <td>${updatedData[13]}</td>
             <td class="action-buttons">
                 <button onclick="editRow(this)">Edit</button>
                 <button onclick="deleteRow(this)">Delete</button>
@@ -139,6 +140,7 @@ function cancelEdit(button) {
         <td>${originalData[10]}</td>
         <td>${originalData[11]}</td>
         <td>${originalData[12]}</td>
+        <td>${originalData[13]}</td>
         <td class="action-buttons">
             <button onclick="editRow(this)">Edit</button>
             <button onclick="deleteRow(this)">Delete</button>
@@ -151,11 +153,10 @@ async function deleteRow(button) {
     const email = row.dataset.email;
     const confirmation = confirm("Are you sure you want to delete this record?");
     if (confirmation) {
-        // Send a delete request to the backend
         try {
             const response = await fetch('https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
                 method: 'DELETE',
-                body: JSON.stringify({ Email: email }),
+                body: JSON.stringify({ email: email }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -168,18 +169,4 @@ async function deleteRow(button) {
     }
 }
 
-// Load consumer data when the page loads
 document.addEventListener('DOMContentLoaded', loadConsumerData);
-
-
-
-
-
-
-
-
-
-
-
-
-
