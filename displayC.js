@@ -15,7 +15,7 @@ async function loadConsumerData() {
                 <td>${consumer.Surname || ''}</td>
                 <td>${consumer.Address || ''}</td>
                 <td>${consumer.ElectricMeterID || ''}</td>
-                <td>${consumer.email || ''}</td>
+                <td>${consumer.Email || ''}</td> <!-- Corrected to use 'Email' -->
                 <td>${consumer.Enabled || ''}</td>
                 <td>${consumer.DateOfCreation || ''}</td>
                 <td>${consumer.Year || ''}</td>
@@ -33,6 +33,7 @@ async function loadConsumerData() {
         });
     } catch (error) {
         console.error('Error loading consumer data:', error);
+        alert('Failed to load consumer data. Please try again.');
     }
 }
 
@@ -42,13 +43,14 @@ function editRow(button) {
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
     row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data
 
+    // Make sure the Email field is readonly and correctly displayed
     row.innerHTML = `
         <td><input type="text" value="${currentData[0]}"></td>
         <td><input type="text" value="${currentData[1]}"></td>
         <td><input type="text" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
         <td><input type="email" value="${currentData[4]}" readonly></td>
-        <td><input type="text" value="${currentData[5]}"></td>
+        <td><input type="checkbox" ${currentData[5] === 'true' ? 'checked' : ''}></td>
         <td><input type="text" value="${currentData[6]}"></td>
         <td><input type="text" value="${currentData[7]}"></td>
         <td><input type="text" value="${currentData[8]}"></td>
@@ -95,7 +97,7 @@ async function saveRow(button) {
         BillFileName: updatedData[11],
         EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean if necessary
     };
-    
+
     console.log('Sending updated consumer data:', consumerData);
 
     try {
@@ -140,42 +142,3 @@ async function saveRow(button) {
         alert('Failed to save consumer data. Please try again.');
     }
 }
-
-
-async function deleteRow(button) {
-    const row = button.closest('tr');
-    const email = row.dataset.email;
-    const confirmation = confirm("Are you sure you want to delete this record?");
-    if (confirmation) {
-        // Send a delete request to the backend
-        try {
-            const response = await fetch('https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
-                method: 'DELETE',
-                body: JSON.stringify({ Email: email }),
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            if (!response.ok) throw new Error('Error deleting consumer data');
-
-            row.remove(); // Remove the row from the DOM if delete is successful
-        } catch (error) {
-            console.error('Error deleting consumer data:', error);
-        }
-    }
-}
-
-// Load consumer data when the page loads
-document.addEventListener('DOMContentLoaded', loadConsumerData);
-
-
-
-
-
-
-
-
-
-
-
-
-
