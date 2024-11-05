@@ -71,21 +71,21 @@ async function saveRow(button) {
     const updatedData = Array.from(inputs).map(input => input.value);
 
     const consumerData = {
-    Email: email,  // Primary key
-    GivenName: updatedData[0],
-    Surname: updatedData[1],
-    Address: updatedData[2],
-    ElectricMeterID: updatedData[3],
-    Enabled: updatedData[5] === 'true',  // Ensure boolean conversion if necessary
-    DateOfCreation: updatedData[6],
-    Year: parseInt(updatedData[7], 10), // Convert to integer if required
-    Month: parseInt(updatedData[8], 10), // Convert to integer if required
-    MeterReading: parseInt(updatedData[9], 10), // Convert to integer if required
-    ImageFileName: updatedData[10],
-    BillFileName: updatedData[11],
-    EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean if necessary
-};
-
+        Email: email,  // Primary key
+        GivenName: updatedData[0],
+        Surname: updatedData[1],
+        Address: updatedData[2],
+        ElectricMeterID: updatedData[3],
+        Enabled: updatedData[5] === 'true',  // Ensure boolean conversion if necessary
+        DateOfCreation: updatedData[6],
+        Year: parseInt(updatedData[7], 10), // Convert to integer if required
+        Month: parseInt(updatedData[8], 10), // Convert to integer if required
+        MeterReading: parseInt(updatedData[9], 10), // Convert to integer if required
+        ImageFileName: updatedData[10],
+        BillFileName: updatedData[11],
+        EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean if necessary
+    };
+    
     console.log('Sending updated consumer data:', consumerData);
 
     try {
