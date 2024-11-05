@@ -83,9 +83,7 @@ async function saveRow(button) {
         MeterReading: updatedData[9],
         ImageFileName: updatedData[10],
         BillFileName: updatedData[11],
-        EnabledByAdmin: updatedData[12],
-        SecretWord: updatedData[13],  // Include SecretWord
-        CreatedAt: updatedData[14]    // Optionally include CreatedAt if it’s needed for update
+        EnabledByAdmin: updatedData[12]
     };
 
     // Send updated data to the backend
@@ -113,8 +111,6 @@ async function saveRow(button) {
             <td>${updatedData[10]}</td>
             <td>${updatedData[11]}</td>
             <td>${updatedData[12]}</td>
-            <td>${updatedData[13]}</td> <!-- Display SecretWord -->
-            <td>${updatedData[14]}</td> <!-- Display CreatedAt if included -->
             <td class="action-buttons">
                 <button onclick="editRow(this)">Edit</button>
                 <button onclick="deleteRow(this)">Delete</button>
