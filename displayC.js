@@ -10,7 +10,7 @@ async function loadConsumerData() {
 
         consumers.forEach(consumer => {
             const row = document.createElement('tr');
-            row.dataset.email = consumer.Email; // Store primary key for updates
+            row.dataset.email = consumer.email; // Store primary key for updates
             row.innerHTML = `
                 <td>${consumer.GivenName || ''}</td>
                 <td>${consumer.Surname || ''}</td>
@@ -71,7 +71,7 @@ async function saveRow(button) {
     const updatedData = Array.from(inputs).map(input => input.value);
 
     const consumerData = {
-        Email: email,  // Primary key
+        email: email,  // Primary key
         GivenName: updatedData[0],
         Surname: updatedData[1],
         Address: updatedData[2],
