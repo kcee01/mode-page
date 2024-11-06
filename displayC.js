@@ -170,7 +170,7 @@ async function deleteRow(button) {
     if (confirmation) {
         // Send a delete request to the backend
         try {
-            const response = await fetch('https://auwkyxbesd.execute-api.us-east-1.amazonaws.com/dev/Delete_consumer_function', {
+            const response = await fetch('https://hp2u2l5hmc.execute-api.us-east-1.amazonaws.com/dev/Delete_Consumers_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ Email: email }),
                 headers: { 'Content-Type': 'application/json' }
