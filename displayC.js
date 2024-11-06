@@ -167,26 +167,35 @@ async function deleteRow(button) {
     const row = button.closest('tr');
     const email = row.dataset.email;
     const confirmation = confirm("Are you sure you want to delete this record?");
+    
     if (confirmation) {
-        // Send a delete request to the backend
         try {
+            // Send a DELETE request to the backend
             const response = await fetch('https://hp2u2l5hmc.execute-api.us-east-1.amazonaws.com/dev/Delete_Consumers_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ Email: email }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
-            if (!response.ok) throw new Error('Error deleting consumer data');
+            if (!response.ok) {
+                const errorText = await response.text(); // Fetch error details
+                throw new Error(`Error deleting consumer data: ${errorText}`);
+            }
 
-            row.remove(); // Remove the row from the DOM if delete is successful
+            // Alert success and remove row from DOM
+            alert(`Consumer with email ${email} was deleted successfully.`);
+            row.remove();
+            
         } catch (error) {
             console.error('Error deleting consumer data:', error);
+            alert('Failed to delete consumer data. Please try again later.');
         }
     }
 }
 
 // Load consumer data when the page loads
 document.addEventListener('DOMContentLoaded', loadConsumerData);
+
 
 
 
