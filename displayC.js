@@ -103,11 +103,13 @@ async function saveRow(button) {
             const errorText = await response.text(); // Log response text for more details
             throw new Error(`Error updating consumer data: ${errorText}`);
         }
-
         const updatedAttributes = await response.json();
+        console.log('API response received:', updatedAttributes);
 
         // Alert on successful update
+        console.log('Consumer profile updated successfully.');
         alert('Consumer profile updated successfully.');
+
 
         // Update data in the DOM if successful
         row.innerHTML = `
