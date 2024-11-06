@@ -106,6 +106,9 @@ async function saveRow(button) {
 
         const updatedAttributes = await response.json();
 
+        // Alert on successful update
+        alert('Consumer profile updated successfully.');
+
         // Update data in the DOM if successful
         row.innerHTML = `
             <td>${updatedData[0]}</td>
