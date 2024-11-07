@@ -1,6 +1,6 @@
 async function loadMeterData() {
     try {
-        const response = await fetch('https://your-api-endpoint.com/dev/Display_Meters_function');
+        const response = await fetch('https://knl38i60ea.execute-api.us-east-1.amazonaws.com/prod/GET_Meters_function');
         if (!response.ok) throw new Error('Error fetching meter data');
         
         const meters = await response.json();
