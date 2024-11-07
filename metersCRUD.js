@@ -1,6 +1,8 @@
+
+
 async function loadMeterData() {
     try {
-        const response = await fetch('https://knl38i60ea.execute-api.us-east-1.amazonaws.com/prod/GET_Meters_function');
+        const response = await fetch('https://<your-api-endpoint>');
         if (!response.ok) throw new Error('Error fetching meter data');
         
         const meters = await response.json();
@@ -9,11 +11,11 @@ async function loadMeterData() {
 
         meters.forEach(meter => {
             const row = document.createElement('tr');
-            row.dataset.meterId = meter.MeterID;
             row.innerHTML = `
                 <td>${meter.MeterID || ''}</td>
                 <td>${meter.Longitude || ''}</td>
                 <td>${meter.Latitude || ''}</td>
+                <td>${meter.QRCode || ''}</td>
                 <td class="action-buttons">
                     <button onclick="editRow(this)">Edit</button>
                     <button onclick="deleteRow(this)">Delete</button>
@@ -25,6 +27,9 @@ async function loadMeterData() {
         console.error('Error loading meter data:', error);
     }
 }
+
+document.addEventListener('DOMContentLoaded', loadMeterData);
+
 
 function editRow(button) {
     const row = button.closest('tr');
