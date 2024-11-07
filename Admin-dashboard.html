@@ -182,6 +182,84 @@ tbody tr:hover {
         font-size: 12px;
     }
 }
+
+/* Center the table container on the page */
+.table-container {
+    display: flex;
+    justify-content: center; /* Centers the table within the container */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    max-width: 900px; /* Optional: controls the table width */
+    margin: auto; /* Center the table on the page */
+    border-collapse: collapse;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+thead th {
+    color: white; /* Header text color */
+    padding: 12px; /* Spacing within header cells */
+    text-align: left;
+    background-color: #007bff; /* Header background color */
+}
+
+/* Row Styling */
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px; /* Cell padding */
+    text-align: center; /* Center align table content */
+}
+
+/* Alternate Row Colors */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e9f2ff;
+    cursor: pointer;
+}
+
+/* Action Button Styling */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-buttons button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .action-buttons button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -195,9 +273,7 @@ tbody tr:hover {
             <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
             <li><a href="#edit-profile" onclick="showForm('list-consumer-profile')">Consumer Profiles</a></li>
             <li><a href="#admin-profile" onclick="showForm('admin-profile')">Admin Profile</a></li>
-            <li><a href="#add-meter" onclick="showForm('add-meter')">Add Meter</a></li>
-            <li><a href="#edit-meter" onclick="showForm('edit-meter')">Edit Meter</a></li>
-            <li><a href="#delete-meter" onclick="showForm('delete-meter')">Delete Meter</a></li>
+            <li><a href="#add-meter" onclick="showForm('list-meter-profile')">Meters</a></li>
             <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
         </ul>
     </nav>
@@ -353,16 +429,17 @@ tbody tr:hover {
 </section>
 
 
+   <!-- -------------Consumer Profile Table Section--end---------- -->
 
 
-       
-
-     
 
 
-   <!-- -------------Consumer Profile Table Section------------ -->
 
-    <!-------------------------------------------------------------->    
+
+    <!----------------------Add--meters-to-section------------------------------------>
+    
+    
+
         <section id="add-meter" class="form-section">
             <h2>Add Meter</h2>
             <form id="add-meter-form">
@@ -382,31 +459,41 @@ tbody tr:hover {
             <div id="qr-code"></div>
         </section>
 
-            <section id="edit-meter" class="form-section">
-                <h2>Edit Meter</h2>
-                <form>
-                    <label for="edit-meter-id">Meter ID:</label>
-                    <input type="text" id="edit-meter-id" required>
+ <!----------------------Add--meters-to-section---END--------------------------------->
 
-                    <label for="edit-meter-longitude">Longitude:</label>
-                    <input type="number" step="0.000001" id="edit-meter-longitude" required>
 
-                    <label for="edit-meter-latitude">Latitude:</label>
-                    <input type="number" step="0.000001" id="edit-meter-latitude" required>
 
-                    <button type="submit">Update Meter</button>
-                </form>
-            </section>
 
-            <section id="delete-meter" class="form-section">
-                <h2>Delete Meter</h2>
-                <form>
-                    <label for="delete-meter-id">Meter ID:</label>
-                    <input type="text" id="delete-meter-id" required>
 
-                    <button type="button" onclick="deleteMeter()">Delete Meter</button>
-                </form>
-            </section>
+ <!------------------------meters-table-section------------------------------------>
+
+ <section id="list-meter-profile" class="form-section active">
+    <h2>Meter Profiles</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Meter ID</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <button onclick="showForm('add-meter')" aria-label="Add new meter">Add New Meter</button>
+</section>
+
+<!------------------------meters-table-section---END--------------------------------->
+
+
+
+
+
+
 
             <section id="generate-bill" class="form-section">
                 <h2>Generate Bill</h2>
