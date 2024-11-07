@@ -41,6 +41,7 @@ function editRow(button) {
         <td><input type="number" value="${currentData[0]}" readonly></td>
         <td><input type="number" step="0.000001" value="${currentData[1]}"></td>
         <td><input type="number" step="0.000001" value="${currentData[2]}"></td>
+        <td><input type="number"  value="${currentData[3]}"></td>
         <td class="action-buttons">
             <button onclick="saveRow(this)">Save</button>
             <button onclick="cancelEdit(this)">Cancel</button>
@@ -56,12 +57,13 @@ async function saveRow(button) {
 
     const meterData = {
         MeterID: meterId,
-        Longitude: parseFloat(updatedData[1]) || 0,
-        Latitude: parseFloat(updatedData[2]) || 0
+        longitude: parseFloat(updatedData[1]) || 0,
+        latitude: parseFloat(updatedData[2]) || 0,
+        qrCode: parseFloat(updatedData[2]) || 0
     };
 
     try {
-        const response = await fetch('https://your-api-endpoint.com/dev/update_meters_function', {
+        const response = await fetch('https://0anbxun285.execute-api.us-east-1.amazonaws.com/prod/UPDATE_METERS_FUNCTION', {
             method: 'POST',
             body: JSON.stringify(meterData),
             headers: {
@@ -81,6 +83,7 @@ async function saveRow(button) {
             <td>${updatedData[0]}</td>
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
+            <td>${updatedData[3]}</td>
             <td class="action-buttons">
                 <button onclick="editRow(this)">Edit</button>
                 <button onclick="deleteRow(this)">Delete</button>
