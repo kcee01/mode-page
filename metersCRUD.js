@@ -13,9 +13,9 @@ async function loadMeterData() {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${meter.MeterID || ''}</td>
-                <td>${meter.Longitude || ''}</td>
-                <td>${meter.Latitude || ''}</td>
-                <td>${meter.QRCode || ''}</td>
+                <td>${meter.longitude || ''}</td>
+                <td>${meter.latitude || ''}</td>
+                <td>${meter.qrCode || ''}</td>
                 <td class="action-buttons">
                     <button onclick="editRow(this)">Edit</button>
                     <button onclick="deleteRow(this)">Delete</button>
