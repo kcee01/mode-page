@@ -54,15 +54,23 @@ function editRow(button) {
 // Function to save changes to the row (and to the backend API)
 async function saveRow(button) {
     const row = button.closest('tr');
-    const meterId = row.dataset.meterId;  // Use the stored MeterID
+    const meterId = row.dataset.meterId;  // Ensure meterId is retrieved correctly
+
+    if (!meterId) {
+        console.error("MeterID is missing in the row dataset.");
+        alert("Failed to update: MeterID not found.");
+        return;
+    }
+
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
 
+    // Prepare the data for the backend
     const meterData = {
-        MeterID: meterId,  // Send MeterID as part of the data
+        MeterID: parseInt(meterId),  // Ensure MeterID is sent as a number
         longitude: parseFloat(updatedData[1]) || 0,  // Ensure longitude is a number
         latitude: parseFloat(updatedData[2]) || 0,  // Ensure latitude is a number
-        qrCode: updatedData[3] || ''  // QR code can be a string
+        qrCode: updatedData[3] || ''  // QR code as a string
     };
 
     try {
@@ -82,8 +90,9 @@ async function saveRow(button) {
         
         alert('Meter profile updated successfully.');
 
+        // Update the table row with new data
         row.innerHTML = `
-            <td>${updatedData[0]}</td>
+            <td>${meterId}</td>
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
@@ -97,6 +106,7 @@ async function saveRow(button) {
         alert('Failed to save meter data.');
     }
 }
+
 
 // Function to cancel editing and revert to original data
 function cancelEdit(button) {
