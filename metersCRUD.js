@@ -59,8 +59,8 @@ async function saveRow(button) {
     // Prepare the data for the backend
     const meterData = {
         MeterID: meterId,  // Ensure MeterID is sent as part of the data
-        latitude: updatedData[1] || '0',  // Send latitude as string
-        longitude: updatedData[2] || '0',  // Send longitude as string
+        latitude: parseFloat(updatedData[1]) || 0,  // Latitude as a number
+        longitude: parseFloat(updatedData[2]) || 0,  // Longitude as a number
         qrCode: updatedData[3] || ''  // QR code can be a string
     };
 
@@ -107,6 +107,7 @@ function cancelEdit(button) {
         <td>${originalData[0]}</td>
         <td>${originalData[1]}</td>
         <td>${originalData[2]}</td>
+        <td>${originalData[3]}</td>
         <td class="action-buttons">
             <button onclick="editRow(this)">Edit</button>
             <button onclick="deleteRow(this)">Delete</button>
@@ -122,7 +123,7 @@ async function deleteRow(button) {
     
     if (confirmation) {
         try {
-            const response = await fetch('https://your-api-endpoint.com/dev/Delete_Meters_function', {
+            const response = await fetch('https://0anbxun285.execute-api.us-east-1.amazonaws.com/prod/Delete_Meters_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ MeterID: meterId }),
                 headers: { 'Content-Type': 'application/json' }
