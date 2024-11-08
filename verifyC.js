@@ -18,9 +18,9 @@ async function handleVerification(event) {
         });
 
         const result = await response.json();
-        document.getElementById('verification-notification').innerText = result.message;
+        document.getElementById('verification-notification-consumer').innerText = result.message;
     } catch (error) {
         console.error('Error:', error);
-        document.getElementById('verification-notification').innerText = 'Submission failed.';
+        document.getElementById('verification-notification-consumer').innerText = 'Submission failed.';
     }
 }
