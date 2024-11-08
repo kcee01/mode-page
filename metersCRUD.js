@@ -51,15 +51,15 @@ function editRow(button) {
 
 async function saveRow(button) {
     const row = button.closest('tr');
-    const meterId = row.dataset.meterId;
+    const meterId = parseInt(row.dataset.meterId, 10); // Convert MeterID to integer
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
 
     const meterData = {
-        MeterID: meterId,
-        longitude: parseFloat(updatedData[1]) || 0,
-        latitude: parseFloat(updatedData[2]) || 0,
-        qrCode: parseFloat(updatedData[2]) || 0
+        MeterID: meterId,  // Ensure MeterID is sent as an integer
+        latitude: parseFloat(updatedData[1]) || 0,  // Use `latitude` as Number
+        longitude: parseFloat(updatedData[2]) || 0,  // Use `longitude` as Number
+        qrCode: updatedData[3] || ''  // `qrCode` can be a string or number
     };
 
     try {
@@ -94,6 +94,7 @@ async function saveRow(button) {
         alert('Failed to save meter data.');
     }
 }
+
 
 function cancelEdit(button) {
     const row = button.closest('tr');
