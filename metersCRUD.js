@@ -125,7 +125,6 @@ function cancelEdit(button) {
     `;
 }
 
-// Function to delete a row (and the associated meter data)
 async function deleteRow(button) {
     const row = button.closest('tr');
     const meterId = row.dataset.meterId;  // Retrieve the MeterID
@@ -133,9 +132,13 @@ async function deleteRow(button) {
     
     if (confirmation) {
         try {
+            // Send the DELETE request with the 'type' and 'MeterID' in the body
             const response = await fetch('https://unlc6jm57a.execute-api.us-east-1.amazonaws.com/prod/Delete_Meters_function', {
                 method: 'DELETE',
-                body: JSON.stringify({ MeterID: meterId }),
+                body: JSON.stringify({ 
+                    type: 'meter',  // Add the type to indicate we are deleting a meter
+                    MeterID: meterId // Include the MeterID
+                }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -152,9 +155,4 @@ async function deleteRow(button) {
             alert('Failed to delete meter data. Please try again later.');
         }
     }
-}
-
-// Handle adding a new meter (if required)
-function addNewMeter() {
-    // You can add an "Add Meter" button that shows a form to add a new meter here
 }
