@@ -1,16 +1,17 @@
-// Function to load meter data into the table
+// Function to load meter data from the backend
 async function loadMeterData() {
     try {
         const response = await fetch('https://knl38i60ea.execute-api.us-east-1.amazonaws.com/prod/GET_Meters_function');
         if (!response.ok) throw new Error('Error fetching meter data');
         
         const meters = await response.json();
-        const tbody = document.querySelector('#meter-table-body');
+        const tbody = document.querySelector('#meter-table-body'); // Reference to the table body
         tbody.innerHTML = ''; // Clear existing rows
 
         meters.forEach(meter => {
             const row = document.createElement('tr');
-            row.dataset.meterId = meter.MeterID; // Add MeterID as a data attribute for easy access
+            row.dataset.meterId = meter.MeterID;  // Store MeterID in the row's data attribute
+
             row.innerHTML = `
                 <td>${meter.MeterID || ''}</td>
                 <td>${meter.longitude || ''}</td>
@@ -28,14 +29,15 @@ async function loadMeterData() {
     }
 }
 
+// Ensure the table is populated when the page is loaded
 document.addEventListener('DOMContentLoaded', loadMeterData);
 
-// Function to start editing a row
+// Function to edit a row (transform cells into input fields)
 function editRow(button) {
     const row = button.closest('tr');
     const cells = row.querySelectorAll('td');
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
-    row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data
+    row.setAttribute('data-original', JSON.stringify(currentData)); // Store original data for cancellation
 
     row.innerHTML = `
         <td><input type="number" value="${currentData[0]}" readonly></td>
@@ -49,18 +51,17 @@ function editRow(button) {
     `;
 }
 
-// Function to save the edited row
+// Function to save changes to the row (and to the backend API)
 async function saveRow(button) {
     const row = button.closest('tr');
-    const meterId = row.dataset.MeterID; // Get MeterID from the row dataset
+    const meterId = row.dataset.meterId;  // Use the stored MeterID
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
 
-    // Prepare the data for the backend
     const meterData = {
-        MeterID: MeterID,  // Ensure MeterID is sent as part of the data
-        latitude: parseFloat(updatedData[1]) || 0,  // Latitude as a number
-        longitude: parseFloat(updatedData[2]) || 0,  // Longitude as a number
+        MeterID: meterId,  // Send MeterID as part of the data
+        longitude: parseFloat(updatedData[1]) || 0,  // Ensure longitude is a number
+        latitude: parseFloat(updatedData[2]) || 0,  // Ensure latitude is a number
         qrCode: updatedData[3] || ''  // QR code can be a string
     };
 
@@ -80,8 +81,7 @@ async function saveRow(button) {
         }
         
         alert('Meter profile updated successfully.');
-        
-        // Update the table row with new data
+
         row.innerHTML = `
             <td>${updatedData[0]}</td>
             <td>${updatedData[1]}</td>
@@ -98,7 +98,7 @@ async function saveRow(button) {
     }
 }
 
-// Function to cancel editing a row
+// Function to cancel editing and revert to original data
 function cancelEdit(button) {
     const row = button.closest('tr');
     const originalData = JSON.parse(row.getAttribute('data-original'));
@@ -115,15 +115,15 @@ function cancelEdit(button) {
     `;
 }
 
-// Function to delete a row
+// Function to delete a row (and the associated meter data)
 async function deleteRow(button) {
     const row = button.closest('tr');
-    const meterId = row.dataset.meterId;
+    const meterId = row.dataset.meterId;  // Retrieve the MeterID
     const confirmation = confirm("Are you sure you want to delete this record?");
     
     if (confirmation) {
         try {
-            const response = await fetch('https://0anbxun285.execute-api.us-east-1.amazonaws.com/prod/Delete_Meters_function', {
+            const response = await fetch('https://your-api-endpoint.com/dev/Delete_Meters_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ MeterID: meterId }),
                 headers: { 'Content-Type': 'application/json' }
@@ -135,7 +135,8 @@ async function deleteRow(button) {
             }
 
             alert(`Meter with ID ${meterId} was deleted successfully.`);
-            row.remove();
+            row.remove();  // Remove the row from the table
+            
         } catch (error) {
             console.error('Error deleting meter data:', error);
             alert('Failed to delete meter data. Please try again later.');
@@ -143,5 +144,7 @@ async function deleteRow(button) {
     }
 }
 
-// Load meter data when the page loads
-document.addEventListener('DOMContentLoaded', loadMeterData);
+// Handle adding a new meter (if required)
+function addNewMeter() {
+    // You can add an "Add Meter" button that shows a form to add a new meter here
+}
