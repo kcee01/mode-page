@@ -52,13 +52,13 @@ function editRow(button) {
 // Function to save the edited row
 async function saveRow(button) {
     const row = button.closest('tr');
-    const meterId = row.dataset.meterId; // Get MeterID from the row dataset
+    const meterId = row.dataset.MeterID; // Get MeterID from the row dataset
     const inputs = row.querySelectorAll('input');
     const updatedData = Array.from(inputs).map(input => input.value);
 
     // Prepare the data for the backend
     const meterData = {
-        MeterID: meterId,  // Ensure MeterID is sent as part of the data
+        MeterID: MeterID,  // Ensure MeterID is sent as part of the data
         latitude: parseFloat(updatedData[1]) || 0,  // Latitude as a number
         longitude: parseFloat(updatedData[2]) || 0,  // Longitude as a number
         qrCode: updatedData[3] || ''  // QR code can be a string
