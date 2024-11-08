@@ -17,7 +17,7 @@ async function loadMeterData() {
                 <td>${meter.longitude || ''}</td>
                 <td>${meter.latitude || ''}</td>
                 <td>${meter.qrCode || ''}</td>
-                <td class="action-buttons">
+                <td class="action-buttons-meters">
                     <button onclick="editRowmeters(this)">Edit</button>
                     <button onclick="deleteRowmeters(this)">Delete</button>
                 </td>
@@ -44,7 +44,7 @@ function editRowmeters(button) {
         <td><input type="number" step="0.000001" value="${currentData[1]}"></td>
         <td><input type="number" step="0.000001" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
-        <td class="action-buttons">
+        <td class="action-buttons-meters">
             <button onclick="saveRowmeters(this)">Save</button>
             <button onclick="cancelEditmeters(this)">Cancel</button>
         </td>
@@ -96,7 +96,7 @@ async function saveRowmeters(button) {
             <td>${updatedData[1]}</td>
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
-            <td class="action-buttons">
+            <td class="action-buttons-meters">
                 <button onclick="editRowmeters(this)">Edit</button>
                 <button onclick="deleteRowmeters(this)">Delete</button>
             </td>
@@ -118,7 +118,7 @@ function cancelEditmeters(button) {
         <td>${originalData[1]}</td>
         <td>${originalData[2]}</td>
         <td>${originalData[3]}</td>
-        <td class="action-buttons">
+        <td class="action-buttons-meters">
             <button onclick="editRowmeters(this)">Edit</button>
             <button onclick="deleteRowmeters(this)">Delete</button>
         </td>
