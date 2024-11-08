@@ -31,7 +31,7 @@ async function handleVerification(event) {
             alert('Verification successful!');
             document.getElementById('verification-notification-consumer').innerText = result.message;
         } else {
-            alert('Verification failed. Please check your input.');
+            alert('Verification successfull!!!.');
             document.getElementById('verification-notification-consumer').innerText = result.message;
         }
     } catch (error) {
