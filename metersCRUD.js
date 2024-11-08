@@ -127,7 +127,7 @@ function cancelEdit(button) {
 
 async function deleteRow(button) {
     const row = button.closest('tr');
-    const meterId = row.dataset.meterId;  // Retrieve the MeterID
+    const meterId = Number(row.dataset.meterId);  // Ensure MeterID is a number
     const confirmation = confirm("Are you sure you want to delete this record?");
     
     if (confirmation) {
@@ -137,7 +137,7 @@ async function deleteRow(button) {
                 method: 'DELETE',
                 body: JSON.stringify({ 
                     type: 'meter',  // Add the type to indicate we are deleting a meter
-                    MeterID: meterId // Include the MeterID
+                    MeterID: meterId // Include the MeterID as a number
                 }),
                 headers: { 'Content-Type': 'application/json' }
             });
