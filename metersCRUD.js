@@ -133,7 +133,7 @@ async function deleteRow(button) {
     
     if (confirmation) {
         try {
-            const response = await fetch('https://your-api-endpoint.com/dev/Delete_Meters_function', {
+            const response = await fetch('https://unlc6jm57a.execute-api.us-east-1.amazonaws.com/prod/Delete_Meters_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ MeterID: meterId }),
                 headers: { 'Content-Type': 'application/json' }
