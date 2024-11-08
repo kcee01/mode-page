@@ -45,8 +45,8 @@ function editRowmeters(button) {
         <td><input type="number" step="0.000001" value="${currentData[2]}"></td>
         <td><input type="text" value="${currentData[3]}"></td>
         <td class="action-buttons">
-            <button onclick="saveRow(this)">Save</button>
-            <button onclick="cancelEdit(this)">Cancel</button>
+            <button onclick="saveRowmeters(this)">Save</button>
+            <button onclick="cancelEditmeters(this)">Cancel</button>
         </td>
     `;
 }
@@ -97,8 +97,8 @@ async function saveRowmeters(button) {
             <td>${updatedData[2]}</td>
             <td>${updatedData[3]}</td>
             <td class="action-buttons">
-                <button onclick="editRow(this)">Edit</button>
-                <button onclick="deleteRow(this)">Delete</button>
+                <button onclick="editRowmeters(this)">Edit</button>
+                <button onclick="deleteRowmeters(this)">Delete</button>
             </td>
         `;
     } catch (error) {
@@ -119,8 +119,8 @@ function cancelEditmeters(button) {
         <td>${originalData[2]}</td>
         <td>${originalData[3]}</td>
         <td class="action-buttons">
-            <button onclick="editRow(this)">Edit</button>
-            <button onclick="deleteRow(this)">Delete</button>
+            <button onclick="editRowmeters(this)">Edit</button>
+            <button onclick="deleteRowmeters(this)">Delete</button>
         </td>
     `;
 }
