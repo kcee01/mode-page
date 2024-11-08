@@ -6,13 +6,12 @@ document.getElementById("add-meter-form").addEventListener("submit", async funct
     const meterData = {
         meterId: document.getElementById("meter-id").value,
         longitude: document.getElementById("longitude").value,
-        latitude: document.getElementById("latitude").value,
-        qrCode: document.getElementById("meter-id").value // Using Meter ID as QR Code
+        latitude: document.getElementById("latitude").value
     };
 
     try {
         // Send POST request to the API Gateway
-        const response = await fetch(" https://jiok8n9dti.execute-api.us-east-1.amazonaws.com/dev/meters_register_function", {
+        const response = await fetch("https://jiok8n9dti.execute-api.us-east-1.amazonaws.com/dev/meters_register_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,8 +22,12 @@ document.getElementById("add-meter-form").addEventListener("submit", async funct
         const result = await response.json();
 
         if (response.ok) {
-            alert(result.message); // Success message
-            generateQRCode(meterData.qrCode); // Generate QR Code if successful
+            alert(result.message); // Display success message
+
+            // Display QR Code URL or generate it locally if needed
+            const qrCodeContainer = document.getElementById("qr-code");
+            qrCodeContainer.innerHTML = ""; // Clear any previous QR code
+            const qrCode = new QRCode(qrCodeContainer, result.QRCodeURL);
         } else {
             alert("Error: " + (result.error || "Failed to add meter"));
         }
@@ -33,10 +36,3 @@ document.getElementById("add-meter-form").addEventListener("submit", async funct
         alert("An unexpected error occurred");
     }
 });
-
-// Function to generate QR code
-function generateQRCode(data) {
-    const qrCodeContainer = document.getElementById("qr-code");
-    qrCodeContainer.innerHTML = ""; // Clear previous QR code
-    new QRCode(qrCodeContainer, data); // Generate new QR code
-}
