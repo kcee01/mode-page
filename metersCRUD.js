@@ -18,8 +18,8 @@ async function loadMeterData() {
                 <td>${meter.latitude || ''}</td>
                 <td>${meter.qrCode || ''}</td>
                 <td class="action-buttons">
-                    <button onclick="editRow(this)">Edit</button>
-                    <button onclick="deleteRow(this)">Delete</button>
+                    <button onclick="editRowmeters(this)">Edit</button>
+                    <button onclick="deleteRowmeters(this)">Delete</button>
                 </td>
             `;
             tbody.appendChild(row);
@@ -33,7 +33,7 @@ async function loadMeterData() {
 document.addEventListener('DOMContentLoaded', loadMeterData);
 
 // Function to edit a row (transform cells into input fields)
-function editRow(button) {
+function editRowmeters(button) {
     const row = button.closest('tr');
     const cells = row.querySelectorAll('td');
     const currentData = Array.from(cells).slice(0, -1).map(cell => cell.innerText);
@@ -52,7 +52,7 @@ function editRow(button) {
 }
 
 // Function to save changes to the row (and to the backend API)
-async function saveRow(button) {
+async function saveRowmeters(button) {
     const row = button.closest('tr');
     const meterId = row.dataset.meterId;  // Ensure meterId is retrieved correctly
 
@@ -109,7 +109,7 @@ async function saveRow(button) {
 
 
 // Function to cancel editing and revert to original data
-function cancelEdit(button) {
+function cancelEditmeters(button) {
     const row = button.closest('tr');
     const originalData = JSON.parse(row.getAttribute('data-original'));
 
@@ -125,7 +125,7 @@ function cancelEdit(button) {
     `;
 }
 
-async function deleteRow(button) {
+async function deleteRowmeters(button) {
     const row = button.closest('tr');
     const meterId = Number(row.dataset.meterId);  // Ensure MeterID is a number
     const confirmation = confirm("Are you sure you want to delete this record?");
