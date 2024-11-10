@@ -10,7 +10,7 @@ async function fetchConsumerProfile() {
         }
         
         const data = await response.json();
-        const consumerData = data[0];  // Access the first item in the returned array
+        const consumerData = data[0];  // Access the first item in the returned arrayss
         
         // Update the form fields with fetched data
         document.getElementById('consumer-given-name').value = consumerData.givenName;
