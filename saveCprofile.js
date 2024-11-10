@@ -9,6 +9,11 @@ async function handleProfileSubmit(event) {
         email: document.getElementById('consumer-email-address').value
     };
 
+
+        // Alert to check data collection
+        alert("Collected profile data: " + JSON.stringify(updatedProfile));
+
+
     try {
         const response = await fetch('https://a5p1q0oqf3.execute-api.us-east-1.amazonaws.com/dev/Save_consumers_profile_function', {
             method: 'POST',
@@ -20,6 +25,7 @@ async function handleProfileSubmit(event) {
 
         if (response.ok) {
             const result = await response.json();
+            alert(result.message || "Profile updated successfully!"); 
             document.getElementById("profile-notification").textContent = result.message || "Profile updated successfully!";
             document.getElementById("profile-notification").classList.add("success");
         } else {
