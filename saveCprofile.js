@@ -11,7 +11,7 @@ async function handleProfileSubmit(event) {
 
 
         // Alert to check data collection
-        alert("Collected profile data: " + JSON.stringify(updatedProfile));
+        alert("Collected profile data: " + email);
 
 
     try {
@@ -25,7 +25,7 @@ async function handleProfileSubmit(event) {
 
         if (response.ok) {
             const result = await response.json();
-            alert(result.message || "Profile updated successfully!"); 
+            alert(result.message || "Profile updated successfully!" + givenName); 
             document.getElementById("profile-notification").textContent = result.message || "Profile updated successfully!";
             document.getElementById("profile-notification").classList.add("success");
         } else {
