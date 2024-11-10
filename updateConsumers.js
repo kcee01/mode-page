@@ -2,6 +2,7 @@
 
 
 
+
 async function fetchConsumerProfile() {
     try {
         const response = await fetch('https://b43veeqh8j.execute-api.us-east-1.amazonaws.com/dev/GET_consumers_function'); // Replace with your actual API Gateway URL
@@ -10,13 +11,13 @@ async function fetchConsumerProfile() {
         }
         
         const data = await response.json();
-        const consumerData = data[0];  // Access the first item in the returned arrayss
+        const consumerData = data[0];  // Access the first item in the returned array
         
         // Update the form fields with fetched data
         document.getElementById('consumer-given-name').value = consumerData.givenName;
         document.getElementById('Consumer-surname').value = consumerData.surname;
         document.getElementById('consumer-address').value = consumerData.address;
-        document.getElementById('consumer-email-address').value = consumerData.email-address;
+        document.getElementById('consumer-email-address').value = consumerData.email; // Corrected property name for email
 
     } catch (error) {
         console.error('Error fetching consumer profile:', error);
