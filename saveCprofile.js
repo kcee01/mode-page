@@ -5,8 +5,8 @@ async function handleProfileSubmit(event) {
     const updatedProfile = {
         givenName: document.getElementById('consumer-given-name').value,
         surname: document.getElementById('Consumer-surname').value,
-        address: document.getElementById('consumer-address').value
-        // Assuming 'email' is not an editable field in this form
+        address: document.getElementById('consumer-address').value,
+        email: document.getElementById('consumer-email-address').value
     };
 
     try {
