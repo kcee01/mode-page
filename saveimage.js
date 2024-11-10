@@ -25,7 +25,7 @@ async function handleImageUpload(event) {
         };
 
         try {
-            const response = await fetch('https://your-api-url.execute-api.us-east-1.amazonaws.com/dev/upload_image_function', {
+            const response = await fetch('https://npt52cvgpe.execute-api.us-east-1.amazonaws.com/dev/SaveImageFunction', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
