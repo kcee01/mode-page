@@ -10,7 +10,7 @@ async function handleProfileSubmit(event) {
     };
 
     try {
-        const response = await fetch('', {
+        const response = await fetch('https://a5p1q0oqf3.execute-api.us-east-1.amazonaws.com/dev/Save_consumers_profile_function', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
