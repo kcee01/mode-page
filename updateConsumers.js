@@ -16,6 +16,7 @@ async function fetchConsumerProfile() {
         document.getElementById('consumer-given-name').value = consumerData.givenName;
         document.getElementById('Consumer-surname').value = consumerData.surname;
         document.getElementById('consumer-address').value = consumerData.address;
+        document.getElementById('consumer-email-address').value = consumerData.email-address;
 
     } catch (error) {
         console.error('Error fetching consumer profile:', error);
