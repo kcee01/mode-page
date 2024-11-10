@@ -11,7 +11,7 @@ async function handleProfileSubmit(event) {
 
 
         // Alert to check data collection
-        alert("Collected profile data: " + JSON.stringify(email));
+        alert("Collected profile data >>>>>" );
 
 
     try {
