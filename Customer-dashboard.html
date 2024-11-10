@@ -224,40 +224,37 @@
 
     <main>
     <!---------------Consumer Verification------------------------->
-        <section id="verify-consumer" class="section active">
-            <h2>Verify Consumer</h2>
-            <form id="Consumerform" onsubmit="return handleVerification(event)">
+    <form id="Consumerform" onsubmit="return handleVerification(event)">
 
-                <label for="givenName">Given name:</label>
-                <input type="text" id="givename" name="given-name" required>
-
-                <label for="surname">Surname:</label>
-                <input type="text" id="Surname" name="surname" required>
-
-                <label for="address">Address:</label>
-                <input type="text" id="Address" name="address" required>
-
-                <label for="Email address">Email address:</label>
-                <input type="email" id="email address" name="email" required>
-
-                <label for="Date of creation">Date of Creation:</label>
-                <input type="date" id="date of Creation" name="dateofcreation" required>
-
-                <label for="electric meter no">Electric meter no:</label>
-                <input type="number" id="electric meter no" name="electric" required>
-
-                <label for="enabled">Enabled:</label>
-                <select id="enabled" required name="enabled">
-                    <option value="yes">True</option>
-                    <option value="no">False</option>
-                </select>
-                
-<br>
-                <button type="submit">Verify</button>
-                <div id="verification-notification-consumer" class="notification"></div>
-            </form>
-        </section>
-
+        <label for="givenName">Given name:</label>
+        <input type="text" id="givenName" name="givenName" required>
+    
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required>
+    
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+    
+        <label for="email">Email address:</label>
+        <input type="email" id="email" name="email" required>
+    
+        <label for="dateOfCreation">Date of Creation:</label>
+        <input type="date" id="dateOfCreation" name="dateOfCreation" required>
+    
+        <label for="electricMeterNo">Electric meter no:</label>
+        <input type="number" id="electricMeterNo" name="electricMeterNo" required>
+    
+        <label for="enabled">Enabled:</label>
+        <select id="enabled" name="enabled" required>
+            <option value="yes">True</option>
+            <option value="no">False</option>
+        </select>
+    
+        <br>
+        <button type="submit">Verify</button>
+        <div id="verification-notification-consumer" class="notification"></div>
+    </form>
+    
         <!-----------Consumer Verification END-------------->
 
 

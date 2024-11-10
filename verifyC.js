@@ -1,7 +1,3 @@
-
-
-
-
 async function handleVerification(event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -9,10 +5,10 @@ async function handleVerification(event) {
     const jsonData = Object.fromEntries(formData.entries());
 
     try {
-        // Displaying a loading alert
+        // Display a loading alert
         alert('Submitting data...');
 
-        const response = await fetch('https://wvnls203o6.execute-api.us-east-1.amazonaws.com/dev/Verify_Consumer_Function', { // Replace with your actual API Gateway URL
+        const response = await fetch('https://wvnls203o6.execute-api.us-east-1.amazonaws.com/dev/Verify_Consumer_Function', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,12 +23,12 @@ async function handleVerification(event) {
         const result = await response.json();
 
         // Check response status and display corresponding message
-        if (result.success) {
+        if (result.message) {
             alert('Verification successful!');
             document.getElementById('verification-notification-consumer').innerText = result.message;
         } else {
-            alert('Verification successfull!!!.');
-            document.getElementById('verification-notification-consumer').innerText = result.message;
+            alert('Verification failed.');
+            document.getElementById('verification-notification-consumer').innerText = 'Verification failed.';
         }
     } catch (error) {
         console.error('Error:', error);
@@ -40,4 +36,3 @@ async function handleVerification(event) {
         document.getElementById('verification-notification-consumer').innerText = 'Submission failed.';
     }
 }
-
