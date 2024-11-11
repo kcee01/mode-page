@@ -14,8 +14,8 @@ async function fetchConsumerProfile() {
         
         // Update the form fields with fetched data
         document.getElementById('consumer-given-name').value = consumerData.givenName;
-        document.getElementById('Consumer-surname').value = consumerData.surname;
-        document.getElementById('consumer-address').value = consumerData.address;
+        document.getElementById('Consumer-surname').value = consumerData.Surname;
+        document.getElementById('consumer-address').value = consumerData.Address;
         document.getElementById('consumer-email-address').value = consumerData.email;
 
     } catch (error) {
