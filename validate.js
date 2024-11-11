@@ -1,8 +1,8 @@
-async function handleValidate(event) {
+async function handlevalidate(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
     const email = document.getElementById('consumer-email').value;
-    const notification = document.getElementById('validate-notification');
+    const notification = document.getElementById('Validate-notification');
     notification.innerText = "Validating...";
 
     try {
