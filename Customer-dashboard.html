@@ -203,6 +203,49 @@
     select option {
       padding: 10px;
     }
+
+ /* OCR SECTION 
+  body{
+ font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }*/
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .input-group {
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        button.confirm {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        button.reject {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+        button.submit {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+        }
+
+
     </style>
 </head>
 
@@ -260,7 +303,7 @@
 </section>
 
     
-        <!-----------Consumer Verification END-------------->
+<!---------------------Consumer Verification END-------------->
 
 
 
@@ -345,18 +388,27 @@
 
 <!--------------------------------------Detecting-meter-reading-using-ocr-------------------------------------------------------------->
         <section id="meter-reading" class="section">
-            <h2>Meter Reading</h2>
-            <form onsubmit="return handleMeterReadingSubmit(event)">
-                <label for="meter-id">Meter ID:</label>
-                <input type="text" id="meter-id" required>
+                    <h2>Validate Meter Reading</h2>
+            <!-- Section for displaying the OCR-detected reading -->
+                    <div class="input-group">
+                        <label for="ocrReading">OCR Detected Reading:</label>
+                        <input type="text" id="ocrReading" disabled value="12345"> <!-- Example reading -->
+                    </div>
+            <!-- Section for user confirmation -->
+            <div class="input-group">
+                <p>Is this reading correct?</p>
+                <button class="confirm" onclick="confirmReading()">Yes, Confirm</button>
+                <button class="reject" onclick="rejectReading()">No, Enter Manually</button>
+            </div>
 
-                <label for="meter-reading">Meter Reading:</label>
-                <input type="number" id="meter-reading" required>
-
-                <button type="submit">Submit Reading</button>
-                <div id="reading-notification" class="notification"></div>
-            </form>
-        </section>
+                <!-- Section for manual entry if OCR is incorrect -->
+                <div class="input-group" id="manualEntryGroup" style="display: none;">
+                    <label for="manualReading">Enter Meter Reading:</label>
+                    <input type="number" id="manualReading" placeholder="Enter reading here">
+                    <button class="submit" onclick="submitManualReading()">Submit</button>
+                </div>
+            </div>
+     <  </section>       
 <!--------------------------------------Detecting-meter-reading-using-ocr------END-------------------------------------------------------->
 
 
