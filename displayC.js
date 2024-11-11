@@ -73,12 +73,12 @@ async function saveRow(button) {
     // Constructing the consumer data object
     const consumerData = {
         email: email,  // Correctly set email
-        GivenName: updatedData[0],
-        Surname: updatedData[1],
-        Address: updatedData[2],
-        ElectricMeterID: updatedData[3],
-        Enabled: updatedData[5] === 'true',  // Ensure boolean conversion
-        DateOfCreation: updatedData[6],
+        givenName: updatedData[0],
+        surname: updatedData[1],
+        address: updatedData[2],
+        electricMeterNo: updatedData[3],
+        enabled: updatedData[5] === 'true',  // Ensure boolean conversion
+        dateOfCreation: updatedData[6],
         Year: parseInt(updatedData[7], 10) || 0, // Convert to integer
         Month: parseInt(updatedData[8], 10) || 0, // Convert to integer
         MeterReading: parseFloat(updatedData[9]) || 0, // Convert to float
