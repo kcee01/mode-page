@@ -27,10 +27,13 @@ async function handlevalidate(event) {
 
         if (response.ok) {
             notification.innerText = "Validation and geolocation update successful!";
+            alert("Validation and geolocation update successful!"); // Success alert
         } else {
             notification.innerText = `Error: ${data.message || 'Unexpected error'}`;
+            alert(`Error: ${data.message || 'Unexpected error'}`); // Error alert
         }
     } catch (error) {
         notification.innerText = `Request failed: ${error.message}`;
+        alert(`Request failed: ${error.message}`); // Error alert for request failure
     }
 }
