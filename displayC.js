@@ -12,13 +12,13 @@ async function loadConsumerData() {
             const row = document.createElement('tr');
             row.dataset.email = consumer.email; // Use lowercase 'email'
             row.innerHTML = `
-                <td>${consumer.GivenName || ''}</td>
-                <td>${consumer.Surname || ''}</td>
-                <td>${consumer.Address || ''}</td>
+                <td>${consumer.givenName || ''}</td>
+                <td>${consumer.surname || ''}</td>
+                <td>${consumer.address || ''}</td>
                 <td>${consumer.electricMeterNo || ''}</td>
                 <td>${consumer.email || ''}</td> 
                 <td>${consumer.enabled || ''}</td>
-                <td>${consumer.DateOfCreation || ''}</td>
+                <td>${consumer.dateOfCreation || ''}</td>
                 <td>${consumer.Year || ''}</td>
                 <td>${consumer.Month || ''}</td>
                 <td>${consumer.MeterReading || ''}</td>
