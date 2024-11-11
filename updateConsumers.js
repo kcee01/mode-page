@@ -6,6 +6,8 @@ async function fetchConsumerProfile() {
     try {
         const response = await fetch('https://b43veeqh8j.execute-api.us-east-1.amazonaws.com/dev/GET_consumers_function'); // Replace with your actual API Gateway URL
         if (!response.ok) {
+            console.log('Response status:', response.status);
+            console.log('Response details:', await response.text());
             throw new Error('Network response was not ok ' + response.statusText);
         }
         
