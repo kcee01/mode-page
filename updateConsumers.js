@@ -1,10 +1,10 @@
 
 
 
-
 async function fetchConsumerProfile() {
     try {
-        const response = await fetch('https://b43veeqh8j.execute-api.us-east-1.amazonaws.com/dev/GET_consumers_function'); // Replace with your actual API Gateway URL
+        const response = await fetch('https://b43veeqh8j.execute-api.us-east-1.amazonaws.com/dev/GET_consumers_function');
+        
         if (!response.ok) {
             console.log('Response status:', response.status);
             console.log('Response details:', await response.text());
@@ -12,13 +12,19 @@ async function fetchConsumerProfile() {
         }
         
         const data = await response.json();
-        const consumerData = data[0];  // Access the first item in the returned arrayss
         
-        // Update the form fields with fetched data
-        document.getElementById('consumer-given-name').value = consumerData.givenName;
-        document.getElementById('Consumer-surname').value = consumerData.surname;
-        document.getElementById('consumer-address').value = consumerData.address;
-        document.getElementById('consumer-email-address').value = consumerData.email;
+        // Check if data is an array and has at least one item
+        if (Array.isArray(data) && data.length > 0) {
+            const consumerData = data[0];  // Access the first item in the returned array
+            
+            // Update the form fields with fetched data
+            document.getElementById('consumer-given-name').value = consumerData.givenName || '';
+            document.getElementById('consumer-surname').value = consumerData.surname || '';
+            document.getElementById('consumer-address').value = consumerData.address || '';
+            document.getElementById('consumer-email-address').value = consumerData.email || '';
+        } else {
+            console.warn('No consumer data found');
+        }
 
     } catch (error) {
         console.error('Error fetching consumer profile:', error);
