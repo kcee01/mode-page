@@ -1,4 +1,5 @@
 // Fetch Meter reading and display it
+// Fetch Meter reading and display it
 async function getOCRReading() {
     const email = document.getElementById('email').value;
     if (!email) {
@@ -7,12 +8,11 @@ async function getOCRReading() {
     }
 
     try {
-        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
-            method: "POST", // Ensure your Lambda endpoint allows POST requests
+        const response = await fetch(`https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function?email=${encodeURIComponent(email)}`, {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email: email })
+            }
         });
 
         if (!response.ok) {
