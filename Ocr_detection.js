@@ -48,7 +48,7 @@ async function confirmReading() {
     try {
         console.log("Sending POST request to API...");  // Log when sending the request
 
-        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
+        const response = await fetch("https://1lo1bumtng.execute-api.us-east-1.amazonaws.com/dev/GET_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
