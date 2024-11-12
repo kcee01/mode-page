@@ -2,7 +2,6 @@
 
 
 
-const apiBaseUrl = "https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod"; // Replace with your actual API URL
 
 // Fetch Meter reading and display it
 async function getOCRReading() {
@@ -13,7 +12,7 @@ async function getOCRReading() {
     }
 
     try {
-        const response = await fetch(`${apiBaseUrl}/GET_meter_reading_function/fetch-meter-reading`, {
+        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -50,7 +49,7 @@ async function confirmReading() {
     }
 
     try {
-        const response = await fetch(`${apiBaseUrl}/update-meter-reading`, {
+        const response = await fetch(`/update-meter-reading`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -87,7 +86,7 @@ async function submitManualReading() {
     }
 
     try {
-        const response = await fetch(`${apiBaseUrl}/update-meter-reading`, {
+        const response = await fetch(`/update-meter-reading`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
