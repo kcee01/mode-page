@@ -205,38 +205,101 @@
     }
 
 /*OCR STYLE*/
-        .container {
-            border: 1px solid #ccc;
+          /* Basic reset */
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling the body 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
+        }*/
+
+        /* Section styling */
+        #meter-reading {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
-        h2 {
+
+        /* Header */
+        #meter-reading h2 {
+            font-size: 24px;
             color: #333;
+            text-align: center;
+            margin-bottom: 20px;
         }
+
+        /* Input groups */
         .input-group {
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
-        button {
-            padding: 10px 20px;
+        
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
+            color: #333;
+            background-color: #f8f8f8;
         }
-        button.confirm {
-            background-color:#007bff;
-            color: white;
+
+        /* Buttons styling */
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
             border: none;
-        }
-        button.reject {
-            background-color: #f44336;
-            color: white;
-            border: none;
-        }
-        button.submit {
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
             background-color: #007bff;
-            color: white;
-            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .button-group button {
+            flex: 1;
+            margin-top: 10px;
+        }
+
+        /* Hide manual entry initially */
+        #manualEntryGroup {
+            display: none;
+        }
+
+        /* Show manual entry when toggled */
+        #manualEntryGroup.active {
+            display: block;
         }
 
 
@@ -382,28 +445,35 @@
 
 
 <!--------------------------------------Detecting-meter-reading-using-ocr-------------------------------------------------------------->
-        <section id="meter-reading" class="section">
-                    <h2>Validate Meter Reading</h2>
-            <!-- Section for displaying the OCR-detected reading -->
+        <section id="meter-reading">
+            <h2>Validate Meter Reading</h2>
+
+                    <!-- Input for Email -->
+                    <div class="input-group">
+                        <label for="email">Enter your email:</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+
+                    <!-- Display OCR-detected reading -->
                     <div class="input-group">
                         <label for="ocrReading">OCR Detected Reading:</label>
-                        <input type="text" id="ocrReading" disabled value="12345"> <!-- Example reading -->
+                        <input type="text" id="ocrReading" disabled placeholder="Loading...">
+                        <button onclick="getOCRReading()">Fetch OCR Reading</button>
                     </div>
-            <!-- Section for user confirmation -->
-            <div class="input-group">
-                <p>Is this reading correct?</p>
-                <button class="confirm" onclick="confirmReading()">Yes, Confirm</button>
-                <button class="reject" onclick="rejectReading()">No, Enter Manually</button>
-            </div>
 
-                <!-- Section for manual entry if OCR is incorrect -->
-                <div class="input-group" id="manualEntryGroup" style="display: none;">
-                    <label for="manualReading">Enter Meter Reading:</label>
-                    <input type="number" id="manualReading" placeholder="Enter reading here">
-                    <button class="submit" onclick="submitManualReading()">Submit</button>
-                </div>
-            </div>
-       </section>       
+                    <!-- Confirmation buttons for user validation -->
+                    <div class="button-group">
+                        <button onclick="confirmReading()">Confirm Reading</button>
+                        <button onclick="showManualEntry()">Enter Manually</button>
+                    </div>
+
+                    <!-- Manual entry input (hidden by default) -->
+                    <div id="manualEntryGroup" class="input-group" style="display: none;">
+                        <label for="manualReading">Enter Meter Reading:</label>
+                        <input type="number" id="manualReading" placeholder="Enter reading here">
+                        <button onclick="submitManualReading()">Submit Manual Reading</button>
+                    </div>
+        </section>      
 <!--------------------------------------Detecting-meter-reading-using-ocr------END-------------------------------------------------------->
 
 
