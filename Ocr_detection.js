@@ -2,8 +2,7 @@
 
 
 
-
-const apiBaseUrl = "https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function"; // Replace with your actual API URL
+const apiBaseUrl = "https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod"; // Replace with your actual API URL
 
 // Fetch Meter reading and display it
 async function getOCRReading() {
@@ -14,7 +13,7 @@ async function getOCRReading() {
     }
 
     try {
-        const response = await fetch(`${apiBaseUrl}/fetch-meter-reading`, {
+        const response = await fetch(`${apiBaseUrl}/GET_meter_reading_function/fetch-meter-reading`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +28,7 @@ async function getOCRReading() {
         }
 
         const data = await response.json();
-        
+
         document.getElementById('ocrReading').value = data.meterReading || "No reading found for this email.";
         document.getElementById('confirmButton').style.display = 'inline-block'; // Show Confirm Reading button
         document.getElementById('manualButton').style.display = 'inline-block'; // Show Manual Entry button
@@ -38,6 +37,7 @@ async function getOCRReading() {
         console.error(error);
     }
 }
+
 
 // Confirm the OCR reading as correct
 async function confirmReading() {
