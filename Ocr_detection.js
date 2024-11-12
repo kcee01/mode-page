@@ -1,4 +1,9 @@
-const apiBaseUrl = "https://b43veeqh8j.execute-api.us-east-1.amazonaws.com/dev/GET_consumers_function"; // Replace with your actual API URL
+
+
+
+
+
+const apiBaseUrl = "https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function"; // Replace with your actual API URL
 
 // Fetch Meter reading and display it
 async function getOCRReading() {
