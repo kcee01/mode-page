@@ -8,7 +8,7 @@ async function getOCRReading() {
     }
 
     try {
-        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function?email=${encodeURIComponent(email)}", {
+        const response = await fetch(`https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function?email=${encodeURIComponent(email)}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
