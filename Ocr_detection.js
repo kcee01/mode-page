@@ -1,7 +1,3 @@
-
-
-
-
 // Fetch Meter reading and display it
 async function getOCRReading() {
     const email = document.getElementById('email').value;
@@ -12,7 +8,7 @@ async function getOCRReading() {
 
     try {
         const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
-            method: "POST",
+            method: "POST", // Ensure your Lambda endpoint allows POST requests
             headers: {
                 "Content-Type": "application/json"
             },
@@ -20,28 +16,20 @@ async function getOCRReading() {
         });
 
         if (!response.ok) {
+            console.error("Response error:", await response.text());
             alert("Error fetching Meter reading.");
-            console.error(await response.text());
             return;
         }
 
         const data = await response.json();
-
         document.getElementById('ocrReading').value = data.meterReading || "No reading found for this email.";
         document.getElementById('confirmButton').style.display = 'inline-block'; // Show Confirm Reading button
         document.getElementById('manualButton').style.display = 'inline-block'; // Show Manual Entry button
     } catch (error) {
         alert("Error fetching Meter reading.");
-        console.error(error);
+        console.error("Fetch error:", error);
     }
 }
-
-
-
-
-
-
-
 
 // Confirm the OCR reading as correct
 async function confirmReading() {
@@ -66,11 +54,17 @@ async function confirmReading() {
             })
         });
 
+        if (!response.ok) {
+            console.error("Response error:", await response.text());
+            alert("Error confirming reading.");
+            return;
+        }
+
         const data = await response.json();
         alert(data.message || "Reading confirmed successfully!");
     } catch (error) {
         alert("Error confirming reading.");
-        console.error(error);
+        console.error("Fetch error:", error);
     }
 }
 
@@ -103,10 +97,16 @@ async function submitManualReading() {
             })
         });
 
+        if (!response.ok) {
+            console.error("Response error:", await response.text());
+            alert("Error submitting manual reading.");
+            return;
+        }
+
         const data = await response.json();
         alert(data.message || "Manual reading submitted successfully!");
     } catch (error) {
         alert("Error submitting manual reading.");
-        console.error(error);
+        console.error("Fetch error:", error);
     }
 }
