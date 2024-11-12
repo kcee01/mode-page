@@ -33,7 +33,7 @@ async function getOCRReading() {
 
 
 
-//confirm readings
+// Confirm the OCR reading as correct
 async function confirmReading() {
     const email = document.getElementById('email').value;
     const ocrReading = document.getElementById('ocrReading').value;
@@ -44,27 +44,20 @@ async function confirmReading() {
     }
 
     try {
-        const requestBody = JSON.stringify({
-            email: email,
-            meterReading: ocrReading,
-            validated: true
-        });
-        
-        console.log("Request Body:", requestBody);  // Log request body
-
         const response = await fetch("https://1lo1bumtng.execute-api.us-east-1.amazonaws.com/dev/GET_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: requestBody
+            body: JSON.stringify({
+                email: email,
+                meterReading: ocrReading,
+                validated: true
+            })
         });
 
-        console.log("Response status:", response.status);  // Log response status
-
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error("Response error:", errorText);
+            console.error("Response error:", await response.text());
             alert("Error confirming reading.");
             return;
         }
