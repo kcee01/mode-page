@@ -42,7 +42,7 @@ async function confirmReading() {
     }
 
     try {
-        const response = await fetch(`https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function?email=${encodeURIComponent(email)}`, {
+        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -67,6 +67,7 @@ async function confirmReading() {
         console.error("Fetch error:", error);
     }
 }
+
 
 // Show manual entry input
 function showManualEntry() {
