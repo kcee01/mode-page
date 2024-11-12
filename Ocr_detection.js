@@ -44,7 +44,7 @@ async function confirmReading() {
     }
 
     try {
-        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
+        const response = await fetch("https://olkox9e8v5.execute-api.us-east-1.amazonaws.com/prod/Update_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
