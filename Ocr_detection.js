@@ -32,50 +32,50 @@ async function getOCRReading() {
 }
 
 // Confirm the OCR reading as correct
+// Confirm the OCR reading as correct
 async function confirmReading() {
     const email = document.getElementById('email').value;
     const ocrReading = document.getElementById('ocrReading').value;
 
-    console.log("Email:", email);  // Log the email to ensure it's captured correctly
-    console.log("OCR Reading:", ocrReading);  // Log the OCR reading
-
     if (!email || !ocrReading) {
         alert("Please enter a valid email and reading.");
-        console.log("Missing email or OCR reading.");  // Log if email or reading is missing
         return;
     }
 
-    try {
-        console.log("Sending POST request to API...");  // Log when sending the request
+    console.log("Email:", email);  // Log email
+    console.log("OCR Reading:", ocrReading);  // Log OCR reading
 
-        const response = await fetch("https://1lo1bumtng.execute-api.us-east-1.amazonaws.com/dev/GET_meter_reading_function", {
+    try {
+        const requestBody = JSON.stringify({
+            email: email,
+            meterReading: ocrReading,
+            validated: true
+        });
+        
+        console.log("Sending POST request with body:", requestBody);  // Log request body
+
+        const response = await fetch("https://your-api-id.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                email: email,
-                meterReading: ocrReading,
-                validated: true
-            })
+            body: requestBody
         });
 
-        console.log("Response status:", response.status);  // Log response status code
+        console.log("Response status:", response.status);  // Log response status
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error("Response error:", errorText);  // Log the error message from response
+            console.error("Response error:", errorText);
             alert("Error confirming reading.");
             return;
         }
 
         const data = await response.json();
-        console.log("Response data:", data);  // Log the response data
-
         alert(data.message || "Reading confirmed successfully!");
     } catch (error) {
         alert("Error confirming reading.");
-        console.error("Fetch error:", error);  // Log any fetch-related error
+        console.error("Fetch error:", error);
     }
 }
 
