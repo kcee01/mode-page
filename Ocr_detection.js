@@ -88,7 +88,7 @@ async function submitManualReading() {
     }
 
     try {
-        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
+        const response = await fetch("https://8klqov49cl.execute-api.us-east-1.amazonaws.com/prod/Manual_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
