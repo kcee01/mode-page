@@ -2,7 +2,6 @@
 
 
 
-
 // Fetch Meter reading and display it
 async function getOCRReading() {
     const email = document.getElementById('email').value;
@@ -38,6 +37,12 @@ async function getOCRReading() {
 }
 
 
+
+
+
+
+
+
 // Confirm the OCR reading as correct
 async function confirmReading() {
     const email = document.getElementById('email').value;
@@ -49,7 +54,7 @@ async function confirmReading() {
     }
 
     try {
-        const response = await fetch(`/update-meter-reading`, {
+        const response = await fetch("https://n9krhb40p7.execute-api.us-east-1.amazonaws.com/prod/GET_meter_reading_function", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
