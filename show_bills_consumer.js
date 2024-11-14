@@ -24,7 +24,7 @@
                         <div><strong>Month:</strong> ${bill.Month}</div>
                         <div><strong>Address:</strong> ${bill.Address}</div>
                         <div><strong>Consumption:</strong> ${bill.Consumption} kWh</div>
-                        <div><strong>Payment:</strong> ${bill.Payment} P</div>
+                        <div><strong>Payment:</strong> P ${bill.Payment} </div>
                     </div>
                     <div class="action-buttons">
                         <a href="${bill.BillFileUrl}" target="_blank" download>Download Bill</a>
