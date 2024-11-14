@@ -495,42 +495,42 @@ tbody tr:hover {
 
 
 <!------------------------Generate-bill-section------------------------------------>
-        <section id="generate-bill" class="form-section">
-            <h2>Generate Bill</h2>
-            <form id="generate-bill-form">
-                <label for="bill-consumer-email">Consumer Email:</label>
-                <input type="email" id="bill-consumer-email" required>
+<section id="generate-bill" class="form-section">
+    <h2>Generate Bill</h2>
+    <form id="generate-bill-form">
+        <label for="bill-consumer-email">Consumer Email:</label>
+        <input type="email" id="bill-consumer-email" required>
 
-                <label for="month">Month:</label>
-                <input type="month" id="month" required>
+        <label for="month">Month:</label>
+        <input type="month" id="month" required>
 
-                <button type="submit">Generate Bill</button>
-            </form>
+        <button type="submit">Generate Bill</button>
+    </form>
 
-            <section>
-                <h2>Bills Information</h2>
-                <div class="table-container-bills">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Bill ID</th>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Month</th>
-                                <th>Address</th>
-                                <th>Consumption(kwh)</th>
-                                <th>Payment(P)</th>
-                            </tr>
-                        </thead>
-                        <tbody id="bills-table-body">
-                            <!-- Dynamic rows will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-     
-            </section>
+    <!-- Bills Information Section -->
+    <section id="bills-information">
+        <h2>Bills Information</h2>
+        <div class="table-container-bills">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bill ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Month</th>
+                        <th>Address</th>
+                        <th>Consumption (kWh)</th>
+                        <th>Payment (P)</th>
+                    </tr>
+                </thead>
+                <tbody id="bills-table-body">
+                    <!-- Dynamic rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
 
-        </section>
 
 
 <!------------------------Generate-bill-section---END--------------------------------->
