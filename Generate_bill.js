@@ -6,7 +6,7 @@ document.getElementById("generate-bill-form").addEventListener("submit", async f
     const month = document.getElementById("month").value;
     const apiUrl = 'https://xu8vgmnat7.execute-api.us-east-1.amazonaws.com/dev/Generate_bill_function';
 
-    console.log("Form submitted: "month:", month); // Debug log
+    console.log("Form submitted:","month:", month); // Debug log
 
     try {
         const response = await fetch(apiUrl, {
