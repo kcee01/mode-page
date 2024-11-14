@@ -8,21 +8,24 @@ document.getElementById("generate-bill-form").addEventListener("submit", async f
 
     console.log("Form submitted, email:", email, "month:", month); // Debug log
 
+    if (!email || !month) {
+        alert('Both email and month are required.');
+        return;
+    }
+
     try {
         const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: email, month: month })
+            body: JSON.stringify({ email: email, month: month }) // JSON payload
         });
 
         const data = await response.json();
         if (response.ok) {
             alert('Bill generated and stored successfully!');
             console.log('Success:', data); // Log success data
-            // Optionally, display a link to the generated bill if you return a URL from the API
-            // document.getElementById("bill-link").href = data.billUrl; // Example link
         } else {
             console.error('Response error:', data);
             alert('Error generating bill: ' + (data.message || 'Unknown error'));
