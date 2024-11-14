@@ -2,7 +2,7 @@
   async function loadBillData() {
     try {
         // Fetch bill data from the API (adjust the endpoint)
-        const response = await fetch('https://your-api-endpoint');
+        const response = await fetch('https://1bbxdzgjs7.execute-api.us-east-1.amazonaws.com/prod/Display_bills_function');
         if (!response.ok) throw new Error('Error fetching bill data');
         
         const bills = await response.json();
