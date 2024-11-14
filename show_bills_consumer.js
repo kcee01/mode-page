@@ -25,7 +25,6 @@ async function loadBillData() {
                         <div><strong>Payment:</strong> P ${bill.Payment}</div>
                     </div>
                     <div class="action-buttons">
-                        <a href="${bill.BillFileUrl}" target="_blank" download>Download Bill PDF</a>
                         <button onclick="downloadPDF(${JSON.stringify(bill).replace(/"/g, '&quot;')})">Generate PDF</button>
                     </div>
                 `;
