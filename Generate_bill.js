@@ -4,7 +4,9 @@ document.getElementById("generate-bill-form").addEventListener("submit", async f
     // Get input values
     const email = document.getElementById("bill-consumer-email").value;
     const month = document.getElementById("month").value;
-    const apiUrl = 'https://xu8vgmnat7.execute-api.us-east-1.amazonaws.com/dev/Generate_bill_function'; 
+    const apiUrl = 'https://xu8vgmnat7.execute-api.us-east-1.amazonaws.com/dev/Generate_bill_function';
+
+    console.log("Form submitted, email:", email, "month:", month); // Debug log
 
     try {
         const response = await fetch(apiUrl, {
@@ -18,10 +20,12 @@ document.getElementById("generate-bill-form").addEventListener("submit", async f
         const data = await response.json();
         if (response.ok) {
             alert('Bill generated and stored successfully!');
+            console.log('Success:', data); // Log success data
             // Optionally, display a link to the generated bill if you return a URL from the API
             // document.getElementById("bill-link").href = data.billUrl; // Example link
         } else {
-            alert('Error: ' + data.body);
+            console.error('Response error:', data);
+            alert('Error generating bill: ' + (data.message || 'Unknown error'));
         }
     } catch (error) {
         console.error('Error generating bill:', error);
