@@ -25,7 +25,7 @@ async function loadBillData() {
                         <div><strong>Payment:</strong> P ${bill.Payment}</div>
                     </div>
                     <div class="action-buttons">
-                        <button onclick="downloadPDF(${JSON.stringify(bill).replace(/"/g, '&quot;')})">Generate PDF</button>
+                        <button onclick="downloadPDF(${JSON.stringify(bill).replace(/"/g, '&quot;')})">Download Bill</button>
                     </div>
                 `;
                 billsContainer.appendChild(card);
