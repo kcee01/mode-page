@@ -19,6 +19,7 @@ async function loadBillData() {
                 <td>${bill.Bill_ID || ''}</td>
                 <td>${bill.Name || ''}</td>
                 <td>${bill.Surname || ''}</td>
+                <td>${bill.Email || ''}</td>
                 <td>${bill.Month || ''}</td>
                 <td>${bill.Address || ''}</td>
                 <td>${bill.Consumption || ''}</td>
