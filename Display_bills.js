@@ -150,12 +150,12 @@ async function deleteRowBills(button) {
             const response = await fetch('https://vqwuavr9s3.execute-api.us-east-1.amazonaws.com/dev/Delete_bill_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ 
-                    Bill_ID: billId,   // Pass Bill_ID
-                    type: 'bill'       // Ensure 'type' is set to 'bill'
+                    Bill_ID: Number(billId),   // Ensure Bill_ID is a number
+                    type: 'bill'               // Ensure 'type' is set to 'bill'
                 }),
                 headers: { 'Content-Type': 'application/json' }
             });
-
+            
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`Error deleting bill data: ${errorText}`);
@@ -169,6 +169,8 @@ async function deleteRowBills(button) {
         }
     }
 }
+
+
 
 
 // Load bills when the page is loaded
