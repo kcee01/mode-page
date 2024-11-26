@@ -48,8 +48,8 @@ function editRowBills(button) {
         <td><input type="email" value="${currentData[3]}" readonly></td>
         <td><input type="text" value="${currentData[4]}"></td>
         <td><input type="text" value="${currentData[5]}"></td>
-        <td><input type="number" value="${currentData[6]}"></td>
-        <td><input type="number" value="${currentData[7]}"></td>
+        <td><input type="number" value="${currentData[6]}" readonly></td>
+        <td><input type="number" value="${currentData[7]}" readonly></td>
         <td class="action-buttons-bills">
             <button onclick="saveRowBills(this)">Save</button>
             <button onclick="cancelEditBills(this)">Cancel</button>
