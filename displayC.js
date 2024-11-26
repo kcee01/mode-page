@@ -83,10 +83,8 @@ async function saveRow(button) {
         MeterReading: parseFloat(updatedData[9]) || 0, // Convert to float
         ImageFileName: updatedData[10],
         billFileName: updatedData[11],
-        validated: updatedData[12] === 'true' // Convert to boolean
+        validated: updatedData[12] === 'true'
     };
-
-    console.log('Sending updated consumer data:', consumerData);
 
     try {
         const response = await fetch('https://23kv2h4p6k.execute-api.us-east-1.amazonaws.com/dev/update_consumers_function', {
@@ -97,99 +95,24 @@ async function saveRow(button) {
                 'Accept': 'application/json'
             }
         });
+        
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'Error saving data');
 
-        if (!response.ok) {
-            const errorText = await response.text(); // Log response text for more details
-            throw new Error(`Error updating consumer data: ${errorText}`);
-        }
-        const updatedAttributes = await response.json();
-        console.log('API response received:', updatedAttributes);
+        alert('Data updated successfully');
+        loadConsumerData();  // Reload the consumer data after saving
 
-        // Alert on successful update
-        console.log('Consumer profile updated successfully.');
-        alert('Consumer profile updated successfully.');
-
-        // Update data in the DOM if successful
-        row.innerHTML = `
-            <td>${updatedData[0]}</td>
-            <td>${updatedData[1]}</td>
-            <td>${updatedData[2]}</td>
-            <td>${updatedData[3]}</td>
-            <td>${email}</td>  
-            <td>${updatedData[5]}</td>
-            <td>${updatedData[6]}</td>
-            <td>${updatedData[7]}</td>
-            <td>${updatedData[8]}</td>
-            <td>${updatedData[9]}</td>
-            <td>${updatedData[10]}</td>
-            <td>${updatedData[11]}</td>
-            <td>${updatedData[12]}</td>
-            <td class="action-buttons">
-                <button onclick="editRow(this)">Edit</button>
-                <button onclick="deleteRow(this)">Delete</button>
-            </td>
-        `;
     } catch (error) {
-        console.error('Error saving consumer data:', error);
-        alert('Failed to save consumer data.');
+        console.error('Error saving data:', error);
     }
 }
-
 
 function cancelEdit(button) {
     const row = button.closest('tr');
     const originalData = JSON.parse(row.getAttribute('data-original'));
+    const cells = row.querySelectorAll('td');
 
-    row.innerHTML = `
-        <td>${originalData[0]}</td>
-        <td>${originalData[1]}</td>
-        <td>${originalData[2]}</td>
-        <td>${originalData[3]}</td>
-        <td>${originalData[4]}</td>
-        <td>${originalData[5]}</td>
-        <td>${originalData[6]}</td>
-        <td>${originalData[7]}</td>
-        <td>${originalData[8]}</td>
-        <td>${originalData[9]}</td>
-        <td>${originalData[10]}</td>
-        <td>${originalData[11]}</td>
-        <td>${originalData[12]}</td>
-        <td class="action-buttons">
-            <button onclick="editRow(this)">Edit</button>
-            <button onclick="deleteRow(this)">Delete</button>
-        </td>
-    `;
+    originalData.forEach((value, index) => {
+        cells[index].innerText = value;  // Restore original data
+    });
 }
-
-async function deleteRow(button) {
-    const row = button.closest('tr');
-    const email = row.dataset.email;
-    const confirmation = confirm("Are you sure you want to delete this record?");
-    
-    if (confirmation) {
-        try {
-            // Send a DELETE request to the backend
-            const response = await fetch('https://hp2u2l5hmc.execute-api.us-east-1.amazonaws.com/dev/Delete_Consumers_function', {
-                method: 'DELETE',
-                body: JSON.stringify({ Email: email }),  // Email should be uppercase 'Email'
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text(); // Fetch error details
-                throw new Error(`Error deleting consumer data: ${errorText}`);
-            }
-
-            // Alert success and remove row from DOM
-            alert(`Consumer with email ${email} was deleted successfully.`);
-            row.remove();
-            
-        } catch (error) {
-            console.error('Error deleting consumer data:', error);
-            alert('Failed to delete consumer data. Please try again later.');
-        }
-    }
-}
-
-// Load consumer data when the page loads
-document.addEventListener('DOMContentLoaded', loadConsumerData);
