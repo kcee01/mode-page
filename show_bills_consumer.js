@@ -40,6 +40,7 @@ async function loadBillData() {
     }
 }
 
+
 function downloadPDF(bill) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
