@@ -168,6 +168,7 @@ async function deleteRowBills(button) {
     }
 }
 
+
 // Load bills when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadBillData();
