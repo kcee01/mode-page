@@ -1,4 +1,3 @@
-
 async function loadConsumerData() {
     try {
         const response = await fetch('https://cgolep0nhl.execute-api.us-east-1.amazonaws.com/dev/Display_Consumers_function');
@@ -15,16 +14,16 @@ async function loadConsumerData() {
                 <td>${consumer.givenName || ''}</td>
                 <td>${consumer.surname || ''}</td>
                 <td>${consumer.address || ''}</td>
-                <td>${consumer.electricMeterNo || ''}</td>
+                <td>${consumer.electricMeterID || ''}</td>
                 <td>${consumer.email || ''}</td> 
                 <td>${consumer.enabled || ''}</td>
                 <td>${consumer.dateOfCreation || ''}</td>
-                <td>${consumer.Year || ''}</td>
-                <td>${consumer.Month || ''}</td>
-                <td>${consumer.MeterReading || ''}</td>
-                <td>${consumer.ImageFileName || ''}</td>
-                <td>${consumer.BillFileName || ''}</td>
-                <td>${consumer.EnabledByAdmin || ''}</td>
+                <td>${consumer.year || ''}</td>
+                <td>${consumer.month || ''}</td>
+                <td>${consumer.meterReading || ''}</td>
+                <td>${consumer.imageFileName || ''}</td>
+                <td>${consumer.billFileName || ''}</td>
+                <td>${consumer.validated   || ''}</td>
                 <td class="action-buttons">
                     <button onclick="editRow(this)">Edit</button>
                     <button onclick="deleteRow(this)">Delete</button>
@@ -76,15 +75,15 @@ async function saveRow(button) {
         givenName: updatedData[0],
         surname: updatedData[1],
         address: updatedData[2],
-        electricMeterNo: updatedData[3],
+        electricMeterID: updatedData[3],
         enabled: updatedData[5] === 'true',  // Ensure boolean conversion
         dateOfCreation: updatedData[6],
-        Year: parseInt(updatedData[7], 10) || 0, // Convert to integer
-        Month: parseInt(updatedData[8], 10) || 0, // Convert to integer
-        MeterReading: parseFloat(updatedData[9]) || 0, // Convert to float
-        ImageFileName: updatedData[10],
-        BillFileName: updatedData[11],
-        EnabledByAdmin: updatedData[12] === 'true' // Convert to boolean
+        year: parseInt(updatedData[7], 10) || 0, // Convert to integer
+        month: parseInt(updatedData[8], 10) || 0, // Convert to integer
+        meterReading: parseFloat(updatedData[9]) || 0, // Convert to float
+        imageFileName: updatedData[10],
+        billFileName: updatedData[11],
+        validated: updatedData[12] === 'true' // Convert to boolean
     };
 
     console.log('Sending updated consumer data:', consumerData);
@@ -109,7 +108,6 @@ async function saveRow(button) {
         // Alert on successful update
         console.log('Consumer profile updated successfully.');
         alert('Consumer profile updated successfully.');
-
 
         // Update data in the DOM if successful
         row.innerHTML = `
@@ -195,17 +193,3 @@ async function deleteRow(button) {
 
 // Load consumer data when the page loads
 document.addEventListener('DOMContentLoaded', loadConsumerData);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
