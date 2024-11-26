@@ -14,7 +14,7 @@ async function loadConsumerData() {
                 <td>${consumer.givenName || ''}</td>
                 <td>${consumer.surname || ''}</td>
                 <td>${consumer.address || ''}</td>
-                <td>${consumer.electricMeterID || ''}</td>
+                <td>${consumer.ElectricMeterID || ''}</td>
                 <td>${consumer.email || ''}</td> 
                 <td>${consumer.enabled || ''}</td>
                 <td>${consumer.dateOfCreation || ''}</td>
@@ -75,7 +75,7 @@ async function saveRow(button) {
         givenName: updatedData[0],
         surname: updatedData[1],
         address: updatedData[2],
-        electricMeterID: updatedData[3],
+        ElectricMeterID: updatedData[3],
         enabled: updatedData[5] === 'true',  // Ensure boolean conversion
         dateOfCreation: updatedData[6],
         year: parseInt(updatedData[7], 10) || 0, // Convert to integer
