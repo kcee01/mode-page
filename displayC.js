@@ -18,8 +18,8 @@ async function loadConsumerData() {
                 <td>${consumer.email || ''}</td> 
                 <td>${consumer.enabled || ''}</td>
                 <td>${consumer.dateOfCreation || ''}</td>
-                <td>${consumer.year || ''}</td>
-                <td>${consumer.month || ''}</td>
+                <td>${consumer.Year || ''}</td>
+                <td>${consumer.Month || ''}</td>
                 <td>${consumer.MeterReading || ''}</td>
                 <td>${consumer.imageFileName || ''}</td>
                 <td>${consumer.billFileName || ''}</td>
@@ -78,8 +78,8 @@ async function saveRow(button) {
         ElectricMeterID: updatedData[3],
         enabled: updatedData[5] === 'true',  // Ensure boolean conversion
         dateOfCreation: updatedData[6],
-        year: parseInt(updatedData[7], 10) || 0, // Convert to integer
-        month: parseInt(updatedData[8], 10) || 0, // Convert to integer
+        Year: parseInt(updatedData[7], 10) || 0, // Convert to integer
+        Month: parseInt(updatedData[8], 10) || 0, // Convert to integer
         MeterReading: parseFloat(updatedData[9]) || 0, // Convert to float
         imageFileName: updatedData[10],
         billFileName: updatedData[11],
