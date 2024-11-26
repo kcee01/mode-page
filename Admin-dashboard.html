@@ -120,9 +120,10 @@
     box-sizing: border-box;
 }
 
+/* Table Styling */
 table {
     width: 100%;
-    max-width: 900px; /* Optional: controls the table width */
+    max-width: 1200px; /* Adjusted width for larger table */
     margin: auto; /* Center the table on the page */
     border-collapse: collapse;
     border-radius: 8px;
@@ -131,17 +132,20 @@ table {
     overflow: hidden;
 }
 
+/* Header Styling */
 thead th {
-    color:white; /* Header text color */
-    padding: 12px; /* Spacing within header cells */
+    color: white; /* Header text color */
+    padding: 14px; /* Increased padding for better visibility */
     text-align: left;
-    background-color:#007bff; /* Header background color */
+    background-color: #007bff; /* Header background color */
+    font-size: 16px; /* Slightly larger font for header */
 }
 
 /* Row Styling */
 th, td {
     border-bottom: 1px solid #ddd;
-    padding: 10px; /* Cell padding */
+    padding: 14px; /* Increased padding for better readability */
+    font-size: 14px; /* Slightly larger font for readability */
 }
 
 /* Alternate Row Colors */
@@ -149,6 +153,7 @@ tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+/* Hover Effect */
 tbody tr:hover {
     background-color: #e9f2ff;
     cursor: pointer;
@@ -157,7 +162,7 @@ tbody tr:hover {
 /* Action Button Styling */
 .action-buttons button {
     margin-right: 6px;
-    padding: 8px 12px;
+    padding: 8px 14px; /* Increased padding for better button size */
     background-color: #007bff;
     color: white;
     border: none;
@@ -173,15 +178,16 @@ tbody tr:hover {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     th, td {
-        padding: 10px;
+        padding: 12px;
         font-size: 14px;
     }
 
     .action-buttons button {
-        padding: 6px 10px;
+        padding: 6px 12px;
         font-size: 12px;
     }
 }
+
 
 /* Center the table container on the page */
 .table-container-meters {
