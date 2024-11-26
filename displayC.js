@@ -23,7 +23,7 @@ async function loadConsumerData() {
                 <td>${consumer.MeterReading || ''}</td>
                 <td>${consumer.ImageFileName || ''}</td>
                 <td>${consumer.billFileName || ''}</td>
-                <td>${consumer.validated   || ''}</td>
+                <td>${consumer.validated || ''}</td>
                 <td class="action-buttons">
                     <button onclick="editRow(this)">Edit</button>
                     <button onclick="deleteRow(this)">Delete</button>
@@ -171,7 +171,7 @@ async function deleteRow(button) {
             // Send a DELETE request to the backend
             const response = await fetch('https://hp2u2l5hmc.execute-api.us-east-1.amazonaws.com/dev/Delete_Consumers_function', {
                 method: 'DELETE',
-                body: JSON.stringify({ Email: email }),
+                body: JSON.stringify({ Email: email }),  // Email should be uppercase 'Email'
                 headers: { 'Content-Type': 'application/json' }
             });
 
