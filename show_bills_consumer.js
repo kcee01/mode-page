@@ -47,6 +47,7 @@ function downloadPDF(bill) {
 
     doc.text(20, 30, `Bill ID: ${bill.Bill_ID}`);
     doc.text(20, 40, `Consumer: ${bill.Name} ${bill.Surname}`);
+    doc.text(20, 50, `Email: ${bill.Email}`);
     doc.text(20, 50, `Month: ${bill.Month}`);
     doc.text(20, 60, `Address: ${bill.Address}`);
     doc.text(20, 70, `Consumption: ${bill.Consumption} kWh`);
