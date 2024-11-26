@@ -148,7 +148,7 @@ async function deleteRowBills(button) {
 
     if (confirmation) {
         try {
-            const response = await fetch('https://your-api-endpoint/Delete_Bill_Function', {
+            const response = await fetch('https://vqwuavr9s3.execute-api.us-east-1.amazonaws.com/dev/Delete_bill_function', {
                 method: 'DELETE',
                 body: JSON.stringify({ Bill_ID: billId }),
                 headers: { 'Content-Type': 'application/json' }
