@@ -22,6 +22,7 @@ async function loadBillData() {
                     <h3>Bill ID: ${bill.Bill_ID}</h3>
                     <p><strong>Name:</strong> ${bill.Name} ${bill.Surname}</p>
                     <div class="bill-details">
+                        <div><strong>Email:</strong> ${bill.Email}</div>
                         <div><strong>Month:</strong> ${bill.Month}</div>
                         <div><strong>Address:</strong> ${bill.Address}</div>
                         <div><strong>Consumption:</strong> ${bill.Consumption} kWh</div>
