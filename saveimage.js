@@ -3,7 +3,7 @@ async function handleImageUpload(event) {
 
     const fileInput = document.getElementById('image-file');
     const notification = document.getElementById("upload-notification");
-    const consumerEmail = document.getElementById('consumer-email').value; // Retrieve email from the form
+    const consumerEmail = document.getElementById('consumer-email').value;
 
     if (fileInput.files.length === 0) {
         alert("Please select an image file.");
@@ -11,7 +11,7 @@ async function handleImageUpload(event) {
     }
 
     const file = fileInput.files[0];
-    const fileName = file.name; // Extract file name
+    const fileName = file.name; // Extract file name from the selected file
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -20,11 +20,13 @@ async function handleImageUpload(event) {
         const fileExtension = file.name.split('.').pop();
 
         const payload = {
-            email: consumerEmail, // Use email as identifier
+            email: consumerEmail,
             image_data: base64Data,
             file_extension: fileExtension,
-            image_file_name: fileName // Include the extracted file name
+            image_file_name: fileName // Send file name to Lambda
         };
+
+        console.log('Payload:', payload); // Debugging log
 
         try {
             const response = await fetch('https://npt52cvgpe.execute-api.us-east-1.amazonaws.com/dev/SaveImageFunction', {
