@@ -61,7 +61,7 @@ async function updateBillFileName(email, pdfFileName) {
     try {
         const payload = { email, BillFileName: pdfFileName };
 
-        const response = await fetch('https://1bbxdzgjs7.execute-api.us-east-1.amazonaws.com/prod/Display_bills_function', {
+        const response = await fetch('https://2khyj7b1i4.execute-api.us-east-1.amazonaws.com/dev/Update_Bill_name_function', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
