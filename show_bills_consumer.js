@@ -59,25 +59,27 @@ function downloadPDF(bill) {
 
 async function updateBillFileName(email, pdfFileName) {
     try {
-        const payload = { email, BillFileName: pdfFileName };
+        const payload = { email, BillFileName: pdfFileName }; // Construct payload
+        console.log('Payload being sent to API:', payload); // Debugging payload
 
         const response = await fetch('https://2khyj7b1i4.execute-api.us-east-1.amazonaws.com/dev/Update_Bill_name_function', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload),
         });
 
+        console.log('API Response Status:', response.status); // Log response status
         if (!response.ok) {
             const errorResponse = await response.json();
+            console.log('Error Response from API:', errorResponse); // Log error response
             throw new Error(errorResponse.error || 'Failed to update BillFileName');
         }
 
-        console.log('BillFileName updated successfully.');
+        console.log('BillFileName updated successfully in the Consumers table.');
     } catch (error) {
-        console.error('Error updating BillFileName:', error);
+        console.error('Error updating BillFileName:', error); // Log error in console
     }
 }
-
 document.addEventListener('DOMContentLoaded', loadBillData);
