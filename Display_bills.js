@@ -83,7 +83,7 @@ async function saveRowBills(button) {
     };
 
     try {
-        const response = await fetch('https://your-api-endpoint/Update_Bill_Function', {
+        const response = await fetch('https://q9ixy3xeyi.execute-api.us-east-1.amazonaws.com/prod/Update_bills_table_function', {
             method: 'POST',
             body: JSON.stringify(billData),
             headers: {
