@@ -20,7 +20,7 @@ async function loadConsumerData() {
                 <td>${consumer.dateOfCreation || ''}</td>
                 <td>${consumer.year || ''}</td>
                 <td>${consumer.month || ''}</td>
-                <td>${consumer.meterReading || ''}</td>
+                <td>${consumer.MeterReading || ''}</td>
                 <td>${consumer.imageFileName || ''}</td>
                 <td>${consumer.billFileName || ''}</td>
                 <td>${consumer.validated   || ''}</td>
@@ -80,7 +80,7 @@ async function saveRow(button) {
         dateOfCreation: updatedData[6],
         year: parseInt(updatedData[7], 10) || 0, // Convert to integer
         month: parseInt(updatedData[8], 10) || 0, // Convert to integer
-        meterReading: parseFloat(updatedData[9]) || 0, // Convert to float
+        MeterReading: parseFloat(updatedData[9]) || 0, // Convert to float
         imageFileName: updatedData[10],
         billFileName: updatedData[11],
         validated: updatedData[12] === 'true' // Convert to boolean
