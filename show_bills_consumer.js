@@ -1,3 +1,6 @@
+
+
+
 async function loadBillData() {
     try {
         const response = await fetch('https://1bbxdzgjs7.execute-api.us-east-1.amazonaws.com/prod/Display_bills_function');
@@ -47,7 +50,34 @@ function downloadPDF(bill) {
     doc.text(20, 70, `Consumption: ${bill.Consumption} kWh`);
     doc.text(20, 80, `Payment: P ${bill.Payment}`);
 
-    doc.save(`Bill_${bill.Bill_ID}_${bill.Month}.pdf`);
+    const pdfFileName = `Bill_${bill.Bill_ID}_${bill.Month}.pdf`;
+    doc.save(pdfFileName);
+
+    // Call function to update the Consumers table
+    updateBillFileName(bill.Email, pdfFileName);
+}
+
+async function updateBillFileName(email, pdfFileName) {
+    try {
+        const payload = { email, BillFileName: pdfFileName };
+
+        const response = await fetch('https://1bbxdzgjs7.execute-api.us-east-1.amazonaws.com/prod/Display_bills_function', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            throw new Error(errorResponse.error || 'Failed to update BillFileName');
+        }
+
+        console.log('BillFileName updated successfully.');
+    } catch (error) {
+        console.error('Error updating BillFileName:', error);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', loadBillData);
