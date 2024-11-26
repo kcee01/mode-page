@@ -140,17 +140,19 @@ function cancelEditBills(button) {
     `;
 }
 
-// Function to delete a bill row and remove it from the backend
 async function deleteRowBills(button) {
     const row = button.closest('tr');
-    const billId = row.dataset.billId;
+    const billId = row.dataset.billId;  // Assuming `data-bill-id` is set on the row element
     const confirmation = confirm("Are you sure you want to delete this record?");
 
     if (confirmation) {
         try {
             const response = await fetch('https://vqwuavr9s3.execute-api.us-east-1.amazonaws.com/dev/Delete_bill_function', {
                 method: 'DELETE',
-                body: JSON.stringify({ Bill_ID: billId }),
+                body: JSON.stringify({ 
+                    Bill_ID: billId,   // Pass Bill_ID
+                    type: 'bill'       // Ensure 'type' is set to 'bill'
+                }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -160,7 +162,7 @@ async function deleteRowBills(button) {
             }
 
             alert(`Bill with ID ${billId} was deleted successfully.`);
-            row.remove(); // Remove the row from the table
+            row.remove();  // Remove the row from the table after successful deletion
         } catch (error) {
             console.error('Error deleting bill data:', error);
             alert('Failed to delete bill data. Please try again later.');
