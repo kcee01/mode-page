@@ -50,7 +50,7 @@ function downloadPDF(bill) {
     const lineHeight = 10; // Space between lines
 
     // Add bill details with proper spacing
-    doc.text(20, yPosition, `Bill ID: ${bill.Bill_ID}`);
+    doc.text(20, yPosition, `Bill ID: ${bill_ID}`);
     yPosition += lineHeight; // Move to the next line
     doc.text(20, yPosition, `Consumer: ${bill.Name} ${bill.Surname}`);
     yPosition += lineHeight;
