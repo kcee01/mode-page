@@ -579,12 +579,20 @@ th {
     </footer>
 
     <script>
-        function showForm(formId) {
+        function showSection(event) {
+            const selectedValue = event.target.value; // Get the selected value
             const sections = document.querySelectorAll('.form-section');
+            
+            // Hide all sections
             sections.forEach(section => section.classList.remove('active'));
-            const activeSection = document.getElementById(formId);
-            if (activeSection) activeSection.classList.add('active');
+
+            // Show the selected section if a valid option is chosen
+            if (selectedValue) {
+                const activeSection = document.getElementById(selectedValue);
+                if (activeSection) activeSection.classList.add('active');
+            }
         }
+
     </script>
 
 <!-----------------------JAVASCRIPT-LINK-FUNCTIONS---------------------->
