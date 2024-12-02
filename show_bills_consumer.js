@@ -42,23 +42,35 @@ async function loadBillData() {
 
 
 function downloadPDF(bill) {
-    const { jsPDF } = window.jspdf;
+    const { jsPDF } = window.jspdf; 
     const doc = new jsPDF();
 
-    doc.text(20, 30, `Bill ID: ${bill.Bill_ID}`);
-    doc.text(20, 40, `Consumer: ${bill.Name} ${bill.Surname}`);
-    doc.text(20, 50, `Email: ${bill.Email}`);
-    doc.text(20, 60, `Month: ${bill.Month}`);
-    doc.text(20, 70, `Address: ${bill.Address}`);
-    doc.text(20, 80, `Consumption: ${bill.Consumption} kWh`);
-    doc.text(20, 90, `Payment: P ${bill.Payment}`);
+    // Define initial position and line height
+    let yPosition = 30; // Starting y-coordinate
+    const lineHeight = 10; // Space between lines
 
+    // Add bill details with proper spacing
+    doc.text(20, yPosition, `Bill ID: ${bill.Bill_ID}`);
+    yPosition += lineHeight; // Move to the next line
+    doc.text(20, yPosition, `Consumer: ${bill.Name} ${bill.Surname}`);
+    yPosition += lineHeight;
+    doc.text(20, yPosition, `Email: ${bill.Email}`);
+    yPosition += lineHeight;
+    doc.text(20, yPosition, `Month: ${bill.Month}`);
+    yPosition += lineHeight;
+    doc.text(20, yPosition, `Address: ${bill.Address}`);
+    yPosition += lineHeight;
+    doc.text(20, yPosition, `Consumption: ${bill.Consumption} kWh`);
+    yPosition += lineHeight;
+    doc.text(20, yPosition, `Payment: P ${bill.Payment}`);
+
+    // Set a filename and trigger the download
     const pdfFileName = `Bill_${bill.Bill_ID}_${bill.Month}.pdf`;
     doc.save(pdfFileName);
-
+}
     // Call function to update the Consumers table
     updateBillFileName(bill.Email, pdfFileName);
-}
+
 
 async function updateBillFileName(email, pdfFileName) {
     try {
