@@ -23,7 +23,7 @@ async function loadBillData() {
                     <p><strong>Name:</strong> ${bill.Name} ${bill.Surname}</p>
                     <div class="bill-details">
                         <div><strong>Email:</strong> ${bill.Email}</div>
-                        
+                        <div><strong>Month:</strong> ${bill.Month}</div>
                         <div><strong>Address:</strong> ${bill.Address}</div>
                         <div><strong>Consumption:</strong> ${bill.Consumption} kWh</div>
                         <div><strong>Payment:</strong> P ${bill.Payment}</div>
@@ -48,10 +48,10 @@ function downloadPDF(bill) {
     doc.text(20, 30, `Bill ID: ${bill.Bill_ID}`);
     doc.text(20, 40, `Consumer: ${bill.Name} ${bill.Surname}`);
     doc.text(20, 50, `Email: ${bill.Email}`);
-    doc.text(20, 50, `Month: ${bill.Month}`);
-    doc.text(20, 60, `Address: ${bill.Address}`);
-    doc.text(20, 70, `Consumption: ${bill.Consumption} kWh`);
-    doc.text(20, 80, `Payment: P ${bill.Payment}`);
+    doc.text(20, 60, `Month: ${bill.Month}`);
+    doc.text(20, 70, `Address: ${bill.Address}`);
+    doc.text(20, 80, `Consumption: ${bill.Consumption} kWh`);
+    doc.text(20, 90, `Payment: P ${bill.Payment}`);
 
     const pdfFileName = `Bill_${bill.Bill_ID}_${bill.Month}.pdf`;
     doc.save(pdfFileName);
