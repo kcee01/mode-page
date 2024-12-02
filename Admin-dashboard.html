@@ -343,6 +343,89 @@ th {
 }
 
 
+/* Dropdown Container */
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and dropdown */
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+.dropdown-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Custom Dropdown Wrapper */
+.custom-dropdown {
+    position: relative;
+    width: 250px;
+}
+
+/* Dropdown Base Styling */
+.styled-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    appearance: none; /* Hides the native dropdown arrow */
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease;
+}
+
+/* Custom Arrow */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Prevent interaction */
+    font-size: 16px;
+    color: #333;
+}
+
+/* Dropdown Hover Effect */
+.styled-dropdown:hover {
+    background-color: #f0f0f0;
+    border-color: #007bff;
+}
+
+/* Dropdown Focus Effect */
+.styled-dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
+    border-color: #007bff;
+}
+
+/* Dropdown Options */
+.styled-dropdown option {
+    font-size: 14px;
+    padding: 5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .custom-dropdown {
+        width: 100%;
+    }
+
+    .styled-dropdown {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .custom-arrow {
+        font-size: 14px;
+    }
+}
+
+
 
     </style>
 </head>
