@@ -9,295 +9,95 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script>
     
     <link rel="stylesheet" href="styles.css">
+    <style>  
+    /* Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
     
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-
-        nav {
-            background: #333;
-            padding: 10px 0;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
-            color: #ffcc00;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        section {
-            display: none; /* Hide all sections initially */
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-        }
-
-        section.active {
-            display: block; /* Show active section */
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        input, select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-/* Center the table container on the page */
-.table-container {
-    display: flex;
-    justify-content: center; /* Centers the table within the container */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Table Styling */
-table {
-    width: 95%;
-    max-width: 700px; /* Adjusted width for larger table */
-    margin: auto; /* Center the table on the page */
-    border-collapse: collapse;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-/* Header Styling */
-thead th {
-    color: white; /* Header text color */
-    padding: 14px; /* Increased padding for better visibility */
-    text-align: left;
-    background-color: #007bff; /* Header background color */
-    font-size: 12px; /* Slightly larger font for header */
-}
-
-/* Row Styling */
-th, td {
-    border-bottom: 1px solid #ddd;
-    padding: 14px; /* Increased padding for better readability */
-    font-size: 12px; /* Slightly larger font for readability */
-}
-
-/* Alternate Row Colors */
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* Hover Effect */
-tbody tr:hover {
-    background-color: #e9f2ff;
-    cursor: pointer;
-}
-
-/* Action Button Styling */
-.action-buttons button {
-    margin-right: 6px;
-    padding: 8px 14px; /* Increased padding for better button size */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.action-buttons button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 950px) {
-    th, td {
-        padding: 12px;
-        font-size: 18px;
+    header {
+        background: #28a745; /* Green color */
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
     }
-
-    .action-buttons button {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-}
-
-
-/* Center the table container on the page */
-.table-container-meters {
-    display: flex;
-    justify-content: center; /* Centers the table within the container */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-table {
-    width: 100%;
-    max-width: 900px; /* Optional: controls the table width */
-    margin: auto; /* Center the table on the page */
-    border-collapse: collapse;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-thead th {
-    color: white; /* Header text color */
-    padding: 12px; /* Spacing within header cells */
-    text-align: left;
-    background-color: #007bff; /* Header background color */
-}
-
-/* Row Styling */
-th, td {
-    border-bottom: 1px solid #ddd;
-    padding: 10px; /* Cell padding */
-    text-align: center; /* Center align table content */
-}
-
-/* Alternate Row Colors */
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #e9f2ff;
-    cursor: pointer;
-}
-
-/* Action Button Styling */
-.action-buttons-meters {
-    display: flex;
-    gap: 8px;
-}
-
-.action-buttons-meters button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.action-buttons-meters button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    th, td {
+    
+    nav {
+        background: #28a745; /* Green background */
+        color: white;
         padding: 10px;
-        font-size: 14px;
     }
-
-    .action-buttons-meters button {
-        padding: 6px 10px;
-        font-size: 12px;
+    
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        position: relative;
     }
-}
-
-.form-section {
-    margin-bottom: 2rem; /* Add some space between sections */
-}
-
-.table-container-bills {
-    margin-top: 1rem; /* Adds space between the form and the table */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 0.5rem;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-#generate-bill h2, #bills-information h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-
-    </style>
+    
+    nav ul li {
+        margin: 0 15px;
+        position: relative;
+    }
+    
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        display: block;
+    }
+    
+    nav ul li a:hover {
+        background-color: #218838; /* Darker green for hover */
+        border-radius: 5px;
+    }
+    
+    nav ul li ul {
+        display: none; /* Initially hide dropdown */
+        position: absolute;
+        background: #28a745; /* Dropdown background */
+        list-style: none;
+        padding: 10px 0;
+        margin: 0;
+        top: 100%; /* Position dropdown below parent */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    nav ul li ul li {
+        margin: 0;
+        text-align: left;
+    }
+    
+    nav ul li ul li a {
+        padding: 10px 15px;
+    }
+    
+    nav ul li:hover ul {
+        display: block; /* Show dropdown on hover */
+    }
+    
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        nav ul li ul {
+            position: static; /* Align dropdown in column view */
+            box-shadow: none;
+            border-radius: 0;
+        }
+    }
+</style>
+    
 </head>
 <body>
     <header>
