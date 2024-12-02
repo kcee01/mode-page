@@ -303,15 +303,13 @@ th {
         <a href="#logout" class="logout-button">Logout</a>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
-            <li><a href="#edit-profile" onclick="showForm('list-consumer-profile')">Consumer Profiles</a></li>
-            <li><a href="#admin-profile" onclick="showForm('admin-profile')">Admin Profile</a></li>
-            <li><a href="#add-meter" onclick="showForm('list-meter-profile')">Meters</a></li>
-            <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
-        </ul>
-    </nav>
+    <label for="menu-dropdown">Select an option:</label>
+    <select id="menu-dropdown" onchange="showSection(event)">
+        <option value="">-- Select --</option>
+        <option value="form1">Form 1</option>
+        <option value="form2">Form 2</option>
+        <option value="form3">Form 3</option>
+    </select>
 
     <main>
         <!-----------------------ADMIN-PROFILE-EDIT------------------------->
