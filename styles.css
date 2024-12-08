@@ -7,9 +7,9 @@ body {
 }
 
 header {
-    background: #007bff;
-    color: white;
-    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
     text-align: center;
     position: relative;
 }
@@ -26,7 +26,8 @@ header {
 }
 
 nav {
-    background: #333;
+    background: #444;
+    color: #fff;
     padding: 10px 0;
 }
 
@@ -42,9 +43,8 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
 }
 
 nav ul li a:hover {
@@ -54,75 +54,65 @@ nav ul li a:hover {
 
 main {
     padding: 20px;
+    background: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-section {
-    display: none; /* Hide all sections initially */
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+h2 {
+    color: #333;
 }
 
-section.active {
-    display: block; /* Show active section */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4cae4c;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 20px 0;
     background: #333;
     color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-input, select, button {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-}
-
-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-/* Table Styles */
+/* Table Styling */
 .table-container {
     display: flex;
-    justify-content: center; /* Center the table */
+    justify-content: center;
     padding: 20px;
     box-sizing: border-box;
-    overflow-x: auto; /* Enable horizontal scrolling for small screens */
+    overflow-x: auto;
 }
 
 table {
     width: 100%;
-    max-width: 900px; /* Maximum table width */
+    max-width: 900px;
     margin: auto;
     border-collapse: collapse;
     border-radius: 8px;
@@ -132,19 +122,18 @@ table {
 }
 
 thead th {
-    color: white; /* Header text color */
-    padding: 12px;
+    color: white;
+    padding: 14px;
     text-align: left;
-    background-color: #007bff; /* Header background color */
-    font-size: 1rem; /* Responsive font size */
+    background-color: #007bff;
+    font-size: 14px;
 }
 
 th, td {
     border-bottom: 1px solid #ddd;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
-    font-size: 0.9rem; /* Responsive font size */
-    word-wrap: break-word; /* Allow word breaking for small screens */
+    font-size: 14px;
 }
 
 tbody tr:nth-child(even) {
@@ -156,41 +145,10 @@ tbody tr:hover {
     cursor: pointer;
 }
 
-/* Scrollable Table Wrapper for Small Screens */
-@media (max-width: 768px) {
-    .table-container {
-        overflow-x: scroll;
-    }
-
-    table {
-        width: 700px; /* Minimum width for proper table display */
-    }
-
-    th, td {
-        padding: 10px;
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    th, td {
-        padding: 8px;
-        font-size: 0.7rem;
-    }
-
-    table {
-        width: 600px; /* Further reduce width for very small screens */
-    }
-}
-
-/* Action Button Styles */
-.action-buttons {
-    display: flex;
-    gap: 8px;
-}
-
+/* Action Button Styling */
 .action-buttons button {
-    padding: 8px 12px;
+    margin-right: 6px;
+    padding: 8px 14px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -203,9 +161,50 @@ tbody tr:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 480px) {
-    .action-buttons button {
-        padding: 6px 10px;
-        font-size: 0.7rem;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    th, td {
+        padding: 8px;
+        font-size: 12px;
     }
+
+    .action-buttons button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    th, td {
+        padding: 6px;
+        font-size: 10px;
+    }
+
+    .action-buttons button {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+}
+
+/* Table-Specific Adjustments */
+.table-container-bills {
+    margin-top: 1rem;
+}
+
+#generate-bill h2, #bills-information h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
