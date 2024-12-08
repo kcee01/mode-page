@@ -309,11 +309,11 @@ th {
 
     <nav>
         <ul>
-            <li><a href="#verify-Admin" onclick="showSection('verify-Admin')">Verify Admin</a></li>
-            <li><a href="#admin-profile" onclick="showSection('admin-profile')">Edit Profile</a></li>
-            <li><a href="#list-consumer-profile" onclick="showSection('list-consumer-profile')">List Consumer Profile</a></li>
-            <li><a href="#list-meter-profile" onclick="showSection('list-meter-profile')">Meters</a></li>
-            <li><a href="#generate-bill" onclick="showSection('generate-bill')">Generate Bill</a></li>
+            <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
+            <li><a href="#admin-profile" onclick="showForm('admin-profile')">Edit Profile</a></li>
+            <li><a href="#list-consumer-profile" onclick="showForm('list-consumer-profile')">List Consumer Profile</a></li>
+            <li><a href="#list-meter-profile" onclick="showForm('list-meter-profile')">Meters</a></li>
+            <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
         </ul>
     </nav>
 
@@ -585,8 +585,8 @@ th {
         <p>&copy; 2024 WeBill. All rights reserved.</p>
     </footer>
     <script>
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
+        function showForm(sectionId) {
+            const sections = document.querySelectorAll('.form-section');
             sections.forEach(section => section.classList.remove('active'));
 
             const activeSection = document.getElementById(sectionId);
