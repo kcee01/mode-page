@@ -313,286 +313,289 @@ th {
     </style>
 
 </head>
-<body class="wrapper">
-    <header>
-        <h1>WeBill Admin Panel</h1>
-        <a href="#logout" class="logout-button">Logout</a>
-    </header>
+<body>
+
+  <div class="wrapper">  
+        <header>
+            <h1>WeBill Admin Panel</h1>
+            <a href="#logout" class="logout-button">Logout</a>
+        </header>
 
 
-    <nav>
-        <ul>
-            <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
-            <li><a href="#admin-profile" onclick="showForm('admin-profile')">Edit Profile</a></li>
-            <li><a href="#list-consumer-profile" onclick="showForm('list-consumer-profile')">List Consumer Profile</a></li>
-            <li><a href="#list-meter-profile" onclick="showForm('list-meter-profile')">Meters</a></li>
-            <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="#verify-Admin" onclick="showForm('verify-Admin')">Verify Admin</a></li>
+                <li><a href="#admin-profile" onclick="showForm('admin-profile')">Edit Profile</a></li>
+                <li><a href="#list-consumer-profile" onclick="showForm('list-consumer-profile')">List Consumer Profile</a></li>
+                <li><a href="#list-meter-profile" onclick="showForm('list-meter-profile')">Meters</a></li>
+                <li><a href="#generate-bill" onclick="showForm('generate-bill')">Generate Bill</a></li>
+            </ul>
+        </nav>
 
-      
-    <main>
-        <!-----------------------ADMIN-PROFILE-EDIT------------------------->
-            <section id="admin-profile" class="form-section">
-                <h2>Admin Profile</h2>
-                <form id="admin-profile-form">
-                    <div>
-                        <label for="admin-given-name"><strong>Given Name:</strong></label>
-                        <input type="text" id="admingivenname" name="givenName">
-                    </div>
-                    <div>
-                        <label for="admin-surname"><strong>Surname:</strong></label>
-                        <input type="text" id="adminsurname" name="surname">
-                    </div>
-                    <div>
-                        <label for="admin-email"><strong>Email:</strong></label>
-                        <input type="email" id="adminemail" name="email" readonly>
-                    </div>
-                    <div>
-                        <label for="admin-address"><strong>Address:</strong></label>
-                        <input type="text" id="adminaddress" name="address">
-                    </div>
-                     
-                    <button type="submit" id="save-profile-button">Save Profile</button>
-                </form>
-            </section>
-            
-        <!-----------------------ADMIN-PROFILE-EDIT--END----------------------->
-    
-    
-    
-                <!--------------------ADMIN-VERIFICATION------------------->
-            <section id="verify-Admin" class="form-section">
-                <h2>Verify Admin</h2>
-                <form id="adminForm" onsubmit="return handleVerification(event)">
-                  <label for="given-name">Given name:</label>
-                  <input type="text" id="given-name" name="givenName" required>
-              
-                  <label for="surname">Surname:</label>
-                  <input type="text" id="surname" name="surname" required>
-              
-                  <label for="address">Address:</label>
-                  <input type="text" id="address" name="address" required>
-              
-                  <label for="email-address">Email address:</label>
-                  <input type="email" id="email-address" name="email" required>
-              
-                  <button type="submit">Verify</button>
-                  <div id="verification-notification" class="notification"></div>
-                </form>
-              </section>
-            <!--------------------ADMIN-VERIFICATION-END------------------>
-            
         
+        <main>
+            <!-----------------------ADMIN-PROFILE-EDIT------------------------->
+                <section id="admin-profile" class="form-section">
+                    <h2>Admin Profile</h2>
+                    <form id="admin-profile-form">
+                        <div>
+                            <label for="admin-given-name"><strong>Given Name:</strong></label>
+                            <input type="text" id="admingivenname" name="givenName">
+                        </div>
+                        <div>
+                            <label for="admin-surname"><strong>Surname:</strong></label>
+                            <input type="text" id="adminsurname" name="surname">
+                        </div>
+                        <div>
+                            <label for="admin-email"><strong>Email:</strong></label>
+                            <input type="email" id="adminemail" name="email" readonly>
+                        </div>
+                        <div>
+                            <label for="admin-address"><strong>Address:</strong></label>
+                            <input type="text" id="adminaddress" name="address">
+                        </div>
+                        
+                        <button type="submit" id="save-profile-button">Save Profile</button>
+                    </form>
+                </section>
+                
+            <!-----------------------ADMIN-PROFILE-EDIT--END----------------------->
+        
+        
+        
+                    <!--------------------ADMIN-VERIFICATION------------------->
+                <section id="verify-Admin" class="form-section">
+                    <h2>Verify Admin</h2>
+                    <form id="adminForm" onsubmit="return handleVerification(event)">
+                    <label for="given-name">Given name:</label>
+                    <input type="text" id="given-name" name="givenName" required>
+                
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" required>
+                
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                
+                    <label for="email-address">Email address:</label>
+                    <input type="email" id="email-address" name="email" required>
+                
+                    <button type="submit">Verify</button>
+                    <div id="verification-notification" class="notification"></div>
+                    </form>
+                </section>
+                <!--------------------ADMIN-VERIFICATION-END------------------>
+                
             
-    
-            
-            <!------------ADD CONSUMER TO TABLE-------------------------->
-            <section id="add-consumer" class="form-section">
-                <h2>Add Consumer</h2>
-                <form id="consumer-form">
-                    <label for="consumer-given-name">Given Name:</label>
-                    <input type="text" id="consumer-given-name" name="givenName" required>
-            
-                    <label for="consumer-surname">Surname:</label>
-                    <input type="text" id="consumer-surname" name="Surname" required>
-            
-                    <label for="consumer-address">Address:</label>
-                    <input type="text" id="consumer-address" name="Address" required>
-            
-                    <label for="electric-meter-id">Electric Meter ID:</label>
-                    <input type="text" id="electric-meter-id" name="electricMeterId" required>
-            
-                    <label for="consumer-email">E-mail Address:</label>
-                    <input type="email" id="consumer-email" name="email" required>
-            
-                    <label for="consumer-secret">Secret Word:</label>
-                    <input type="password" id="consumer-secret" name="consumerSecret" required>
-            
-                    <label for="enabled">Enabled:</label>
-                    <select id="enabled" name="enabled" required>
-                        <option value="yes">True</option>
-                        <option value="no">False</option>
-                    </select>
-            
-                    <label for="consumer-DOC">Date of creation:</label>
-                    <input type="date" id="consumer-DOC" name="consumerDOC" required>
-            
-                    <label for="year">Year:</label>
-                    <input type="number" id="year" name="year" required>
-            
-                    <label for="month">Month:</label>
-                    <input type="month" id="month" name="month" required>
-            
-                    <label for="meter-reading">Meter Reading:</label>
-                    <input type="number" id="meter-reading" name="meterReading" required>
-            
-                    <label for="image-file">Image file name:</label>
-                    <input type="text" id="image-file" name="imageFile" required>
-            
-                    <label for="bill-file">Bill file name:</label>
-                    <input type="text" id="bill-file" name="billFile" required>
-            
-                    <label for="enabledByAdmin">Enabled by Admin:</label>
-                    <select id="enabledByAdmin" name="enabledByAdmin" required>
-                        <option value="yes">True</option>   
-                        <option value="no">False</option>
-                    </select>
-                    <br>                
-                    <button type="submit">Add Consumer</button>
-                </form>
-            </section>
-       <!------------ADD CONSUMER TO TABLE-END------------------------->    
+                
+        
+                
+                <!------------ADD CONSUMER TO TABLE-------------------------->
+                <section id="add-consumer" class="form-section">
+                    <h2>Add Consumer</h2>
+                    <form id="consumer-form">
+                        <label for="consumer-given-name">Given Name:</label>
+                        <input type="text" id="consumer-given-name" name="givenName" required>
+                
+                        <label for="consumer-surname">Surname:</label>
+                        <input type="text" id="consumer-surname" name="Surname" required>
+                
+                        <label for="consumer-address">Address:</label>
+                        <input type="text" id="consumer-address" name="Address" required>
+                
+                        <label for="electric-meter-id">Electric Meter ID:</label>
+                        <input type="text" id="electric-meter-id" name="electricMeterId" required>
+                
+                        <label for="consumer-email">E-mail Address:</label>
+                        <input type="email" id="consumer-email" name="email" required>
+                
+                        <label for="consumer-secret">Secret Word:</label>
+                        <input type="password" id="consumer-secret" name="consumerSecret" required>
+                
+                        <label for="enabled">Enabled:</label>
+                        <select id="enabled" name="enabled" required>
+                            <option value="yes">True</option>
+                            <option value="no">False</option>
+                        </select>
+                
+                        <label for="consumer-DOC">Date of creation:</label>
+                        <input type="date" id="consumer-DOC" name="consumerDOC" required>
+                
+                        <label for="year">Year:</label>
+                        <input type="number" id="year" name="year" required>
+                
+                        <label for="month">Month:</label>
+                        <input type="month" id="month" name="month" required>
+                
+                        <label for="meter-reading">Meter Reading:</label>
+                        <input type="number" id="meter-reading" name="meterReading" required>
+                
+                        <label for="image-file">Image file name:</label>
+                        <input type="text" id="image-file" name="imageFile" required>
+                
+                        <label for="bill-file">Bill file name:</label>
+                        <input type="text" id="bill-file" name="billFile" required>
+                
+                        <label for="enabledByAdmin">Enabled by Admin:</label>
+                        <select id="enabledByAdmin" name="enabledByAdmin" required>
+                            <option value="yes">True</option>   
+                            <option value="no">False</option>
+                        </select>
+                        <br>                
+                        <button type="submit">Add Consumer</button>
+                    </form>
+                </section>
+        <!------------ADD CONSUMER TO TABLE-END------------------------->    
 
 
 
 
 
-   <!-- -------------Consumer Profile Table Section------------ -->
-   <section id="list-consumer-profile" class="form-section active">
-    <h2>Consumer Profiles</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Given Name</th>
-                    <th>Surname</th>
-                    <th>Address</th>
-                    <th>Electric Meter ID</th>
-                    <th>Email</th>
-                    <th>Enabled</th>
-                    <th>Date of Creation</th>
-                    <th>Year</th>
-                    <th>Month</th>
-                    <th>Meter Reading</th>
-                    <th>Image File Name</th>
-                    <th>Bill File Name</th>
-                    <th>Enabled by Admin</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamic rows will be populated by JavaScript -->
-            </tbody>
-        </table>
-    </div>
-    <button onclick="showForm('add-consumer')" aria-label="Add new consumer">Add New Consumer</button>
-</section>
-
-
-   <!-- -------------Consumer Profile Table Section--end---------- -->
-
-
-
-
-
-
-    <!----------------------Add--meters-to-section------------------------------------>
-    
-    
-
-        <section id="add-meter" class="form-section">
-            <h2>Add Meter</h2>
-            <form id="add-meter-form">
-                <label for="meter-id">Meter ID:</label>
-                <input type="number" id="meter-id" name="meterId" required>
-
-                <label for="longitude">Longitude:</label>
-                <input type="number" step="0.000001" id="longitude" name="longitude" required>
-
-                <label for="latitude">Latitude:</label>
-                <input type="number" step="0.000001" id="latitude" name="latitude" required>
-
-                <button type="submit">Add Meter</button>
-            </form>
-
-            <!-- QR Code display container-->
-                 <!-- Container for displaying the QR Code -->
-            <h3>Generated QR Code:</h3>
-            <div id="qr-code"></div> 
-        </section> 
-
- <!----------------------Add--meters-to-section---END--------------------------------->
-
-
-
-
-
- <!------------------------meters-table-section------------------------------------>
- <section id="list-meter-profile">
-    <h2>Meters Information</h2>
-    <div class="table-container-meters">
-        <table>
-            <thead>
-                <tr>
-                    <th>Meter ID</th>
-                    <th>Longitude</th>
-                    <th>Latitude</th>
-                    <th>Qr Code</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="meter-table-body">
-                <!-- Dynamic rows will be populated by JavaScript -->
-            </tbody>
-        </table>
-    </div>
-    <button onclick="showForm('add-meter')" aria-label="Add new meter">Add New Meter</button>
-</section>
-
-<!------------------------meters-table-section---END--------------------------------->
-
-
-
-
-
-
-<!------------------------Generate-bill-section------------------------------------>
-<section id="generate-bill" class="form-section">
-    <h2>Generate Bill</h2>
-    <form id="generate-bill-form">
-        <label for="bill-consumer-email">Consumer Email:</label>
-        <input type="email" id="bill-consumer-email" required>
-
-        <label for="bill-consumer-month">Month:</label>
-        <input type="month" id="bill-consumer-month" required>
-
-        <button type="submit">Generate Bill</button>
-    </form>
-
-    <!-- Bills Information Section -->
-    <section id="bills-information">
-        <h2>Bills Information</h2>
-        <div class="table-container-bills">
+    <!-- -------------Consumer Profile Table Section------------ -->
+    <section id="list-consumer-profile" class="form-section active">
+        <h2>Consumer Profiles</h2>
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>Bill ID</th>
-                        <th>Name</th>
+                        <th>Given Name</th>
                         <th>Surname</th>
-                        <th>Email</th>
-                        <th>Month</th>
                         <th>Address</th>
-                        <th>Consumption (kWh)</th>
-                        <th>Payment (P)</th>
+                        <th>Electric Meter ID</th>
+                        <th>Email</th>
+                        <th>Enabled</th>
+                        <th>Date of Creation</th>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>Meter Reading</th>
+                        <th>Image File Name</th>
+                        <th>Bill File Name</th>
+                        <th>Enabled by Admin</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="bills-table-body">
+                <tbody>
                     <!-- Dynamic rows will be populated by JavaScript -->
                 </tbody>
             </table>
         </div>
+        <button onclick="showForm('add-consumer')" aria-label="Add new consumer">Add New Consumer</button>
     </section>
-</section>
 
-<script>
-    document.getElementById('bills-information').style.display = 'block';
 
-</script>
+    <!-- -------------Consumer Profile Table Section--end---------- -->
 
-<!------------------------Generate-bill-section---END--------------------------------->
-    </main>
+
+
+
+
+
+        <!----------------------Add--meters-to-section------------------------------------>
+        
+        
+
+            <section id="add-meter" class="form-section">
+                <h2>Add Meter</h2>
+                <form id="add-meter-form">
+                    <label for="meter-id">Meter ID:</label>
+                    <input type="number" id="meter-id" name="meterId" required>
+
+                    <label for="longitude">Longitude:</label>
+                    <input type="number" step="0.000001" id="longitude" name="longitude" required>
+
+                    <label for="latitude">Latitude:</label>
+                    <input type="number" step="0.000001" id="latitude" name="latitude" required>
+
+                    <button type="submit">Add Meter</button>
+                </form>
+
+                <!-- QR Code display container-->
+                    <!-- Container for displaying the QR Code -->
+                <h3>Generated QR Code:</h3>
+                <div id="qr-code"></div> 
+            </section> 
+
+    <!----------------------Add--meters-to-section---END--------------------------------->
+
+
+
+
+
+    <!------------------------meters-table-section------------------------------------>
+    <section id="list-meter-profile">
+        <h2>Meters Information</h2>
+        <div class="table-container-meters">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meter ID</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                        <th>Qr Code</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="meter-table-body">
+                    <!-- Dynamic rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <button onclick="showForm('add-meter')" aria-label="Add new meter">Add New Meter</button>
+    </section>
+
+    <!------------------------meters-table-section---END--------------------------------->
+
+
+
+
+
+
+    <!------------------------Generate-bill-section------------------------------------>
+    <section id="generate-bill" class="form-section">
+        <h2>Generate Bill</h2>
+        <form id="generate-bill-form">
+            <label for="bill-consumer-email">Consumer Email:</label>
+            <input type="email" id="bill-consumer-email" required>
+
+            <label for="bill-consumer-month">Month:</label>
+            <input type="month" id="bill-consumer-month" required>
+
+            <button type="submit">Generate Bill</button>
+        </form>
+
+        <!-- Bills Information Section -->
+        <section id="bills-information">
+            <h2>Bills Information</h2>
+            <div class="table-container-bills">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bill ID</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Email</th>
+                            <th>Month</th>
+                            <th>Address</th>
+                            <th>Consumption (kWh)</th>
+                            <th>Payment (P)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bills-table-body">
+                        <!-- Dynamic rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        document.getElementById('bills-information').style.display = 'block';
+
+    </script>
+
+    <!------------------------Generate-bill-section---END--------------------------------->
+        </main>
+</div>  
 
     <footer>
         <p>&copy; 2024 WeBill. All rights reserved.</p>
