@@ -591,21 +591,30 @@ th {
     <footer>
         <p>&copy; 2024 WeBill. All rights reserved.</p>
     </footer>
+    
     <script>
+        // Function to show the correct form section
         function showForm(sectionId) {
             const sections = document.querySelectorAll('.form-section');
             sections.forEach(section => section.classList.remove('active'));
-
+        
             const activeSection = document.getElementById(sectionId);
-            activeSection.classList.add('active');
-
-            // Scroll to the top of the active section
-            activeSection.scrollIntoView({ behavior: 'smooth' });
+            if (activeSection) {
+                activeSection.classList.add('active');
+                activeSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
-
-      
+        
+        // Handle the hash on page load
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1); // Get the hash without the '#' symbol
+            if (hash) {
+                showForm(hash); // Show the section corresponding to the hash
+            } else {
+                showForm('list-consumer-profile'); // Default to 'List Consumer Profile'
+            }
+        });
     </script>
-
 <!-----------------------JAVASCRIPT-LINK-FUNCTIONS---------------------->
         <script src="verifyA.js"></script>
         <script src="addconsumer.js"></script>
