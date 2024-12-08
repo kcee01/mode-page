@@ -156,6 +156,33 @@ tbody tr:hover {
     cursor: pointer;
 }
 
+/* Scrollable Table Wrapper for Small Screens */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: scroll;
+    }
+
+    table {
+        width: 700px; /* Minimum width for proper table display */
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    th, td {
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+
+    table {
+        width: 600px; /* Further reduce width for very small screens */
+    }
+}
+
 /* Action Button Styles */
 .action-buttons {
     display: flex;
@@ -176,31 +203,9 @@ tbody tr:hover {
     background-color: #0056b3;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    table {
-        font-size: 0.8rem;
-    }
-
-    th, td {
-        padding: 10px;
-        font-size: 0.8rem;
-    }
-
+@media (max-width: 480px) {
     .action-buttons button {
         padding: 6px 10px;
         font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 480px) {
-    th, td {
-        padding: 8px;
-        font-size: 0.7rem;
-    }
-
-    .action-buttons button {
-        padding: 4px 8px;
-        font-size: 0.6rem;
     }
 }
