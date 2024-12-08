@@ -9,109 +9,109 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1259.0.min.js"></script>
     
     <link rel="stylesheet" href="styles.css">
-<style>    
-    /* Global Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
 
-header {
-    background: #dc3545; /* Red color */
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-}
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-nav {
-    background: #333;
-    padding: 10px 0;
-}
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
+        nav {
+            background: #333;
+            padding: 10px 0;
+        }
 
-nav ul li {
-    margin: 0 15px;
-}
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
+        nav ul li {
+            margin: 0 15px;
+        }
 
-nav ul li a:hover {
-    text-decoration: underline;
-    color: #ffcccb; /* Lighter red for hover */
-}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-main {
-    padding: 20px;
-}
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #ffcc00;
+        }
 
-section {
-    display: none; /* Hide all sections initially */
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-}
+        main {
+            padding: 20px;
+        }
 
-section.active {
-    display: block; /* Show active section */
-}
+        section {
+            display: none; /* Hide all sections initially */
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+        section.active {
+            display: block; /* Show active section */
+        }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-input, select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
 
-button {
-    padding: 10px;
-    background: #dc3545; /* Red color */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
+        input, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-button:hover {
-    background: #b02a37; /* Darker red for hover */
-}
+        button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
+        button:hover {
+            background: #0056b3;
+        }
 /* Center the table container on the page */
 .table-container {
     display: flex;
@@ -137,7 +137,7 @@ thead th {
     color: white; /* Header text color */
     padding: 14px; /* Increased padding for better visibility */
     text-align: left;
-    background-color: #dc3545; /* Red header background */
+    background-color: #007bff; /* Header background color */
     font-size: 12px; /* Slightly larger font for header */
 }
 
@@ -155,7 +155,7 @@ tbody tr:nth-child(even) {
 
 /* Hover Effect */
 tbody tr:hover {
-    background-color: #f8d7da; /* Light red for hover effect */
+    background-color: #e9f2ff;
     cursor: pointer;
 }
 
@@ -163,7 +163,7 @@ tbody tr:hover {
 .action-buttons button {
     margin-right: 6px;
     padding: 8px 14px; /* Increased padding for better button size */
-    background-color: #dc3545; /* Red buttons */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -172,7 +172,7 @@ tbody tr:hover {
 }
 
 .action-buttons button:hover {
-    background-color: #b02a37; /* Darker red on hover */
+    background-color: #0056b3;
 }
 
 /* Responsive Adjustments */
@@ -187,6 +187,7 @@ tbody tr:hover {
         font-size: 12px;
     }
 }
+
 
 /* Center the table container on the page */
 .table-container-meters {
@@ -211,7 +212,7 @@ thead th {
     color: white; /* Header text color */
     padding: 12px; /* Spacing within header cells */
     text-align: left;
-    background-color: #dc3545; /* Red header background */
+    background-color: #007bff; /* Header background color */
 }
 
 /* Row Styling */
@@ -227,7 +228,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background-color: #f8d7da; /* Light red for hover */
+    background-color: #e9f2ff;
     cursor: pointer;
 }
 
@@ -239,7 +240,7 @@ tbody tr:hover {
 
 .action-buttons-meters button {
     padding: 8px 12px;
-    background-color: #dc3545; /* Red buttons */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -248,7 +249,7 @@ tbody tr:hover {
 }
 
 .action-buttons-meters button:hover {
-    background-color: #b02a37; /* Darker red */
+    background-color: #0056b3;
 }
 
 /* Responsive Adjustments */
@@ -287,7 +288,7 @@ th, td {
 }
 
 th {
-    background-color: #f8d7da; /* Light red for table headers */
+    background-color: #f2f2f2;
 }
 
 #generate-bill h2, #bills-information h2 {
@@ -295,139 +296,9 @@ th {
     margin-bottom: 0.5rem;
 }
 
-/* Style the label for the dropdown */
-.dropdown-label {
-    font-weight: bold;
-    font-size: 16px;
-    color: #333;
-    margin-right: 10px;
-}
-
-/* Dropdown Styling */
-.styled-dropdown {
-    width: 200px; /* Width of the dropdown */
-    padding: 10px; /* Inner padding for clickable area */
-    font-size: 16px; /* Font size for better readability */
-    color: #333; /* Default text color */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f9f9f9; /* Background color */
-    cursor: pointer; /* Pointer cursor for better UX */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-}
-
-/* Hover effect for the dropdown */
-.styled-dropdown:hover {
-    background-color: #f0f0f0;
-    border-color: #007bff; /* Blue border on hover */
-}
-
-/* Style the dropdown options */
-.styled-dropdown option {
-    font-size: 14px; /* Font size for dropdown items */
-    padding: 5px; /* Space around each option */
-}
-
-/* Focus state for accessibility */
-.styled-dropdown:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow on focus */
-    border-color: #007bff;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .styled-dropdown {
-        width: 100%; /* Full width on smaller screens */
-    }
-}
-
-
-/* Dropdown Container */
-.dropdown-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between label and dropdown */
-    margin-bottom: 20px;
-}
-
-/* Label Styling */
-.dropdown-label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Custom Dropdown Wrapper */
-.custom-dropdown {
-    position: relative;
-    width: 250px;
-}
-
-/* Dropdown Base Styling */
-.styled-dropdown {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    appearance: none; /* Hides the native dropdown arrow */
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: all 0.3s ease;
-}
-
-/* Custom Arrow */
-.custom-arrow {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    pointer-events: none; /* Prevent interaction */
-    font-size: 16px;
-    color: #333;
-}
-
-/* Dropdown Hover Effect */
-.styled-dropdown:hover {
-    background-color: #f0f0f0;
-    border-color: #007bff;
-}
-
-/* Dropdown Focus Effect */
-.styled-dropdown:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
-    border-color: #007bff;
-}
-
-/* Dropdown Options */
-.styled-dropdown option {
-    font-size: 14px;
-    padding: 5px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .custom-dropdown {
-        width: 100%;
-    }
-
-    .styled-dropdown {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .custom-arrow {
-        font-size: 14px;
-    }
-}
-
-
 
     </style>
+
 </head>
 <body>
     <header>
