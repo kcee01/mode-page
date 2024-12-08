@@ -309,11 +309,11 @@ th {
 
     <nav>
         <ul>
-            <li><a href="#verify-consumer" onclick="showSection('verify-consumer')">Verify Consumer</a></li>
-            <li><a href="#edit-profile" onclick="showSection('edit-profile')">Edit Profile</a></li>
-            <li><a href="#previous-bills" onclick="showSection('previous-bills')">Previous Bills</a></li>
-            <li><a href="#upload-image" onclick="showSection('upload-image')">Upload Image</a></li>
-            <li><a href="#meter-reading" onclick="showSection('meter-reading')">Meter Reading</a></li>
+            <li><a href="#verify-Admin" onclick="showSection('verify-Admin')">Verify Admin</a></li>
+            <li><a href="#admin-profile" onclick="showSection('admin-profile')">Edit Profile</a></li>
+            <li><a href="#list-consumer-profile" onclick="showSection('list-consumer-profile')">List Consumer Profile</a></li>
+            <li><a href="#list-meter-profile" onclick="showSection('list-meter-profile')">Meters</a></li>
+            <li><a href="#generate-bill" onclick="showSection('generate-bill')">Generate Bill</a></li>
         </ul>
     </nav>
 
@@ -584,22 +584,19 @@ th {
     <footer>
         <p>&copy; 2024 WeBill. All rights reserved.</p>
     </footer>
-
     <script>
-        function showSection(event) {
-            const selectedValue = event.target.value; // Get the selected value
-            const sections = document.querySelectorAll('.form-section');
-            
-            // Hide all sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
             sections.forEach(section => section.classList.remove('active'));
 
-            // Show the selected section if a valid option is chosen
-            if (selectedValue) {
-                const activeSection = document.getElementById(selectedValue);
-                if (activeSection) activeSection.classList.add('active');
-            }
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+
+            // Scroll to the top of the active section
+            activeSection.scrollIntoView({ behavior: 'smooth' });
         }
 
+      
     </script>
 
 <!-----------------------JAVASCRIPT-LINK-FUNCTIONS---------------------->
