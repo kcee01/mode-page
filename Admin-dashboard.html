@@ -111,19 +111,19 @@
 
         button:hover {
             background: #0056b3;
-/* Center the table container on the page CONSUMER TABLE*/
+        }
+/* Center the table container on the page */
 .table-container {
     display: flex;
     justify-content: center; /* Centers the table within the container */
     padding: 20px;
     box-sizing: border-box;
-    overflow-x: auto; /* Add horizontal scrolling for small devices */
 }
 
 /* Table Styling */
 table {
-    width: 100%; /* Allow the table to shrink or grow to fit the container */
-    max-width: 1200px; /* Set a maximum width for larger screens */
+    width: 95%;
+    max-width: 700px; /* Adjusted width for larger table */
     margin: auto; /* Center the table on the page */
     border-collapse: collapse;
     border-radius: 8px;
@@ -135,19 +135,17 @@ table {
 /* Header Styling */
 thead th {
     color: white; /* Header text color */
-    padding: 12px; /* Standard padding */
+    padding: 14px; /* Increased padding for better visibility */
     text-align: left;
     background-color: #007bff; /* Header background color */
-    font-size: 1rem; /* Relative font size for scalability */
+    font-size: 12px; /* Slightly larger font for header */
 }
 
 /* Row Styling */
 th, td {
     border-bottom: 1px solid #ddd;
-    padding: 12px; /* Standard padding for readability */
-    font-size: 0.9rem; /* Relative font size for scalability */
-    text-align: left; /* Ensure alignment for text content */
-    word-wrap: break-word; /* Allow long words to break for better responsiveness */
+    padding: 14px; /* Increased padding for better readability */
+    font-size: 12px; /* Slightly larger font for readability */
 }
 
 /* Alternate Row Colors */
@@ -163,14 +161,13 @@ tbody tr:hover {
 
 /* Action Button Styling */
 .action-buttons button {
-    margin-right: 8px;
-    padding: 8px 16px; /* Standard padding for button size */
+    margin-right: 6px;
+    padding: 8px 14px; /* Increased padding for better button size */
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.8rem; /* Relative font size for scalability */
     transition: background-color 0.3s;
 }
 
@@ -179,37 +176,16 @@ tbody tr:hover {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-    table {
-        font-size: 0.8rem; /* Reduce font size on medium screens */
-    }
-
+@media (max-width: 600px) {
     th, td {
-        padding: 10px; /* Reduce padding for smaller screens */
-        font-size: 0.8rem;
+        padding: 12%;
+        font-size: 18%;
     }
 
     .action-buttons button {
-        padding: 6px 10px; /* Reduce button size */
-        font-size: 0.7rem;
+        padding: 6% 12%;
+        font-size: 12%;
     }
-}
-
-@media (max-width: 480px) {
-    table {
-        font-size: 0.7rem; /* Reduce font size further for very small screens */
-    }
-
-    th, td {
-        padding: 8px; /* Further reduce padding */
-        font-size: 0.7rem;
-    }
-
-    .action-buttons button {
-        padding: 4px 8px; /* Adjust button size for very small screens */
-        font-size: 0.6rem;
-    }
-}
 }
 
 
@@ -223,18 +199,18 @@ tbody tr:hover {
 
 table {
     width: 100%;
-    max-width: 900%; /* Optional: controls the table width */
+    max-width: 900px; /* Optional: controls the table width */
     margin: auto; /* Center the table on the page */
     border-collapse: collapse;
-    border-radius: 8%;
+    border-radius: 8px;
     background-color: white;
-    box-shadow: 0 4% 10% rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 thead th {
     color: white; /* Header text color */
-    padding: 12%; /* Spacing within header cells */
+    padding: 12px; /* Spacing within header cells */
     text-align: left;
     background-color: #007bff; /* Header background color */
 }
@@ -242,7 +218,7 @@ thead th {
 /* Row Styling */
 th, td {
     border-bottom: 1px solid #ddd;
-    padding: 10%; /* Cell padding */
+    padding: 10px; /* Cell padding */
     text-align: center; /* Center align table content */
 }
 
@@ -263,11 +239,11 @@ tbody tr:hover {
 }
 
 .action-buttons-meters button {
-    padding: 8% 12%;
+    padding: 8px 12px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4%;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -321,7 +297,7 @@ tbody tr:hover {
 }
 
 table, th, td {
-    border: 1% solid #ccc;
+    border: 1px solid #ccc;
 }
 
 th, td {
@@ -332,9 +308,7 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
-.table-container{
-    width:100%;
-}
+
 
 }
 
