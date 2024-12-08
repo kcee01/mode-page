@@ -306,23 +306,17 @@ th {
         <a href="#logout" class="logout-button">Logout</a>
     </header>
 
-    <div class="dropdown-container">
-        <label for="menu-dropdown" class="dropdown-label">Menu:</label>
-        <div class="custom-dropdown">
-            <select id="menu-dropdown" class="styled-dropdown" onchange="showSection(event)">
-                <option value="">MENU</option>
-                <option value="admin-profile">Admin Profile</option>
-                <option value="verify-Admin">Verify Admin</option>
-                <option value="add-consumer">Add Consumer</option>
-                <option value="list-consumer-profile">List Consumer Profile</option>
-                <option value="add-meter">Add Meter</option>
-                <option value="list-meter-profile">List Meter Profile</option>
-                <option value="generate-bill">Generate Bill</option>
-                <option value="bills-information">Bills Information</option>
-            </select>
-            <div class="custom-arrow">&#x25BC;</div>
-        </div>
-    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#verify-consumer" onclick="showSection('verify-consumer')">Verify Consumer</a></li>
+            <li><a href="#edit-profile" onclick="showSection('edit-profile')">Edit Profile</a></li>
+            <li><a href="#previous-bills" onclick="showSection('previous-bills')">Previous Bills</a></li>
+            <li><a href="#upload-image" onclick="showSection('upload-image')">Upload Image</a></li>
+            <li><a href="#meter-reading" onclick="showSection('meter-reading')">Meter Reading</a></li>
+        </ul>
+    </nav>
+
       
     <main>
         <!-----------------------ADMIN-PROFILE-EDIT------------------------->
