@@ -121,8 +121,9 @@
 }
 
 /* Table Styling */
-table {
-    width: 95%;
+@media(max-width:600px){
+    table {
+    width: 100%;
     max-width: 100%; /* Adjusted width for larger table */
     margin: auto; /* Center the table on the page */
     border-collapse: collapse;
@@ -131,6 +132,8 @@ table {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
+}
+
 
 /* Header Styling */
 thead th {
