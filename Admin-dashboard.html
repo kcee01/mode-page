@@ -111,20 +111,19 @@
 
         button:hover {
             background: #0056b3;
-        }
 /* Center the table container on the page CONSUMER TABLE*/
 .table-container {
     display: flex;
     justify-content: center; /* Centers the table within the container */
-    padding: 100%;
+    padding: 20px;
     box-sizing: border-box;
+    overflow-x: auto; /* Add horizontal scrolling for small devices */
 }
 
 /* Table Styling */
-@media(max-width:600px){
-    table {
-    width: 700px;
-    /*max-width: 100%;  Adjusted width for larger table */
+table {
+    width: 100%; /* Allow the table to shrink or grow to fit the container */
+    max-width: 1200px; /* Set a maximum width for larger screens */
     margin: auto; /* Center the table on the page */
     border-collapse: collapse;
     border-radius: 8px;
@@ -132,23 +131,23 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
-}
-
 
 /* Header Styling */
 thead th {
     color: white; /* Header text color */
-    padding: 100%; /* Increased padding for better visibility */
+    padding: 12px; /* Standard padding */
     text-align: left;
     background-color: #007bff; /* Header background color */
-    font-size: 100%; /* Slightly larger font for header */
+    font-size: 1rem; /* Relative font size for scalability */
 }
 
 /* Row Styling */
 th, td {
-    border-bottom: 100% solid #ddd;
-    padding: 100%; /* Increased padding for better readability */
-    font-size: 100%; /* Slightly larger font for readability */
+    border-bottom: 1px solid #ddd;
+    padding: 12px; /* Standard padding for readability */
+    font-size: 0.9rem; /* Relative font size for scalability */
+    text-align: left; /* Ensure alignment for text content */
+    word-wrap: break-word; /* Allow long words to break for better responsiveness */
 }
 
 /* Alternate Row Colors */
@@ -164,13 +163,14 @@ tbody tr:hover {
 
 /* Action Button Styling */
 .action-buttons button {
-    margin-right: 100%;
-    padding: 100% 100%; /* Increased padding for better button size */
+    margin-right: 8px;
+    padding: 8px 16px; /* Standard padding for button size */
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 100%;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 0.8rem; /* Relative font size for scalability */
     transition: background-color 0.3s;
 }
 
@@ -179,16 +179,37 @@ tbody tr:hover {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    table {
+        font-size: 0.8rem; /* Reduce font size on medium screens */
+    }
+
     th, td {
-        padding: 12%;
-        font-size: 18%;
+        padding: 10px; /* Reduce padding for smaller screens */
+        font-size: 0.8rem;
     }
 
     .action-buttons button {
-        padding: 6% 12%;
-        font-size: 12%;
+        padding: 6px 10px; /* Reduce button size */
+        font-size: 0.7rem;
     }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 0.7rem; /* Reduce font size further for very small screens */
+    }
+
+    th, td {
+        padding: 8px; /* Further reduce padding */
+        font-size: 0.7rem;
+    }
+
+    .action-buttons button {
+        padding: 4px 8px; /* Adjust button size for very small screens */
+        font-size: 0.6rem;
+    }
+}
 }
 
 
