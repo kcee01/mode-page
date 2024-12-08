@@ -1,122 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    position: relative;
-}
-
-.logout-button {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    background: #e74c3c;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-nav {
-    background: #444;
-    color: #fff;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-    background: #fff;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #333;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-button {
-    background: #5cb85c;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #4cae4c;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background: #f4f4f4;
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: #333;
-    color: white;
-}
-
-
-
-
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
@@ -130,6 +11,18 @@ header {
     color: white;
     padding: 10px 20px;
     text-align: center;
+    position: relative;
+}
+
+.logout-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 nav {
@@ -170,7 +63,7 @@ section {
     border: 1px solid #ccc;
     background: white;
     border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 section.active {
@@ -199,18 +92,17 @@ label {
     color: #333;
 }
 
-input, select {
+input, select, button {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
 }
 
 button {
-    padding: 10px;
     background: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
 }
@@ -218,204 +110,97 @@ button {
 button:hover {
     background: #0056b3;
 }
-/* Center the table container on the page */
+
+/* Table Styles */
 .table-container {
-display: flex;
-justify-content: center; /* Centers the table within the container */
-padding: 20px;
-box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Center the table */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
 }
 
-/* Table Styling */
 table {
-width: 95%;
-max-width: 700px; /* Adjusted width for larger table */
-margin: auto; /* Center the table on the page */
-border-collapse: collapse;
-border-radius: 8px;
-background-color: white;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-overflow: hidden;
+    width: 100%;
+    max-width: 900px; /* Maximum table width */
+    margin: auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-/* Header Styling */
 thead th {
-color: white; /* Header text color */
-padding: 14px; /* Increased padding for better visibility */
-text-align: left;
-background-color: #007bff; /* Header background color */
-font-size: 12px; /* Slightly larger font for header */
+    color: white; /* Header text color */
+    padding: 12px;
+    text-align: left;
+    background-color: #007bff; /* Header background color */
+    font-size: 1rem; /* Responsive font size */
 }
 
-/* Row Styling */
 th, td {
-border-bottom: 1px solid #ddd;
-padding: 14px; /* Increased padding for better readability */
-font-size: 12px; /* Slightly larger font for readability */
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.9rem; /* Responsive font size */
+    word-wrap: break-word; /* Allow word breaking for small screens */
 }
 
-/* Alternate Row Colors */
 tbody tr:nth-child(even) {
-background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
-/* Hover Effect */
 tbody tr:hover {
-background-color: #e9f2ff;
-cursor: pointer;
+    background-color: #e9f2ff;
+    cursor: pointer;
 }
 
-/* Action Button Styling */
+/* Action Button Styles */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
 .action-buttons button {
-margin-right: 6px;
-padding: 8px 14px; /* Increased padding for better button size */
-background-color: #007bff;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .action-buttons button:hover {
-background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 600px) {
-th, td {
-padding: 12%;
-font-size: 18%;
+@media (max-width: 768px) {
+    table {
+        font-size: 0.8rem;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .action-buttons button {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+    }
 }
 
-.action-buttons button {
-padding: 6% 12%;
-font-size: 12%;
+@media (max-width: 480px) {
+    th, td {
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+
+    .action-buttons button {
+        padding: 4px 8px;
+        font-size: 0.6rem;
+    }
 }
-}
-
-
-/* Center the table container on the page */
-.table-container-meters {
-display: flex;
-justify-content: center; /* Centers the table within the container */
-padding: 20px;
-box-sizing: border-box;
-}
-
-table {
-width: 100%;
-max-width: 900px; /* Optional: controls the table width */
-margin: auto; /* Center the table on the page */
-border-collapse: collapse;
-border-radius: 8px;
-background-color: white;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-overflow: hidden;
-}
-
-thead th {
-color: white; /* Header text color */
-padding: 12px; /* Spacing within header cells */
-text-align: left;
-background-color: #007bff; /* Header background color */
-}
-
-/* Row Styling */
-th, td {
-border-bottom: 1px solid #ddd;
-padding: 10px; /* Cell padding */
-text-align: center; /* Center align table content */
-}
-
-/* Alternate Row Colors */
-tbody tr:nth-child(even) {
-background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-background-color: #e9f2ff;
-cursor: pointer;
-}
-
-/* Action Button Styling */
-.action-buttons-meters {
-display: flex;
-gap: 8px;
-}
-
-.action-buttons-meters button {
-padding: 8px 12px;
-background-color: #007bff;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s;
-}
-
-.action-buttons-meters button:hover {
-background-color: #0056b3;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-th, td {
-padding: 10%;
-font-size: 14%;
-}
-
-.action-buttons-meters button {
-padding: 6% 10%;
-font-size: 12%;
-}
-}
-
-.form-section {
-margin-bottom: 2rem; /* Add some space between sections */
-display: none;
-}
-
-.form-section.active {
-display: block;
-}
-
-
-
-.table-container-bills {
-margin-top: 1rem; /* Adds space between the form and the table */
-}
-
-
-#generate-bill h2, #bills-information h2 {
-font-size: 1.5rem;
-margin-bottom: 0.5rem;
-}
-
-@media (max-width: 600px) {
-.wrapper{
-width:100%;
-}
-
-table {
-width: 100%;
-border-collapse: collapse;
-}
-
-table, th, td {
-border: 1px solid #ccc;
-}
-
-th, td {
-padding: 0.5rem;
-text-align: left;
-}
-
-th {
-background-color: #f2f2f2;
-}
-
-
-}
-
-
